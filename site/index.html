@@ -12,8 +12,8 @@
 <meta property="og:description" content="Interactive e-GP accounting training, workflow tools, decision simulators, and certification practice for Bangladesh government contractors." />
 <meta property="og:url" content="https://egp.inspiron.tech/" />
 <meta property="og:image" content="https://egp.inspiron.tech/og-egp-operator-portal.png" />
-<meta property="og:image:width" content="1376" />
-<meta property="og:image:height" content="768" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="627" />
 <meta property="og:image:alt" content="INSPIRON TECH — Manager.io e-GP Operator Training System" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Manager.io e-GP Operator Training System — INSPIRON TECH" />
@@ -27,7 +27,7 @@
 @font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Ultra.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
-:root{--bg:#eef2f6;--paper:#fff;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#dbe3ea;--cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--gold:#d97706;--gold-d:#b45309;--gold-w:#fffbeb;--gold-b:#fde68a;--green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif}
+:root{--bg:#F7F9FC;--paper:#FFFFFF;--ink:#010409;--ink2:#1E293B;--muted:#64748B;--line:#DDE3EA;--cyan:#00D2FF;--cyan-d:#006C87;--cyan-w:#F0F9FF;--cyan-b:#BAE6FD;--gold:#FFD700;--gold-d:#8A6600;--gold-w:#FFFBEB;--gold-b:#FDE68A;--green:#00FF88;--green-text:#008744;--green-w:#ECFDF5;--green-b:#A7F3D0;--red:#DC2626;--red-w:#FEF2F2;--red-b:#FECACA;--font-en:'Neo Sans Pro';--font-bn:'Li Ador Noirrit'}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);min-height:100vh}.bn{font-family:var(--font-bn)}
 .hero{background:radial-gradient(circle at 20% 0%,var(--cyan-w) 0%,#fff 55%,var(--gold-w) 100%);border-bottom:1px solid var(--line);padding:clamp(50px,7vw,90px) max(20px,8vw) 60px}
 .eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--cyan-d);text-transform:uppercase;display:flex;align-items:center;gap:7px;margin-bottom:10px}.eyebrow:before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold)}
@@ -65,14 +65,42 @@
 .locked-item{padding:12px 14px;border-left:4px solid var(--cyan);background:var(--cyan-w);border-radius:0 7px 7px 0;font-family:var(--font-bn);font-size:13.5px;line-height:1.5}
 @media(max-width:1000px){.card-grid{grid-template-columns:repeat(2,1fr)}.locked-list{grid-template-columns:1fr}}
 @media(max-width:680px){.card-grid{grid-template-columns:1fr}.pathway-steps{flex-direction:column}.pstep:not(:last-child):after{content:'↓';right:auto;left:50%;top:auto;bottom:-19px;transform:translateX(-50%)}}
+
+/* Sovereign Brand Navigation & Sentry Geometry (D003, D024) */
+.brand-nav{background:#FFFFFF;border-bottom:1px solid var(--line);padding:14px clamp(20px,6vw,90px);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.brand-lockup{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.brand-sentry{width:34px;height:33.2px;flex-shrink:0;display:block}
+.brand-wordmark{font-family:var(--font-en);font-size:19px;letter-spacing:-0.02em;color:var(--ink);line-height:1}
+.brand-wordmark .bold{font-weight:900}
+.brand-wordmark .regular{font-weight:400}
+.brand-badge{font-size:11px;font-weight:700;color:var(--cyan-d);background:var(--cyan-w);border:1px solid var(--cyan-b);padding:4px 10px;border-radius:999px;letter-spacing:.04em}
+@media(max-width:640px){.brand-badge{display:none}}
+.hero-credo{background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:0 10px 10px 0;padding:14px 18px;margin-top:22px;max-width:760px}
+.hero-credo .quote-en{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-0.01em;margin-bottom:4px}
+.hero-credo .quote-bn{font-family:var(--font-bn);font-size:14px;color:var(--muted);margin:0}
+.footer-credo{font-size:13px;color:var(--cyan-d);font-weight:700;margin:8px 0 12px}
+.footer-copy{font-size:11.5px;letter-spacing:.05em;color:var(--ink2);font-weight:800;margin-top:10px}
 </style>
 </head>
 <body>
+
+<header class="brand-nav">
+  <a class="brand-lockup" href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" title="INSPIRON TECH Sovereign Home">
+    <svg class="brand-sentry" viewBox="0 0 358.846 350.3" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="INSPIRON TECH Sentry Icon"><path d="M87.046 349.3c-30.8 0-57.9-14.8-74.3-40.9-15.4-24.2-16.9-55-4.2-80.5 7.8-14.2 32.9-53.9 57.4-92.4 15.1-23.7 29.3-46.1 39.3-62.6 2.7-4.3 4.8-7.8 8.4-11.5 11.4-13.1 28.1-20.6 45.6-20.6s33.8 8.1 43.8 22.1c5.5 7.8 9.1 16.9 10.3 26.4.3 2.5-.4 4.8-2.1 7.5-1.9 3.3-21.8 34.6-21.8 34.6-.6.9-1.2 1.9-1.8 2.8-1.3 2.2-2.4 4.2-3.9 4.2s-1.2-.3-1.8-.9c-4.2-4.9-8.2-11.5-12-18-2.4-4-4.5-7.9-6.9-11.2-1.8-2.8-4.8-4.5-7.8-4.5s-4.2 1-5.8 3c-5.2 8.1-27.5 43.8-45.6 72.7-11.8 18.9-22.1 35.3-25.4 40.4-2.2 3.6-5.2 8.1-7.9 12.5-1.6 2.7-3.3 5.4-4.8 7.8-.6 1-1.3 2.1-1.9 3.1-2.5 4-4.6 7.5-6.1 11.1-5.2 12.4-.4 27.3 10.9 34.6 5.5 3.6 11.4 5.4 17.5 5.4 12.3 0 25-7.6 32.9-20 5.5-8.1 23.6-37 45-70.6 31.7-50.4 67.9-107.5 76.1-118.7 6.3-6.7 14.5-10.8 22.7-10.8 9.3 0 18.2 5.1 23.2 13.1 4.8 7.9 5.4 16.8 1 24.7-3.6 7-6.6 11.3-10.9 18-3.1 4.9-7.3 11.2-13 20.6-14.4 22.5-31 48.7-47 74.2-24.4 38.9-47.7 75.7-55.3 86.8-17.5 24.1-45.5 38.6-75.1 38.6z" fill="#00D2FF"/><path d="M321.346 350c-10.6-1-19.3-6.1-26-15.3-.3-.6-4.3-7.3-10-16.5-49.2-81.1-52.8-87.8-52.6-88.4 5.5-8.8 19.4-31.2 27.4-43.8 3.3-5.4 5.7-9 6-9.4 1.6 2.7 27.4 45.3 49.4 81.8 17 28.2 31.9 52.8 32.2 53.5 4.2 7 4.2 15.2 0 22.5-5.2 9-15.4 14.9-25.6 14.9h-.8z" fill="#00D2FF"/><circle cx="321.346" cy="37.5" r="37.5" fill="#FFD700"/></svg>
+    <div class="brand-wordmark"><span class="regular">inspiron</span><span class="bold">TECH</span></div>
+  </a>
+  <span class="brand-badge">Official Manager.io Advisor &amp; Partner &middot; e-GP Operator Lab</span>
+</header>
+
 
 <section class="hero">
   <div class="eyebrow">INSPIRON TECH · Manager.io e-GP Operator Training System · v2.2</div>
   <h1>Manager.io e-GP<br/>Operator Portal</h1>
   <p class="bn">বাংলাদেশ e-GP contractor accounting-এর সম্পূর্ণ training ও operations ecosystem — এক জায়গায়। SOP পড়া থেকে শুরু করে, system বোঝা, practice করা, এবং certification পাওয়া পর্যন্ত সবকিছু এখানে সংযুক্ত।</p>
+  <div class="hero-credo">
+    <div class="quote-en">&ldquo;I do not install software. I architect logic.&rdquo;</div>
+    <div class="quote-bn">সফটওয়্যার স্থাপন নয়, যুক্তির স্থাপত্য নির্মাণ করি। &mdash; <strong style="color:var(--ink)">MD ABU HASAN</strong>, Chief Architect</div>
+  </div>
   <div class="status-row">
     <div class="status-chip">✅ <b>Free — No Login Required</b></div>
     <div class="status-chip">✅ <b>Works Offline</b></div>
@@ -126,18 +154,21 @@
 </main>
 
 <footer class="footer">
-  <strong>INSPIRON TECH</strong> · Built by MD ABU HASAN<br/>
+  <strong>INSPIRON TECH</strong> &middot; MD ABU HASAN<br/>
   Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
-  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
-  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
-  &nbsp;·&nbsp;
+  <div class="footer-credo">&ldquo;I do not install software. I architect logic.&rdquo; &middot; সফটওয়্যার স্থাপন নয়, যুক্তির স্থাপত্য নির্মাণ করি।</div>
   <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer">inspiron.tech</a>
-  <br/><br/>
-  <small>Educational demonstration only. Static, client-side tools — no live Manager.io data connection.</small>
+  &nbsp;&middot;&nbsp;
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://wa.me/8801719300849" target="_blank" rel="noopener noreferrer">WhatsApp: +880 1719-300849</a>
+  &nbsp;&middot;&nbsp;
+  <a href="mailto:hello@inspiron.tech">hello@inspiron.tech</a>
+  <div class="footer-copy">&copy; 2026 INSPIRON TECH. ALL LOGIC ARCHITECTED IN DHAKA-BD.</div>
+  <br/>
+  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
 </footer>
 
-<script>
-function notice(name){alert('This is a Markdown reference document:\n\n'+name+'\n\nOpen it directly from your Project Files panel — this portal links to interactive HTML tools only.');return false}
-</script>
+
 </body>
 </html>

@@ -14,16 +14,16 @@
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
 
 :root {
-  --canvas-bg: #F1F5F9; --slide-bg: #FFFFFF;
-  --ink-900: #0F172A; --ink-700: #334155; --ink-600: #475569; --ink-400: #94A3B8;
+  --canvas-bg: #F7F9FC; --slide-bg: #FFFFFF;
+  --ink-900: #010409; --ink-700: #334155; --ink-600: #475569; --ink-400: #94A3B8;
   --line: #CBD5E1; --line-soft: #E2E8F0;
-  --cyan: #0284C7; --cyan-dk: #0369A1; --cyan-wash: #F0F9FF; --cyan-bd: #BAE6FD;
-  --gold: #D97706; --gold-dk: #B45309; --gold-wash: #FFFBEB; --gold-bd: #FDE68A;
-  --green: #059669; --green-wash: #ECFDF5; --green-bd: #A7F3D0;
+  --cyan: #00D2FF; --cyan-dk: #006C87; --cyan-wash: #F0F9FF; --cyan-bd: #BAE6FD;
+  --gold: #FFD700; --gold-dk: #8A6600; --gold-wash: #FFFBEB; --gold-bd: #FDE68A;
+  --green: #00FF88; --green-wash: #ECFDF5; --green-bd: #A7F3D0;
   --red: #DC2626; --red-wash: #FEF2F2; --red-bd: #FECACA;
   --slate: #F8FAFC;
-  --font-en: 'Neo Sans Pro', sans-serif;
-  --font-bn: 'Li Ador Noirrit', 'Noto Sans Bengali', sans-serif;
+  --font-en: 'Neo Sans Pro';
+  --font-bn: 'Li Ador Noirrit',  sans-serif;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--canvas-bg); color: var(--ink-700); font-family: var(--font-en); min-height: 100vh; display: flex; flex-direction: column; align-items: stretch; }
@@ -104,7 +104,7 @@ code, .pill { font-family: var(--font-en); font-weight:700; padding:2px 6px; bor
 <svg width="0" height="0" style="position:absolute">
 <defs>
   <linearGradient id="gradCyan" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="#7DD3FC"/><stop offset="100%" stop-color="#0284C7"/>
+    <stop offset="0%" stop-color="#7DD3FC"/><stop offset="100%" stop-color="#00D2FF"/>
   </linearGradient>
   <linearGradient id="gradGold" x1="0" y1="0" x2="1" y2="1">
     <stop offset="0%" stop-color="#FDE68A"/><stop offset="100%" stop-color="#D97706"/>
@@ -252,10 +252,10 @@ LGED Patuakhali office  → Customer Code: LGED-PTK</div>
           <rect x="40" y="15" width="100" height="34" rx="6" fill="url(#gradCyan)"/>
           <text x="90" y="36" font-family="Neo Sans Pro" font-size="10" font-weight="900" fill="#fff" text-anchor="middle">LGED AGENCY</text>
           <path d="M90 49 v18 M90 67 L45 84 M90 67 L135 84" stroke="#94A3B8" stroke-width="2"/>
-          <rect x="10" y="86" width="72" height="48" rx="6" fill="#fff" stroke="#0284C7" stroke-width="2"/>
+          <rect x="10" y="86" width="72" height="48" rx="6" fill="#fff" stroke="#00D2FF" stroke-width="2"/>
           <text x="46" y="107" font-family="Neo Sans Pro" font-size="9" font-weight="800" fill="#0F172A" text-anchor="middle">LGED-BSL</text>
           <text x="46" y="122" font-family="Li Ador Noirrit" font-size="9" fill="#64748B" text-anchor="middle">বরিশাল অফিস</text>
-          <rect x="98" y="86" width="72" height="48" rx="6" fill="#fff" stroke="#0284C7" stroke-width="2"/>
+          <rect x="98" y="86" width="72" height="48" rx="6" fill="#fff" stroke="#00D2FF" stroke-width="2"/>
           <text x="134" y="107" font-family="Neo Sans Pro" font-size="9" font-weight="800" fill="#0F172A" text-anchor="middle">LGED-PTK</text>
           <text x="134" y="122" font-family="Li Ador Noirrit" font-size="9" fill="#64748B" text-anchor="middle">পটুয়াখালী অফিস</text>
         </svg>
@@ -420,8 +420,8 @@ Ref.:    LGED-1142857</div>
       <text x="55" y="49" font-family="Neo Sans Pro" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">CUSTOMER</text>
       <circle cx="205" cy="45" r="28" fill="url(#gradGold)"/>
       <text x="205" y="49" font-family="Neo Sans Pro" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">PROJECT</text>
-      <path d="M85 45 h90" stroke="#0284C7" stroke-width="3"/>
-      <path d="M120 37 l8 8 -8 8" stroke="#0284C7" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M85 45 h90" stroke="#00D2FF" stroke-width="3"/>
+      <path d="M120 37 l8 8 -8 8" stroke="#00D2FF" stroke-width="3" fill="none" stroke-linecap="round"/>
       <path d="M135 53 l-8 -8 8 -8" stroke="#D97706" stroke-width="3" fill="none" stroke-linecap="round"/>
     </svg>
     <div class="eyebrow-tag" style="justify-content:center;">13 · CRITICAL OPERATING CHECKPOINT</div>
@@ -846,7 +846,7 @@ Cr 1130 Tender Security Margin</div>
         <svg class="illo" viewBox="0 0 160 130" filter="url(#softShadow)">
           <path d="M30 45 l32 -22 l42 11 l-32 22 z" fill="url(#gradCyan)"/>
           <path d="M30 45 v42 l42 22 v-42 z" fill="url(#gradCyan)" opacity="0.85"/>
-          <path d="M72 67 l32 -22 v42 l-32 22 z" fill="#fff" stroke="#0284C7" stroke-width="2"/>
+          <path d="M72 67 l32 -22 v42 l-32 22 z" fill="#fff" stroke="#00D2FF" stroke-width="2"/>
         </svg>
         <div class="stage-caption">5000 Direct Materials</div>
       </div>
@@ -984,8 +984,8 @@ Cr 1130 Tender Security Margin</div>
         <svg class="illo" viewBox="0 0 160 120" filter="url(#softShadow)">
           <rect x="12" y="38" width="55" height="48" rx="6" fill="url(#gradCyan)"/>
           <text x="39" y="66" font-family="Neo Sans Pro" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">BANK A</text>
-          <path d="M72 55 h20 M72 68 h20" stroke="#0284C7" stroke-width="2.4"/>
-          <path d="M88 50 l7 5 -7 5" stroke="#0284C7" stroke-width="2.4" fill="none"/>
+          <path d="M72 55 h20 M72 68 h20" stroke="#00D2FF" stroke-width="2.4"/>
+          <path d="M88 50 l7 5 -7 5" stroke="#00D2FF" stroke-width="2.4" fill="none"/>
           <rect x="94" y="38" width="55" height="48" rx="6" fill="url(#gradGold)"/>
           <text x="121" y="66" font-family="Neo Sans Pro" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">BANK B</text>
         </svg>
@@ -1067,7 +1067,7 @@ Cr 1130 Tender Security Margin</div>
     </div>
     <div class="callout" style="margin-top:8px;"><b>Closing line:</b> Setup থেকে closeout পর্যন্ত — clean Customer, clean Project, correct Ref., correct item, and safe print theme.</div>
   </div>
-  <div class="slide-bottom-bar"><span class="tagline">INSPIRON TECH · MD ABU HASAN · Visualized by ARTIFACT-FORGE</span><span class="slide-num">50 / 50</span></div>
+  <div class="slide-bottom-bar"><span class="tagline">INSPIRON TECH · MD ABU HASAN · Visualized by html-visualizer</span><span class="slide-num">50 / 50</span></div>
 </section>
 
 </div>
@@ -1080,15 +1080,20 @@ document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.
 render(0);
 </script>
 
-<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
-  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#FFFFFF;font-size:12px;color:#64748B;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#010409;font-weight:900">INSPIRON TECH</strong> &middot; MD ABU HASAN<br/>
   Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
-  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
-  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  <div style="font-size:12.5px;color:#006C87;font-weight:700;margin:6px 0 10px">&ldquo;I do not install software. I architect logic.&rdquo; &middot; সফটওয়্যার স্থাপন নয়, যুক্তির স্থাপত্য নির্মাণ করি।</div>
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">inspiron.tech</a>
   &nbsp;&middot;&nbsp;
-  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
-  <br/><br/>
-  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://wa.me/8801719300849" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">WhatsApp: +880 1719-300849</a>
+  &nbsp;&middot;&nbsp;
+  <a href="mailto:hello@inspiron.tech" style="color:#006C87;font-weight:800;text-decoration:none">hello@inspiron.tech</a>
+  <div style="font-size:11.5px;letter-spacing:.05em;color:#1E293B;font-weight:800;margin-top:8px">&copy; 2026 INSPIRON TECH. ALL LOGIC ARCHITECTED IN DHAKA-BD.</div>
+  <br/>
+  <small style="color:#64748B">Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
 </footer>
 </body>
 </html>

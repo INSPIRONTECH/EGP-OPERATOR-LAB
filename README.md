@@ -6,9 +6,13 @@
 
 [![Live Portal](https://img.shields.io/badge/🌐_Live-egp.inspiron.tech-00D2FF?style=for-the-badge)](https://egp.inspiron.tech)
 [![Manager.io](https://img.shields.io/badge/Manager.io-Advisor_&_Partner-FFD700?style=for-the-badge)](https://manager.io/advisors)
-[![License](https://img.shields.io/badge/License-CC_BY_4.0-30D158?style=for-the-badge)](./LICENSE)
+[![License](https://img.shields.io/badge/License-CC_BY_4.0-00FF88?style=for-the-badge)](./LICENSE)
 
 </div>
+
+> *“I do not install software. I architect logic.”*
+> *সফটওয়্যার স্থাপন নয়, যুক্তির স্থাপত্য নির্মাণ করি।*
+> — **MD ABU HASAN**, Founder & Chief Architect · [INSPIRON TECH](https://inspiron.tech)
 
 ---
 
@@ -68,6 +72,7 @@ We architect accounting logic for SMEs across Bangladesh, Pakistan, UAE, and Ire
 | 📧 Email | hello@inspiron.tech |
 | 💬 WhatsApp | [+880 1719-300849](https://wa.me/8801719300849) |
 | 💼 Upwork | [upwork.com/freelancers/cyberhasan](https://www.upwork.com/freelancers/cyberhasan) |
+| 🔗 LinkedIn | [linkedin.com/in/cyberhasan](https://www.linkedin.com/in/cyberhasan/) |
 
 ---
 
@@ -76,3 +81,11 @@ We architect accounting logic for SMEs across Bangladesh, Pakistan, UAE, and Ire
 This work is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](./LICENSE).
 
 You are free to share, adapt, and use these materials — even commercially — as long as you give credit to INSPIRON TECH.
+
+---
+
+<div align="center">
+
+**© 2026 INSPIRON TECH · ALL LOGIC ARCHITECTED IN DHAKA-BD**
+
+</div>

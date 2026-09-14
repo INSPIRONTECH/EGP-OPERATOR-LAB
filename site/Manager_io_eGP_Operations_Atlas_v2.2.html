@@ -10,7 +10,7 @@
 @font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
-:root{--paper:#fff;--canvas:#eef2f6;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#dbe3ea;--cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--gold:#d97706;--gold-d:#b45309;--gold-w:#fffbeb;--gold-b:#fde68a;--green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--gray:#94a3b8;--gray-w:#f8fafc;--font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif}
+:root{--paper:#fff;--canvas:#F7F9FC;--ink:#010409;--ink2:#1E293B;--muted:#64748B;--line:#DDE3EA;--cyan:#00D2FF;--cyan-d:#006C87;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--gold:#FFD700;--gold-d:#8A6600;--gold-w:#fffbeb;--gold-b:#fde68a;--green:#00FF88;--green-w:#ecfdf5;--green-b:#a7f3d0;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--gray:#94a3b8;--gray-w:#f8fafc;--font-en:'Neo Sans Pro';--font-bn:'Li Ador Noirrit'}
 *{box-sizing:border-box}html,body{margin:0;min-height:100vh;background:var(--canvas);font-family:var(--font-en);color:var(--ink)}
 .header{position:sticky;top:0;z-index:30;height:64px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,4vw)}.brand{font-weight:900;font-size:17px}.brand span{color:var(--cyan)}.modes{display:flex;gap:6px}.mode{padding:7px 12px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--muted);font-size:12px;font-weight:800;cursor:pointer}.mode.active{background:var(--cyan);color:#fff;border-color:var(--cyan)}
 .app{max-width:1480px;margin:auto;padding:30px max(18px,4vw) 60px}.eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--cyan-d);text-transform:uppercase;margin-bottom:5px}.eyebrow:before{content:'';display:inline-block;width:7px;height:7px;background:var(--gold);border-radius:50%;margin-right:7px}.title{font-size:clamp(30px,3.4vw,50px);margin:0 0 8px;line-height:1.08;font-weight:900}.subtitle{font-family:var(--font-bn);font-size:clamp(16px,1.15vw,19px);color:var(--muted);line-height:1.55;max-width:900px;margin:0 0 22px}
@@ -54,7 +54,7 @@
    <div class="mobile-stages" id="mobileStages"></div>
    <aside class="detail" id="detail"><div class="detail-head"><div class="tag">Atlas Detail</div><h2>Select a map node</h2></div><div class="detail-body"><p class="desc">Lifecycle map-এর একটি node ক্লিক করে সেই stage-এর accounting architecture দেখুন।</p></div></aside>
  </div>
- <div class="footer">INSPIRON TECH · MD ABU HASAN · Visualized by ARTIFACT-FORGE<br/>Manager.io e-GP Operations Atlas · Static system orientation tool</div>
+ <div class="footer">INSPIRON TECH · MD ABU HASAN · Visualized by html-visualizer<br/>Manager.io e-GP Operations Atlas · Static system orientation tool</div>
 </main>
 <script>
 const nodes={
@@ -75,15 +75,20 @@ document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>{do
 renderDetail('bid');
 </script>
 
-<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
-  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#FFFFFF;font-size:12px;color:#64748B;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#010409;font-weight:900">INSPIRON TECH</strong> &middot; MD ABU HASAN<br/>
   Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
-  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
-  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  <div style="font-size:12.5px;color:#006C87;font-weight:700;margin:6px 0 10px">&ldquo;I do not install software. I architect logic.&rdquo; &middot; সফটওয়্যার স্থাপন নয়, যুক্তির স্থাপত্য নির্মাণ করি।</div>
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">inspiron.tech</a>
   &nbsp;&middot;&nbsp;
-  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
-  <br/><br/>
-  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://wa.me/8801719300849" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">WhatsApp: +880 1719-300849</a>
+  &nbsp;&middot;&nbsp;
+  <a href="mailto:hello@inspiron.tech" style="color:#006C87;font-weight:800;text-decoration:none">hello@inspiron.tech</a>
+  <div style="font-size:11.5px;letter-spacing:.05em;color:#1E293B;font-weight:800;margin-top:8px">&copy; 2026 INSPIRON TECH. ALL LOGIC ARCHITECTED IN DHAKA-BD.</div>
+  <br/>
+  <small style="color:#64748B">Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
 </footer>
 </body>
 </html>

@@ -13,12 +13,12 @@
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
 :root{
-  --paper:#fff;--canvas:#eef2f6;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--dim:#94a3b8;--line:#dbe3ea;--line2:#eef1f5;
-  --cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;
-  --gold:#d97706;--gold-d:#b45309;--gold-w:#fffbeb;--gold-b:#fde68a;
-  --green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;
+  --paper:#fff;--canvas:#F7F9FC;--ink:#010409;--ink2:#1E293B;--muted:#64748B;--dim:#94a3b8;--line:#DDE3EA;--line2:#eef1f5;
+  --cyan:#00D2FF;--cyan-d:#006C87;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;
+  --gold:#FFD700;--gold-d:#8A6600;--gold-w:#fffbeb;--gold-b:#fde68a;
+  --green:#00FF88;--green-w:#ecfdf5;--green-b:#a7f3d0;
   --red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;
-  --font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif;
+  --font-en:'Neo Sans Pro';--font-bn:'Li Ador Noirrit';
 }
 *{box-sizing:border-box}html,body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font-en);min-height:100vh}
 .bn{font-family:var(--font-bn)}
@@ -278,8 +278,6 @@ footer{text-align:center;padding:24px;color:var(--dim);font-size:12px;border-top
   <div class="note" style="margin-top:18px"><b>Closing line:</b> Setup থেকে closeout পর্যন্ত — clean Customer, clean Project, correct Ref., correct item, and safe print theme.</div>
 </section>
 
-<footer>INSPIRON TECH · MD ABU HASAN · Visualized by ARTIFACT-FORGE<br/>Manager.io e-GP Tender Command Center · v2.2 FINAL</footer>
-
 <script>
 /* ===================== DATA ===================== */
 const EVENTS = {
@@ -493,15 +491,20 @@ CHECKLIST.forEach((text,i)=>{
 });
 </script>
 
-<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
-  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#FFFFFF;font-size:12px;color:#64748B;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#010409;font-weight:900">INSPIRON TECH</strong> &middot; MD ABU HASAN<br/>
   Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
-  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
-  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  <div style="font-size:12.5px;color:#006C87;font-weight:700;margin:6px 0 10px">&ldquo;I do not install software. I architect logic.&rdquo; &middot; সফটওয়্যার স্থাপন নয়, যুক্তির স্থাপত্য নির্মাণ করি।</div>
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">inspiron.tech</a>
   &nbsp;&middot;&nbsp;
-  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
-  <br/><br/>
-  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://wa.me/8801719300849" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">WhatsApp: +880 1719-300849</a>
+  &nbsp;&middot;&nbsp;
+  <a href="mailto:hello@inspiron.tech" style="color:#006C87;font-weight:800;text-decoration:none">hello@inspiron.tech</a>
+  <div style="font-size:11.5px;letter-spacing:.05em;color:#1E293B;font-weight:800;margin-top:8px">&copy; 2026 INSPIRON TECH. ALL LOGIC ARCHITECTED IN DHAKA-BD.</div>
+  <br/>
+  <small style="color:#64748B">Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
 </footer>
 </body>
 </html>

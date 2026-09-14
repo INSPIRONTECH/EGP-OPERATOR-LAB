@@ -10,7 +10,7 @@
 @font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
-:root{--bg:#eef2f6;--paper:#fff;--ink:#172033;--muted:#64748b;--line:#dbe3ea;--cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;--amber:#d97706;--amber-w:#fffbeb;--amber-b:#fde68a;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--sidebar:#f8fafc;--font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif}
+:root{--bg:#F7F9FC;--paper:#fff;--ink:#172033;--muted:#64748B;--line:#DDE3EA;--cyan:#00D2FF;--cyan-d:#006C87;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--green:#00FF88;--green-w:#ecfdf5;--green-b:#a7f3d0;--amber:#d97706;--amber-w:#fffbeb;--amber-b:#fde68a;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--sidebar:#f8fafc;--font-en:'Neo Sans Pro';--font-bn:'Li Ador Noirrit'}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);min-height:100vh}.bn{font-family:var(--font-bn)}
 .top{height:58px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--line);padding:0 22px;position:sticky;top:0;z-index:20}.brand{font-weight:900;font-size:16px}.brand span{color:var(--cyan)}.safe{font-family:var(--font-bn);font-size:12px;color:var(--amber-d);background:var(--amber-w);border:1px solid var(--amber-b);padding:5px 10px;border-radius:999px}
 .app{display:grid;grid-template-columns:220px minmax(0,1fr) 300px;min-height:calc(100vh - 58px)}
@@ -191,15 +191,20 @@ resetBtn.addEventListener('click',()=>{if(!confirm('Reset all simulated entries 
 updateMetrics();renderLedger();
 </script>
 
-<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
-  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#FFFFFF;font-size:12px;color:#64748B;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#010409;font-weight:900">INSPIRON TECH</strong> &middot; MD ABU HASAN<br/>
   Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
-  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
-  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  <div style="font-size:12.5px;color:#006C87;font-weight:700;margin:6px 0 10px">&ldquo;I do not install software. I architect logic.&rdquo; &middot; সফটওয়্যার স্থাপন নয়, যুক্তির স্থাপত্য নির্মাণ করি।</div>
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">inspiron.tech</a>
   &nbsp;&middot;&nbsp;
-  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
-  <br/><br/>
-  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://wa.me/8801719300849" target="_blank" rel="noopener noreferrer" style="color:#006C87;font-weight:800;text-decoration:none">WhatsApp: +880 1719-300849</a>
+  &nbsp;&middot;&nbsp;
+  <a href="mailto:hello@inspiron.tech" style="color:#006C87;font-weight:800;text-decoration:none">hello@inspiron.tech</a>
+  <div style="font-size:11.5px;letter-spacing:.05em;color:#1E293B;font-weight:800;margin-top:8px">&copy; 2026 INSPIRON TECH. ALL LOGIC ARCHITECTED IN DHAKA-BD.</div>
+  <br/>
+  <small style="color:#64748B">Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
 </footer>
 </body>
 </html>
