@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manager.io e-GP Tender Path Trainer — INSPIRON TECH</title>
+<style>
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Ultra.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+:root{--paper:#fff;--canvas:#eef2f6;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#dbe3ea;--cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--gold:#d97706;--gold-d:#b45309;--gold-w:#fffbeb;--gold-b:#fde68a;--green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font-en);min-height:100vh}.bn{font-family:var(--font-bn)}
+.topbar{height:62px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,5vw);position:sticky;top:0;z-index:20;backdrop-filter:blur(8px)}.brand{font-weight:900;font-size:16px}.brand span{color:var(--cyan)}.mode-toggle{display:flex;gap:6px}.mode-btn{border:1px solid var(--line);background:#fff;color:var(--muted);padding:7px 12px;border-radius:6px;font-family:var(--font-en);font-size:12px;font-weight:800;cursor:pointer}.mode-btn.active{background:var(--cyan);color:#fff;border-color:var(--cyan)}
+#app{max-width:1080px;margin:auto;padding:34px 24px 80px}.screen{display:none}.screen.active{display:block}.eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--cyan-d);text-transform:uppercase;margin-bottom:7px}.eyebrow:before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:7px}.title{font-size:clamp(30px,3.5vw,52px);line-height:1.08;margin:0 0 12px;font-weight:900;color:var(--ink)}.subtitle{font-family:var(--font-bn);font-size:clamp(16px,1.3vw,21px);line-height:1.6;color:var(--muted);margin:0 0 28px}
+.path-selector{display:grid;grid-template-columns:1fr 1fr;gap:18px}.path{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;cursor:pointer;transition:.2s;position:relative;overflow:hidden}.path:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(2,132,199,.12);border-color:var(--cyan-b)}.path.gold:hover{border-color:var(--gold-b);box-shadow:0 14px 35px rgba(217,119,6,.1)}.path .step{font-size:12px;font-weight:900;letter-spacing:.1em;color:var(--gold-d)}.path h2{margin:10px 0 7px;font-size:24px}.path p{font-family:var(--font-bn);font-size:15px;line-height:1.55;color:var(--ink2);margin:0}.path .tag{display:inline-block;margin-top:18px;padding:5px 10px;border-radius:999px;background:var(--cyan-w);color:var(--cyan-d);border:1px solid var(--cyan-b);font-size:12px;font-weight:800}.path.gold .tag{background:var(--gold-w);color:var(--gold-d);border-color:var(--gold-b)}
+/* TRAINER SHELL */
+.trainer-shell{display:grid;grid-template-columns:230px 1fr;gap:22px}.journey-panel{background:#fff;border:1px solid var(--line);border-radius:10px;padding:17px;height:max-content;position:sticky;top:84px}.journey-panel h4{margin:0 0 12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.stage{display:flex;gap:10px;align-items:flex-start;padding:10px 7px;border-left:3px solid var(--line);position:relative}.stage.active{border-left-color:var(--cyan);background:var(--cyan-w)}.stage.done{border-left-color:var(--green)}.stage .dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);background:#fff;margin-top:2px;flex:0 0 auto}.stage.active .dot{border-color:var(--cyan);background:var(--cyan)}.stage.done .dot{border-color:var(--green);background:var(--green)}.stage .sname{font-family:var(--font-bn);font-size:13px;line-height:1.35;color:var(--ink2)}.score-card{margin-top:15px;border-top:1px solid var(--line);padding-top:14px}.score-card .score{font-size:28px;font-weight:900;color:var(--cyan-d)}.score-card p{font-family:var(--font-bn);font-size:12px;color:var(--muted);margin:3px 0 0}
+.training-stage{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;min-height:560px}.stage-header{padding:15px 22px;background:#f8fafc;border-bottom:1px solid var(--line)}.stage-header .stage-label{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--cyan-d);text-transform:uppercase}.stage-header .stage-title{font-size:19px;font-weight:900;margin-top:3px}.scenario{padding:26px 26px 10px;font-family:var(--font-bn);font-size:18px;line-height:1.55;color:var(--ink2)}.scene-graphic{margin:0 26px 20px;padding:18px;background:var(--cyan-w);border:1px solid var(--cyan-b);border-radius:8px;text-align:center}.scene-graphic svg{width:100%;max-width:270px;height:auto}.choices{padding:0 26px 22px;display:grid;gap:10px}.choice{padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:#fff;font-family:var(--font-bn);font-size:15px;line-height:1.45;color:var(--ink2);cursor:pointer;text-align:left;transition:.15s}.choice:hover:not(:disabled){border-color:var(--cyan);background:var(--cyan-w)}.choice:disabled{cursor:default}.choice.correct{background:var(--green-w);border-color:var(--green-b);color:var(--green)}.choice.wrong{background:var(--red-w);border-color:var(--red-b);color:var(--red)}.choice .letter{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;border-radius:50%;background:#f1f5f9;color:var(--ink);font-family:var(--font-en);font-weight:900;font-size:12px;margin-right:8px}.choice.correct .letter{background:var(--green);color:#fff}.choice.wrong .letter{background:var(--red);color:#fff}
+.feedback{display:none;margin:0 26px 20px;padding:16px;border-left:4px solid var(--green);background:var(--green-w);border-radius:0 7px 7px 0}.feedback.show{display:block}.feedback.bad{border-color:var(--red);background:var(--red-w)}.feedback h3{margin:0 0 6px;font-size:17px}.feedback p{font-family:var(--font-bn);font-size:14px;line-height:1.5;margin:0 0 8px}.entry-mini{background:#fff;border:1px solid var(--line);padding:12px;border-radius:6px;font-family:var(--font-bn);font-size:13px;line-height:1.6}.entry-mini code{font-family:var(--font-en);padding:2px 5px;border-radius:4px;background:var(--cyan-w);color:var(--cyan-d);border:1px solid var(--cyan-b);font-weight:800}.stage-actions{padding:0 26px 26px;display:flex;justify-content:space-between;align-items:center}.next-btn,.restart-btn{border:0;border-radius:7px;padding:10px 16px;font-family:var(--font-en);font-size:13px;font-weight:900;cursor:pointer}.next-btn{background:var(--cyan);color:#fff}.restart-btn{background:#f1f5f9;color:var(--ink2);border:1px solid var(--line)}.next-btn:disabled{opacity:.4;cursor:not-allowed}
+.result-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:34px;text-align:center}.result-score{font-size:66px;font-weight:900;color:var(--cyan-d);line-height:1}.result-card h2{margin:10px 0;font-size:30px}.result-card p{font-family:var(--font-bn);color:var(--muted);font-size:16px;line-height:1.5}.weak-list{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;margin:22px 0}.weak{background:var(--gold-w);border:1px solid var(--gold-b);padding:12px;border-radius:7px;font-family:var(--font-bn);font-size:14px;color:var(--gold-d)}
+@media(max-width:860px){.path-selector,.trainer-shell,.weak-list{grid-template-columns:1fr}.journey-panel{position:static}.topbar{height:auto;padding:12px 18px}.mode-toggle{margin-top:8px}.topbar{flex-direction:column;align-items:flex-start}.training-stage{min-height:auto}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand">Tender <span>Path Trainer</span></div><div class="mode-toggle"><button class="mode-btn active" id="trainingMode">Training Mode</button><button class="mode-btn" id="testMode">Test Mode</button></div></header>
+<main id="app">
+
+<!-- PATH PICKER -->
+<section class="screen active" id="pathPicker">
+  <div class="eyebrow">Interactive Operator Learning · v2.2 FINAL</div>
+  <h1 class="title">একটি Tender বেছে নিন। তারপর সিদ্ধান্ত নিন।</h1>
+  <p class="subtitle">আপনি এখন একটি বাস্তব tender-এর যাত্রা অনুসরণ করবেন। প্রতিটি পর্যায়ে সঠিক entry বেছে নিতে হবে। ভুল হলে নিরাপদে শিখবেন—কোনো live Manager.io data পরিবর্তন হবে না।</p>
+  <div class="path-selector">
+    <article class="path" data-path="withoutLoan">
+      <div class="step">PATH 01</div>
+      <h2>Tender Without Time Loan</h2>
+      <p>সম্পূর্ণ Tender Security cycle শিখুন: Document fee → Cash Margin / BG-only → NOA → Site Work → RA Bill → Retention Release।</p>
+      <span class="tag">Full Tender Security Recording</span>
+    </article>
+    <article class="path gold" data-path="withLoan">
+      <div class="step">PATH 02</div>
+      <h2>Active Time Loan Facility</h2>
+      <p>Facility-based operational shortcut শিখুন: Pre-NOA-তে monthly interest only, তারপর post-NOA থেকে Performance Security ও normal tender workflow।</p>
+      <span class="tag">Interest-only Pre-NOA Policy</span>
+    </article>
+  </div>
+</section>
+
+<!-- TRAINER -->
+<section class="screen" id="trainerScreen">
+  <div class="trainer-shell">
+    <aside class="journey-panel">
+      <h4 id="pathTitle">Tender Journey</h4>
+      <div id="stageList"></div>
+      <div class="score-card"><div class="score" id="scoreText">0 / 0</div><p id="scoreCaption">Correct decisions</p></div>
+    </aside>
+    <section class="training-stage">
+      <div class="stage-header"><div class="stage-label" id="stageLabel">PRE-NOA</div><div class="stage-title" id="stageTitle">Tender Document Fee</div></div>
+      <div class="scenario" id="scenarioText"></div>
+      <div class="scene-graphic" id="sceneGraphic"></div>
+      <div class="choices" id="choices"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="stage-actions"><button class="restart-btn" id="restartJourney">↺ Restart Path</button><button class="next-btn" id="nextStage" disabled>Next Decision →</button></div>
+    </section>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="screen" id="resultScreen">
+  <div class="result-card">
+    <div class="eyebrow">Training Complete</div>
+    <div class="result-score" id="finalScore">0 / 0</div>
+    <h2>Your Tender Path Result</h2>
+    <p id="resultMessage"></p>
+    <div class="weak-list" id="weakList"></div>
+    <button class="next-btn" id="restartAll">↺ Choose Another Tender Path</button>
+  </div>
+</section>
+
+</main>
+
+<script>
+const graphics = {
+  fee:`<svg viewBox="0 0 240 120"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7dd3fc"/><stop offset="1" stop-color="#0284c7"/></linearGradient></defs><rect x="25" y="20" width="190" height="80" rx="10" fill="url(#g1)"/><rect x="55" y="42" width="130" height="36" rx="5" fill="#fff" opacity=".95"/><text x="120" y="65" font-family="Neo Sans Pro" font-size="15" font-weight="900" fill="#0369a1" text-anchor="middle">e-GP FEE</text></svg>`,
+  cash:`<svg viewBox="0 0 240 120"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fde68a"/><stop offset="1" stop-color="#d97706"/></linearGradient></defs><rect x="35" y="42" width="170" height="60" rx="9" fill="url(#g2)"/><path d="M68 42V27c0-17 60-17 60 0v15" fill="none" stroke="#fff" stroke-width="5"/><circle cx="120" cy="72" r="15" fill="#fff"/><path d="M120 63v18M111 72h18" stroke="#b45309" stroke-width="3"/></svg>`,
+  bg:`<svg viewBox="0 0 240 120"><rect x="55" y="14" width="130" height="92" rx="7" fill="#ecfdf5" stroke="#059669" stroke-width="2"/><path d="M78 40h84M78 58h84M78 76h45" stroke="#059669" stroke-width="3"/><circle cx="160" cy="83" r="14" fill="#059669"/><path d="M153 83l5 5 10-11" fill="none" stroke="#fff" stroke-width="3"/></svg>`,
+  noa:`<svg viewBox="0 0 240 120"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7dd3fc"/><stop offset="1" stop-color="#0284c7"/></linearGradient><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fde68a"/><stop offset="1" stop-color="#d97706"/></linearGradient></defs><circle cx="55" cy="60" r="31" fill="url(#g3)"/><text x="55" y="64" font-family="Neo Sans Pro" font-size="10" font-weight="900" fill="#fff" text-anchor="middle">CUSTOMER</text><path d="M88 60h64" stroke="#64748b" stroke-width="3" stroke-dasharray="5 5"/><circle cx="185" cy="60" r="31" fill="url(#g4)"/><text x="185" y="64" font-family="Neo Sans Pro" font-size="10" font-weight="900" fill="#fff" text-anchor="middle">PROJECT</text></svg>`,
+  site:`<svg viewBox="0 0 240 120"><rect x="25" y="70" width="190" height="26" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/><path d="M45 70V44h36v26M92 70V30h42v40M145 70V48h36v22" fill="#fff" stroke="#0284c7" stroke-width="2"/><path d="M15 102h210" stroke="#059669" stroke-width="4" stroke-linecap="round"/><circle cx="56" cy="104" r="6" fill="#d97706"/><circle cx="125" cy="104" r="6" fill="#d97706"/><circle cx="188" cy="104" r="6" fill="#d97706"/></svg>`,
+  invoice:`<svg viewBox="0 0 240 120"><rect x="52" y="12" width="136" height="96" rx="7" fill="#fff" stroke="#0284c7" stroke-width="2"/><path d="M74 38h92M74 56h92M74 74h58" stroke="#bae6fd" stroke-width="4"/><circle cx="160" cy="84" r="14" fill="#d97706"/><path d="M153 84h14M160 77v14" stroke="#fff" stroke-width="3"/></svg>`,
+  release:`<svg viewBox="0 0 240 120"><rect x="35" y="42" width="170" height="60" rx="9" fill="#ecfdf5" stroke="#059669" stroke-width="2"/><path d="M68 42V27c0-17 60-17 60 0v15" fill="none" stroke="#059669" stroke-width="5"/><path d="M104 75l12 12 26-29" fill="none" stroke="#059669" stroke-width="5" stroke-linecap="round"/></svg>`,
+  bank:`<svg viewBox="0 0 240 120"><rect x="20" y="40" width="68" height="52" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/><text x="54" y="69" font-family="Neo Sans Pro" font-size="10" font-weight="900" fill="#0369a1" text-anchor="middle">BANK</text><path d="M96 54h48M96 72h48" stroke="#d97706" stroke-width="3"/><path d="M134 47l10 7-10 7M106 65l-10 7 10 7" fill="none" stroke="#d97706" stroke-width="3"/><rect x="152" y="40" width="68" height="52" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="186" y="69" font-family="Neo Sans Pro" font-size="10" font-weight="900" fill="#b45309" text-anchor="middle">BANK</text></svg>`
+};
+
+const paths = {
+  withoutLoan: {
+    title:'Tender Path: Without Time Loan',
+    stages:[
+      {label:'Pre-NOA · Document Fee', title:'e-GP Document Fee', graphic:'fee', scenario:'আপনি LGED-এর একটি tender-এর জন্য e-GP document fee দিয়েছেন। NOA এখনো আসেনি। কী করবেন?', topic:'Pre-NOA fee', correct:1,
+       choices:['A. আগে থেকেই একটি Project খুলে দিন','B. Payment → TND-DOC-FEE → 5800 → Project Blank → Ref: LGED','C. Material Cost (5000) → Project: LGED'],
+       explain:'NOA এখনো আসেনি। তাই Awarded Project নেই। Bid-stage fee হলো 5800 Bidding & Tender Expenses। Ref.-এ শুধু PE code ব্যবহার করা যাবে।', entry:'Form: Payment\nItem: TND-DOC-FEE\nAccount: 5800 Bidding & Tender Expenses\nProject: Blank\nRef.: LGED'},
+      {label:'Tender Security · Cash Margin', title:'Tender Security Cash Margin', graphic:'cash', scenario:'Bank থেকে Tender Security হিসেবে cash margin block হয়েছে। সঠিক entry কোনটি?', topic:'Tender Security cash margin', correct:1,
+       choices:['A. 5710 BG Commission Expense','B. Payment → TS-CASH-BLOCK → 1130 → Ref: LGED-1142857','C. 4000 Contract Revenue'],
+       explain:'Cash margin আপনারই asset; এটি 1130 Tender Security Margin-এ যাবে। Project এখানে পাওয়া যাবে না, তাই Ref. = PE-TenderID।', entry:'Dr 1130 Tender Security Margin\nCr 1010 Bank\nItem: TS-CASH-BLOCK\nRef.: LGED-1142857'},
+      {label:'Tender Security · BG-only', title:'BG-only Tender Security', graphic:'bg', scenario:'Bank BG দিয়েছে, কিন্তু আপনার কোনো cash margin block হয়নি। কী করবেন?', topic:'BG-only vs cash margin', correct:2,
+       choices:['A. BG face value 1130-এ record করুন','B. BG face value Revenue হিসেবে record করুন','C. No margin ledger entry; BG Register update করুন; actual commission হলে আলাদা payment দিন'],
+       explain:'BG face value নিজে cash asset বা expense নয়। Cash block না হলে 1130-এ entry হবে না। BG Register-এ instrument details রাখুন।', entry:'Ledger: No 1130 entry\nBG Register: Number, issue, expiry, PE Code, Tender ID, status\nCommission (if paid): TS-BG-COMMISSION → 5710'},
+      {label:'NOA Day', title:'Customer + Project Setup', graphic:'noa', scenario:'LGED Barishal থেকে NOA এসেছে। Customer Code = LGED-BSL। Project PE CODE-এ কী লিখবেন?', topic:'NOA master data match', correct:1,
+       choices:['A. LGED','B. LGED-BSL','C. LGED BSL'],
+       explain:'Customer Code এবং Project PE CODE exact string match হতে হবে। Hyphen, capitalization, space—সবকিছু।', entry:'Customer Code: LGED-BSL\nProject PE CODE: LGED-BSL\nProject: JHLKT-RoadRehab-LGED-1142857'},
+      {label:'Performance Security', title:'Performance Security Cash Margin', graphic:'cash', scenario:'NOA-এর পরে Performance Security cash margin bank-এ block হলো। সঠিক routing কোনটি?', topic:'Performance Security margin', correct:1,
+       choices:['A. 1130 Tender Security Margin','B. Payment → PS-CASH-BLOCK → 1140 → Ref: PE-TenderID','C. 5810 Office Overhead'],
+       explain:'Performance Security cash margin 1140 account-এ যায়; Tender Security (1130)-এ নয়। Ref. দিয়ে tender identity রাখুন।', entry:'Form: Payment\nItem: PS-CASH-BLOCK\nAccount: 1140 Performance Security Margin\nRef.: LGED-1142857'},
+      {label:'Mobilization Advance', title:'PE Mobilization Advance', graphic:'bank', scenario:'PE কাজ শুরুর জন্য advance টাকা bank-এ পাঠাল। এটি কী?', topic:'Mobilization advance liability', correct:0,
+       choices:['A. Receipt → MOB-RECEIVED → 2100 Liability → Ref: PE-TenderID','B. Sales Invoice Revenue → 4000','C. Retention Release → 1150'],
+       explain:'Advance এসেছে, কিন্তু কাজ এখনও earn হয়নি। তাই এটি 2100 liability। RA Bill থেকে ধীরে ধীরে recover হবে।', entry:'Dr 1010 Bank\nCr 2100 Mobilization Advance Received\nItem: MOB-RECEIVED\nRef.: LGED-1142857'},
+      {label:'Site Work', title:'Material Purchase', graphic:'site', scenario:'Cement কিনেছেন JHLKT Road Rehab project-এর জন্য। কী করবেন?', topic:'Direct material Project tag', correct:1,
+       choices:['A. Payment → 5800 → Ref: LGED','B. Purchase Invoice → 5000 Direct Materials → Project: JHLKT-RoadRehab-LGED-1142857','C. 1140 Performance Security Margin'],
+       explain:'Material is a direct site P&L cost. Project select করতে হবে। Ref. লাগবে না।', entry:'Form: Purchase Invoice\nAccount: 5000 Direct Materials\nProject: JHLKT-RoadRehab-LGED-1142857\nRef.: Blank'},
+      {label:'RA Bill', title:'RA Bill Structure', graphic:'invoice', scenario:'Gross work 15,00,000; retention 1,50,000; advance recovery 3,00,000। কোন structure সঠিক?', topic:'RA Bill gross-to-net', correct:1,
+       choices:['A. One Revenue line: 10,50,000','B. 4000 Gross + 1150 Retention negative + 2100 Advance recovery negative','C. 4000 Gross + Retention as new bank payment'],
+       explain:'Gross, retention ও recovery আলাদা line হলে Project profitability, receivable, retention এবং advance balance সত্য থাকে।', entry:'4000 Contract Revenue: +15,00,000\n1150 RET-WITHHELD: -1,50,000\n2100 MOB-RECOVERY: -3,00,000\nNet A/R: 10,50,000'},
+      {label:'RA Bill · Ref Policy', title:'Sales Invoice Ref. Check', graphic:'invoice', scenario:'RA Bill-এর 1150 Retention line-এ LGED-1142857 Ref. লিখবেন?', topic:'Sales Invoice-Line Ref = NO', correct:1,
+       choices:['A. Yes, every Balance Sheet line needs Ref','B. No, Sales Invoice Header Customer + Project already carries tender context','C. Only if retention rate is 10%'],
+       explain:'Locked policy: Sales Invoice-Line Ref. = NO. Ref. is for standalone Payment/Receipt/Journal Balance Sheet moves.', entry:'Sales Invoice Header: Customer + Project\nRevenue: Project context\nRetention: Project context, no Ref. line\nAdvance recovery: Project context, no Ref. line'},
+      {label:'PE Payment', title:'Invoice Settlement', graphic:'bank', scenario:'PE RA Bill-এর net payable টাকা পাঠাল। কী করবেন?', topic:'Invoice settlement no duplicate tag', correct:0,
+       choices:['A. Receipt → invoice select করে settle করুন; Project/Ref দ্বিতীয়বার দেবেন না','B. New revenue payment → 4000','C. Receipt → 1150 retention'],
+       explain:'Invoice settle করার Receipt-এ metadata invoice থেকে আসে। নতুন করে Project/Ref লিখলে duplicate/incorrect logic হতে পারে।', entry:'Form: Receipt\nSelect: Outstanding RA Invoice\nAccounts Receivable auto settles\nProject: No extra tag\nRef.: No extra tag'},
+      {label:'DLP Release', title:'Retention Release', graphic:'release', scenario:'DLP শেষে PE retention টাকা ফেরত দিয়েছে। কোন entry?', topic:'Retention release not revenue', correct:1,
+       choices:['A. Sales Invoice → 4000 Revenue','B. Receipt → RET-RELEASE → 1150 → Ref: PE-TenderID','C. Payment → 2100'],
+       explain:'Revenue আগে RA Bill-এ হয়েছে। এখন 1150 Receivable থেকে cash-এ রূপান্তর হচ্ছে।', entry:'Dr 1010 Bank\nCr 1150 Retention Receivable\nItem: RET-RELEASE\nRef.: LGED-1142857'}
+    ]
+  },
+  withLoan: {
+    title:'Tender Path: Active Time Loan Facility',
+    stages:[
+      {label:'Pre-NOA · Document Fee', title:'e-GP Document Fee', graphic:'fee', scenario:'Active Time Loan facility থাকা অবস্থায় e-GP document fee দিয়েছেন। NOA নেই। কী করবেন?', topic:'Pre-NOA bid fee', correct:1,
+       choices:['A. Create Project and tag loan','B. Payment → TND-DOC-FEE → 5800 → Project Blank → Ref: PE code','C. 2300 Time Loan Principal'],
+       explain:'Pre-NOA document fee এখনও 5800 bid expense। Project নেই। Ref.-এ PE code only allowed।', entry:'Form: Payment\nItem: TND-DOC-FEE\nAccount: 5800\nProject: Blank\nRef.: LGED'},
+      {label:'Pre-NOA · Facility Rule', title:'Active Time Loan Shortcut', graphic:'cash', scenario:'Active Time Loan facility আছে। Tender Security margin/drawdown details আপনি বাস্তবে tender-wise record করছেন না। কী record করবেন?', topic:'Active Time Loan operational policy', correct:2,
+       choices:['A. সব margin block, drawdown, release daily record করুন','B. সব tender security revenue হিসেবে record করুন','C. Monthly bank interest only; pre-NOA detailed margin/drawdown entries skip করুন'],
+       explain:'এটি আপনার approved facility-based operational policy: Active Time Loan facility থাকলে pre-NOA margin/drawdown/release tender-wise record করা হয় না; monthly interest only।', entry:'Monthly Entry Only:\nDr 5700 Interest on Time Loan\nCr 1010 Bank\nItem: TL-MONTHLY-ADJUST\nProject: Blank · Ref.: Blank'},
+      {label:'Monthly Interest', title:'Time Loan Interest', graphic:'bank', scenario:'Bank Time Loan interest কেটেছে। Project বা Ref. কী হবে?', topic:'5700 untagged', correct:1,
+       choices:['A. Project: current tender, Ref: Tender ID','B. Project: Blank, Ref: Blank','C. Project: all active projects equally'],
+       explain:'Bank interest lump sum। Tender-wise safe split নেই। 5700 always untagged।', entry:'Form: Payment\nItem: TL-MONTHLY-ADJUST\nAccount: 5700 Interest on Time Loan\nProject: Blank\nRef.: Blank'},
+      {label:'NOA Day', title:'Customer + Project Setup', graphic:'noa', scenario:'NOA এসেছে। Customer Code = PWD-BSL। Project PE CODE-এ কী লিখবেন?', topic:'NOA master data match', correct:1,
+       choices:['A. PWD','B. PWD-BSL','C. PWD BSL'],
+       explain:'Exact code match mandatory। Customer Code এবং Project PE CODE একই string হতে হবে।', entry:'Customer Code: PWD-BSL\nProject PE CODE: PWD-BSL\nProject Name: BAKRGNJ-Building-PWD-1153409'},
+      {label:'Performance Security', title:'Performance Security Cash Margin', graphic:'cash', scenario:'Post-NOA Performance Security cash margin block হলো। কী করবেন?', topic:'Post-NOA detailed tracking', correct:1,
+       choices:['A. Skip all entries because Time Loan exists','B. Payment → PS-CASH-BLOCK → 1140 → Ref: PE-TenderID','C. 4000 Revenue'],
+       explain:'Active Time Loan shortcut pre-NOA tender security operational policy। Post-NOA Performance Security detail record হবে।', entry:'Form: Payment\nItem: PS-CASH-BLOCK\nAccount: 1140\nRef.: PWD-1153409'},
+      {label:'Mobilization Advance', title:'PE Mobilization Advance', graphic:'bank', scenario:'PE থেকে site advance এসেছে। এটি কী?', topic:'Advance liability', correct:0,
+       choices:['A. Receipt → MOB-RECEIVED → 2100 Liability → Ref','B. Contract Revenue 4000','C. Retention 1150'],
+       explain:'Money received does not mean revenue. Advance = liability until recovered through RA Bills.', entry:'Dr 1010 Bank\nCr 2100 Mobilization Advance Received\nRef.: PWD-1153409'},
+      {label:'Site Work', title:'Direct Labor', graphic:'site', scenario:'Site mason labor cash payment। কোন tag?', topic:'P&L Project tag', correct:1,
+       choices:['A. Ref: PWD-1153409 only','B. Payment → 5010 Direct Labor → Project select → Ref Blank','C. 5720 Bank Charge'],
+       explain:'Labor is P&L direct site cost, so Project required. Ref is not used.', entry:'Form: Payment\nAccount: 5010 Direct Labor\nProject: BAKRGNJ-Building-PWD-1153409\nRef.: Blank'},
+      {label:'RA Bill', title:'RA Bill Structure', graphic:'invoice', scenario:'RA Bill-এর gross, retention, advance recovery কীভাবে দেবেন?', topic:'RA Bill structure', correct:1,
+       choices:['A. One Net Revenue line','B. Separate gross 4000, retention 1150, advance recovery 2100 lines','C. Retention as new expense'],
+       explain:'Separate lines preserve asset, liability, revenue, and cash collection accuracy.', entry:'4000 Gross Revenue\n1150 RET-WITHHELD (negative)\n2100 MOB-RECOVERY (negative)\nSales Invoice line Ref.: NO'},
+      {label:'Retention Release', title:'DLP Retention Release', graphic:'release', scenario:'DLP শেষে retention আসলো। কোন accounting effect?', topic:'Retention release asset to cash', correct:2,
+       choices:['A. New revenue 4000','B. 2100 advance recovery','C. Receipt → RET-RELEASE → 1150 → Ref: PE-TenderID'],
+       explain:'Retention release is not new revenue. It converts existing receivable to bank cash.', entry:'Dr 1010 Bank\nCr 1150 Retention Receivable\nItem: RET-RELEASE\nRef.: PWD-1153409'}
+    ]
+  }
+};
+
+function renderGraphic(key){return graphics[key]||graphics.fee}
+let selectedPath=null,current=0,score=0,attempts=[] ,mode='training';
+const qs=s=>document.querySelector(s);
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));qs('#'+id).classList.add('active');window.scrollTo(0,0)}
+document.querySelectorAll('.path').forEach(el=>el.addEventListener('click',()=>startPath(el.dataset.path)));
+qs('#trainingMode').addEventListener('click',()=>setMode('training'));
+qs('#testMode').addEventListener('click',()=>setMode('test'));
+function setMode(m){mode=m;qs('#trainingMode').classList.toggle('active',m==='training');qs('#testMode').classList.toggle('active',m==='test')}
+function startPath(key){selectedPath=paths[key];current=0;score=0;attempts=[];show('trainerScreen');renderStage()}
+function renderStage(){const s=selectedPath.stages[current];qs('#pathTitle').textContent=selectedPath.title;qs('#stageLabel').textContent=s.label;qs('#stageTitle').textContent=s.title;qs('#scenarioText').textContent=s.scenario;qs('#sceneGraphic').innerHTML=renderGraphic(s.graphic);qs('#feedback').className='feedback';qs('#feedback').innerHTML='';qs('#nextStage').disabled=true;renderJourney();const choices=qs('#choices');choices.innerHTML='';s.choices.forEach((text,i)=>{const btn=document.createElement('button');btn.className='choice';btn.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span>${text}`;btn.addEventListener('click',()=>answer(i,btn));choices.appendChild(btn)})}
+function renderJourney(){const list=qs('#stageList');list.innerHTML='';selectedPath.stages.forEach((s,i)=>{const d=document.createElement('div');d.className='stage '+(i===current?'active ':'')+(i<current?'done':'');d.innerHTML=`<div class="dot"></div><div class="sname">${s.label}</div>`;list.appendChild(d)});qs('#scoreText').textContent=`${score} / ${attempts.length}`;qs('#scoreCaption').textContent=mode==='training'?'Correct decisions':'Score so far'}
+function answer(idx,button){const s=selectedPath.stages[current];const buttons=qs('#choices').querySelectorAll('.choice');buttons.forEach(b=>b.disabled=true);const ok=idx===s.correct;attempts.push({topic:s.topic,ok});if(ok){score++;button.classList.add('correct')}else{button.classList.add('wrong');buttons[s.correct].classList.add('correct')}renderJourney();const feedback=qs('#feedback');if(mode==='training'){feedback.className='feedback show '+(ok?'':'bad');feedback.innerHTML=`<h3>${ok?'✓ Correct':'✗ Not Quite'}</h3><p>${s.explain}</p><div class="entry-mini"><b>Correct Entry:</b><br/>${s.entry.replace(/\n/g,'<br/>')}</div>`}else{feedback.className='feedback show '+(ok?'':'bad');feedback.innerHTML=`<h3>${ok?'✓ Recorded':'✗ Recorded as incorrect'}</h3><p>${ok?'Next decision এ যান।':'Correct answer highlighted হয়েছে।'}</p>`}qs('#nextStage').disabled=false}
+qs('#nextStage').addEventListener('click',()=>{if(current<selectedPath.stages.length-1){current++;renderStage()}else showResult()});qs('#restartJourney').addEventListener('click',()=>startPath(selectedPath===paths.withLoan?'withLoan':'withoutLoan'));
+function showResult(){show('resultScreen');const total=selectedPath.stages.length;qs('#finalScore').textContent=`${score} / ${total}`;const pct=Math.round(score/total*100);qs('#resultMessage').textContent=pct>=85?'Excellent — live-entry supervised practice-এর জন্য প্রস্তুত।':pct>=60?'Good foundation — নিচের weak areas আবার review করুন।':'আরও training দরকার — entry card explanations আবার পড়ুন।';const bad=attempts.filter(a=>!a.ok);const weak=qs('#weakList');weak.innerHTML=bad.length?bad.map(a=>`<div class="weak">Review: ${a.topic}</div>`).join(''):`<div class="weak">✓ All key decisions were correct.</div>`}
+qs('#restartAll').addEventListener('click',()=>show('pathPicker'));
+</script>
+
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+  Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
+  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
+  <br/><br/>
+  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+</footer>
+</body>
+</html>

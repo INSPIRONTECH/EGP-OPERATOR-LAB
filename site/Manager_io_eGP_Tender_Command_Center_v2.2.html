@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manager.io e-GP Tender Command Center — INSPIRON TECH</title>
+<style>
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Ultra.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+:root{
+  --paper:#fff;--canvas:#eef2f6;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--dim:#94a3b8;--line:#dbe3ea;--line2:#eef1f5;
+  --cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;
+  --gold:#d97706;--gold-d:#b45309;--gold-w:#fffbeb;--gold-b:#fde68a;
+  --green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;
+  --red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;
+  --font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif;
+}
+*{box-sizing:border-box}html,body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font-en);min-height:100vh}
+.bn{font-family:var(--font-bn)}
+/* TOP BAR */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,4vw)}
+.brand{font-weight:900;font-size:15px;letter-spacing:.02em}.brand span{color:var(--cyan)}
+.tabs{display:flex;gap:4px;overflow-x:auto}
+.tab{padding:8px 14px;border-radius:7px;font-size:13px;font-weight:800;color:var(--muted);cursor:pointer;white-space:nowrap;border:1px solid transparent}
+.tab:hover{color:var(--cyan-d)}
+.tab.active{background:var(--cyan-w);color:var(--cyan-d);border-color:var(--cyan-b)}
+/* SCREENS */
+.screen{display:none;max-width:1280px;margin:auto;padding:38px max(18px,5vw) 80px}
+.screen.active{display:block}
+.page-eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--cyan-d);text-transform:uppercase;display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.page-eyebrow:before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.page-title{font-size:clamp(26px,3vw,42px);font-weight:900;margin:0 0 8px}
+.page-sub{font-family:var(--font-bn);font-size:clamp(15px,1.15vw,19px);color:var(--muted);line-height:1.55;max-width:820px;margin-bottom:26px}
+/* DOORS (HOME) */
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.door{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px;cursor:pointer;transition:.15s;position:relative;overflow:hidden}
+.door:hover{border-color:var(--cyan-b);box-shadow:0 12px 30px rgba(2,132,199,.1);transform:translateY(-2px)}
+.door .dn{font-size:12px;font-weight:900;color:var(--gold-d);letter-spacing:.08em}
+.door h3{font-size:20px;margin:8px 0 6px}
+.door p{font-family:var(--font-bn);font-size:14px;color:var(--muted);line-height:1.5;margin:0}
+.door .go{position:absolute;right:20px;bottom:20px;color:var(--cyan);font-size:22px;font-weight:900}
+/* CARDS/GRIDS */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{font-family:var(--font-bn);font-size:14px;color:var(--ink2);line-height:1.5;margin:0}
+.card.cyan{background:var(--cyan-w);border-color:var(--cyan-b)}.card.cyan h3{color:var(--cyan-d)}
+.card.gold{background:var(--gold-w);border-color:var(--gold-b)}.card.gold h3{color:var(--gold-d)}
+.card.green{background:var(--green-w);border-color:var(--green-b)}.card.green h3{color:var(--green)}
+.card.red{background:var(--red-w);border-color:var(--red-b)}.card.red h3{color:var(--red)}
+/* EVENT PICKER */
+.event-list{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px}
+.event-btn{padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--font-bn);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink2)}
+.event-btn:hover{border-color:var(--cyan-b);color:var(--cyan-d)}
+.event-btn.active{background:var(--cyan);color:#fff;border-color:var(--cyan)}
+/* ENTRY CARD */
+.entry-card{display:none;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}
+.entry-card.show{display:block}
+.entry-head{background:var(--ink);color:#fff;padding:16px 22px}
+.entry-head .tag{font-size:11px;font-weight:900;letter-spacing:.1em;color:#7dd3fc;text-transform:uppercase}
+.entry-head h3{margin:5px 0 0;font-size:20px}
+.entry-body{padding:20px 22px}
+.entry-body .when{font-family:var(--font-bn);font-size:15px;line-height:1.55;color:var(--ink2);margin-bottom:14px;padding:12px 14px;background:var(--cyan-w);border-left:4px solid var(--cyan);border-radius:0 6px 6px 0}
+table.kv{width:100%;border-collapse:collapse;margin-bottom:14px}
+table.kv th{text-align:left;background:var(--cyan-w);color:var(--cyan-d);font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:8px 12px;border:1px solid var(--cyan-b);width:150px}
+table.kv td{padding:8px 12px;border:1px solid var(--line2);font-weight:600}
+code,.pill{font-family:var(--font-en);font-weight:800;padding:2px 7px;border-radius:5px;background:var(--cyan-w);color:var(--cyan-d);border:1px solid var(--cyan-b);font-size:.92em}
+.pill.gold{background:var(--gold-w);color:var(--gold-d);border-color:var(--gold-b)}
+.journal{background:#0f172a;color:#38bdf8;padding:12px 16px;border-radius:7px;font-family:var(--font-en);font-size:14px;line-height:1.55;white-space:pre-wrap;margin-bottom:14px}
+.warn{padding:12px 16px;border-left:4px solid var(--red);background:var(--red-w);font-family:var(--font-bn);font-size:14px;line-height:1.5;border-radius:0 6px 6px 0}
+.note{padding:12px 16px;border-left:4px solid var(--green);background:var(--green-w);font-family:var(--font-bn);font-size:14px;line-height:1.5;border-radius:0 6px 6px 0;margin-bottom:10px}
+/* CHECKER TOOL */
+.checker{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;margin-top:26px}
+.checker h3{margin:0 0 12px;font-size:18px}
+.checker-options{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.checker-btn{padding:9px 14px;border-radius:8px;border:1px solid var(--line);background:#fafbfc;font-family:var(--font-bn);font-size:13px;font-weight:600;cursor:pointer}
+.checker-btn:hover{border-color:var(--cyan-b)}
+.checker-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+.checker-result{display:none;padding:14px 16px;border-radius:8px;font-weight:800;font-size:15px}
+.checker-result.show{display:block}
+.result-project{background:var(--cyan-w);color:var(--cyan-d);border:1px solid var(--cyan-b)}
+.result-ref{background:var(--gold-w);color:var(--gold-d);border:1px solid var(--gold-b)}
+.result-blank{background:#f1f5f9;color:var(--ink2);border:1px solid var(--line)}
+.result-none{background:var(--green-w);color:var(--green);border:1px solid var(--green-b)}
+/* NOA VALIDATOR */
+.validator{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px}
+.validator input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:7px;font-family:var(--font-en);font-size:15px;font-weight:700;color:var(--ink)}
+.validator label{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+.validator .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.match-result{padding:14px 16px;border-radius:8px;font-weight:900;font-size:15px;text-align:center}
+.match-ok{background:var(--green-w);color:var(--green);border:2px solid var(--green-b)}
+.match-fail{background:var(--red-w);color:var(--red);border:2px solid var(--red-b)}
+/* RA BILL BUILDER */
+.ra-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px}
+.ra-inputs div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px}
+.ra-inputs label{font-size:11px;font-weight:800;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.ra-inputs input{width:100%;border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-family:var(--font-en);font-weight:700;font-size:15px}
+.stack{display:flex;flex-direction:column;gap:8px}
+.stack-row{display:flex;justify-content:space-between;padding:13px 16px;border-radius:7px;font-weight:800}
+.gross{background:var(--green-w);border:1px solid var(--green-b);color:var(--green)}
+.deduct{background:var(--red-w);border:1px solid var(--red-b);color:var(--red)}
+.net{background:var(--cyan-w);border:2px solid var(--cyan-b);color:var(--cyan-d);font-size:18px}
+/* MONTH-END */
+.checklist{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check-item{display:flex;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;align-items:flex-start}
+.check-item .box{width:20px;height:20px;flex:0 0 auto;border:2px solid var(--cyan-b);border-radius:5px;margin-top:2px}
+.check-item.done{background:var(--green-w);border-color:var(--green-b)}
+.check-item.done .box{background:var(--green);border-color:var(--green)}
+.check-item p{font-family:var(--font-bn);font-size:14px;line-height:1.45;margin:0;color:var(--ink2)}
+.progress-bar{height:8px;border-radius:99px;background:var(--line2);overflow:hidden;margin-bottom:18px}
+.progress-fill{height:100%;background:linear-gradient(90deg,#ffd700,#00d2ff);width:0%;transition:.3s}
+/* ITEM TABLE */
+table.itable{width:100%;border-collapse:collapse;font-size:14px}
+table.itable th{background:var(--cyan-w);color:var(--cyan-d);text-align:left;padding:9px 12px;border:1px solid var(--cyan-b);font-size:11px;text-transform:uppercase}
+table.itable td{padding:9px 12px;border:1px solid var(--line2)}
+table.itable tr:nth-child(even) td{background:#f8fafc}
+/* DESK CARD */
+.deskcard{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.deskcard ul{font-family:var(--font-bn);font-size:14.5px;line-height:1.8;padding-left:20px;margin:0}
+footer{text-align:center;padding:24px;color:var(--dim);font-size:12px;border-top:1px solid var(--line);background:#fff}
+@media(max-width:900px){.doors,.grid-2,.grid-3,.ra-inputs,.checklist,.deskcard,.validator .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Tender <span>Command Center</span></div>
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-screen="home">Home</div>
+    <div class="tab" data-screen="pre-noa">Before NOA</div>
+    <div class="tab" data-screen="noa">NOA Day</div>
+    <div class="tab" data-screen="site">Site Work</div>
+    <div class="tab" data-screen="ra">RA Bill</div>
+    <div class="tab" data-screen="security">Security & BG</div>
+    <div class="tab" data-screen="monthend">Month-End</div>
+    <div class="tab" data-screen="desk">Desk Card</div>
+  </div>
+</div>
+
+<!-- HOME -->
+<section class="screen active" id="screen-home">
+  <div class="page-eyebrow">Operator Workflow Simulator · v2.2 FINAL</div>
+  <h1 class="page-title">আজ আপনি কী record করছেন?</h1>
+  <p class="page-sub bn">Slide পড়া নয়—সরাসরি কাজ খুঁজে বের করুন। ছয়টি operational door-এর একটিতে ক্লিক করুন এবং সঠিক Form, Item, Account, এবং Project/Ref rule দেখুন।</p>
+  <div class="doors" id="doors">
+    <div class="door" data-screen="pre-noa"><div class="dn">DOOR 01</div><h3>Before NOA</h3><p>Bid fee, Tender Security, BG-only, cash margin।</p><div class="go">→</div></div>
+    <div class="door" data-screen="noa"><div class="dn">DOOR 02</div><h3>NOA Day</h3><p>Customer + Project একই সময়ে সেটআপ।</p><div class="go">→</div></div>
+    <div class="door" data-screen="site"><div class="dn">DOOR 03</div><h3>Site Work</h3><p>Material, labor, equipment, subcontractor cost।</p><div class="go">→</div></div>
+    <div class="door" data-screen="ra"><div class="dn">DOOR 04</div><h3>RA Bill</h3><p>Revenue, retention, advance recovery, settlement।</p><div class="go">→</div></div>
+    <div class="door" data-screen="security"><div class="dn">DOOR 05</div><h3>Security & Release</h3><p>Performance Security, BG Register, retention release।</p><div class="go">→</div></div>
+    <div class="door" data-screen="monthend"><div class="dn">DOOR 06</div><h3>Month-End Control</h3><p>Ref check, Project check, aging, BG expiry, Time Loan।</p><div class="go">→</div></div>
+  </div>
+
+  <div class="checker">
+    <h3>⚡ Quick Checker: Project, Ref., নাকি কিছুই না?</h3>
+    <div class="checker-options" id="checker-options">
+      <div class="checker-btn" data-r="project">Site cost / income</div>
+      <div class="checker-btn" data-r="ref">Margin / retention / advance / loan</div>
+      <div class="checker-btn" data-r="none">Invoice settlement</div>
+      <div class="checker-btn" data-r="blank">Time Loan interest</div>
+      <div class="checker-btn" data-r="blank">Office overhead</div>
+    </div>
+    <div class="checker-result result-project" id="res-project">✅ <b>Project</b> select করুন — এটি P&L line।</div>
+    <div class="checker-result result-ref" id="res-ref">✅ <b>Ref. = PE-TenderID</b> — Standalone Balance Sheet movement।</div>
+    <div class="checker-result result-none" id="res-none">✅ কিছুই দেবেন না — Invoice থেকে metadata inherit হয়।</div>
+    <div class="checker-result result-blank" id="res-blank">✅ Project ও Ref. দুটোই <b>Blank</b> — Company-wide / unsplittable cost।</div>
+  </div>
+</section>
+
+<!-- BEFORE NOA -->
+<section class="screen" id="screen-pre-noa">
+  <div class="page-eyebrow">Door 01</div>
+  <h1 class="page-title">Before NOA — Bid Stage</h1>
+  <p class="page-sub bn">NOA আসার আগে কোনো Project নেই। এই সময়ের entry গুলো company-wide bid cost হিসেবে record হবে।</p>
+  <div class="event-list" id="events-preNOA"></div>
+  <div id="cards-preNOA"></div>
+</section>
+
+<!-- NOA DAY -->
+<section class="screen" id="screen-noa">
+  <div class="page-eyebrow">Door 02</div>
+  <h1 class="page-title">NOA Day — Customer + Project Setup</h1>
+  <p class="page-sub bn">NOA পাওয়ার সঙ্গে সঙ্গে দুটি কাজ একসাথে করুন। এটি আলাদা দিনে করার কাজ নয়।</p>
+  <div class="grid-2" style="margin-bottom:24px">
+    <div class="card cyan"><h3>Step 1 — Customer</h3><p>Customers ট্যাবে PE office আছে কি না দেখুন। না থাকলে Name, Code (<code>LGED-BSL</code>), Region দিন।</p></div>
+    <div class="card gold"><h3>Step 2 — Project</h3><p>Name format: <code>[Location]-[ShortName]-[PE]-[TenderProposalID]</code>। PE CODE = Customer Code-এর exact copy।</p></div>
+  </div>
+  <div class="validator">
+    <h3>🔒 NOA Code Match Validator</h3>
+    <div class="row">
+      <div><label>Customer Code</label><input id="custCode" value="LGED-BSL" /></div>
+      <div><label>Project PE CODE</label><input id="projCode" value="LGED-BSL" /></div>
+    </div>
+    <div class="match-result match-ok" id="matchResult">✓ Exact Match — Project তৈরি করা নিরাপদ।</div>
+  </div>
+</section>
+
+<!-- SITE WORK -->
+<section class="screen" id="screen-site">
+  <div class="page-eyebrow">Door 03</div>
+  <h1 class="page-title">Site Work — Direct Costs</h1>
+  <p class="page-sub bn">Material, Labor, Subcontractor, Equipment — সব সময় Project tag লাগবে, Ref. লাগবে না।</p>
+  <div class="event-list" id="events-site"></div>
+  <div id="cards-site"></div>
+  <div class="card cyan" style="margin-top:10px"><h3>Item examples</h3><p>Material: Cement, Sand, MS Rod, Bitumen, Bricks · Labor: Mason, Skilled, Helper, Electrician</p></div>
+</section>
+
+<!-- RA BILL -->
+<section class="screen" id="screen-ra">
+  <div class="page-eyebrow">Door 04</div>
+  <h1 class="page-title">RA Bill Builder</h1>
+  <p class="page-sub bn">Gross work, retention, advance recovery আলাদা রাখুন — নিচে নিজের সংখ্যা দিয়ে দেখুন।</p>
+  <div class="ra-inputs">
+    <div><label>Gross Certified Work (BDT)</label><input type="number" id="raGross" value="1500000"></div>
+    <div><label>Retention Withheld (BDT)</label><input type="number" id="raRetention" value="150000"></div>
+    <div><label>Mobilization Recovery (BDT)</label><input type="number" id="raAdvance" value="300000"></div>
+  </div>
+  <div class="stack">
+    <div class="stack-row gross"><span>4000 Contract Revenue (Certified Work)</span><span id="outGross">+15,00,000</span></div>
+    <div class="stack-row deduct"><span>1150 Retention Receivable (RET-WITHHELD)</span><span id="outRetention">-1,50,000</span></div>
+    <div class="stack-row deduct"><span>2100 Mobilization Advance (MOB-RECOVERY)</span><span id="outAdvance">-3,00,000</span></div>
+    <div class="stack-row net"><span>Net Payable by PE</span><span id="outNet">= 10,50,000</span></div>
+  </div>
+  <div class="warn" style="margin-top:16px"><b>Locked Policy — Sales Invoice-Line Ref. = NO:</b> Invoice Header-এর Customer + Project পুরো context বহন করে। Line-এ Ref. দেবেন না।</div>
+  <div class="event-list" style="margin-top:22px" id="events-ra"></div>
+  <div id="cards-ra"></div>
+</section>
+
+<!-- SECURITY & BG -->
+<section class="screen" id="screen-security">
+  <div class="page-eyebrow">Door 05</div>
+  <h1 class="page-title">Security, BG & Retention Release</h1>
+  <p class="page-sub bn">Tender Security, Performance Security, BG Register, এবং DLP-এর পরে retention release।</p>
+  <div class="event-list" id="events-security"></div>
+  <div id="cards-security"></div>
+  <div class="card gold" style="margin-top:16px"><h3>BG Register Fields</h3><p>BG Number, Type, Issuing Bank, Face Value, Issue Date, Expiry Date, PE Code, Tender ID, Status, File Reference — BG face value কখনো ledger-এ ওঠে না।</p></div>
+</section>
+
+<!-- MONTH-END -->
+<section class="screen" id="screen-monthend">
+  <div class="page-eyebrow">Door 06</div>
+  <h1 class="page-title">Month-End Control Dashboard</h1>
+  <p class="page-sub bn">প্রতিটি item-এ ক্লিক করে check-off করুন। ২০ মিনিটের এই routine ২০ বছরের database সুস্থ রাখে।</p>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="checklist" id="checklist"></div>
+</section>
+
+<!-- DESK CARD -->
+<section class="screen" id="screen-desk">
+  <div class="page-eyebrow">Reference</div>
+  <h1 class="page-title">Operator Desk Card</h1>
+  <p class="page-sub bn">দ্রুত reference — Do's & Don'ts.</p>
+  <div class="deskcard">
+    <div class="card green"><h3>✓ সঠিক কাজ</h3><ul>
+      <li>Customer check ও Project একই সময়ে তৈরি করুন</li>
+      <li>আলাদা office হলে আলাদা Customer খুলুন</li>
+      <li>Customer Code হুবহু Project PE CODE-এ কপি করুন</li>
+      <li>Standard item prefix দিয়ে search করুন</li>
+      <li>Mobilization Advance-কে 2100 Liability হিসেবে রাখুন</li>
+      <li>Approved stateless print theme ব্যবহার করুন</li>
+    </ul></div>
+    <div class="card red"><h3>✗ ভুল কাজ</h3><ul>
+      <li>Customer Name-এ Tender ID লিখবেন না</li>
+      <li>NOA-এর আগে Dummy Project খুলবেন না</li>
+      <li>Sales Invoice লাইনে Ref. লিখবেন না</li>
+      <li>BG-only হলে fake cash-margin entry করবেন না</li>
+      <li>Retention release-কে নতুন Revenue বলবেন না</li>
+      <li>Time Loan interest tag করবেন না</li>
+      <li>Enriched theme live-এ inject করবেন না</li>
+    </ul></div>
+  </div>
+  <div class="note" style="margin-top:18px"><b>Closing line:</b> Setup থেকে closeout পর্যন্ত — clean Customer, clean Project, correct Ref., correct item, and safe print theme.</div>
+</section>
+
+<footer>INSPIRON TECH · MD ABU HASAN · Visualized by ARTIFACT-FORGE<br/>Manager.io e-GP Tender Command Center · v2.2 FINAL</footer>
+
+<script>
+/* ===================== DATA ===================== */
+const EVENTS = {
+  preNOA: [
+    {id:'docfee', label:'e-GP Document Fee', tag:'PRE-AWARD', title:'e-GP Portal / Document Fee',
+      when:'Tender document, submission, বা portal fee প্রদান — NOA এখনো আসেনি।',
+      kv:[['Form','Payment'],['Item','TND-DOC-FEE'],['Account','5800 Bidding & Tender Expenses'],['Project','Blank'],['Ref.','PE code only, e.g. LGED']],
+      journal:null,
+      warn:'NOA না আসা পর্যন্ত Dummy Project খুলবেন না।'},
+    {id:'multipe', label:'Multi-PE Batch Fee', tag:'PRE-AWARD', title:'এক Payment-এ একাধিক PE Fee',
+      when:'একাধিক PE-এর জন্য একই payment voucher-এ document fee প্রদান।',
+      kv:[['Line 1','TND-DOC-FEE · Ref: EED · 15,000'],['Line 2','TND-DOC-FEE · Ref: LGED · 25,000'],['Line 3','TND-DOC-FEE · Ref: PWD · 30,000']],
+      journal:null,
+      note:'প্রতি PE-এর জন্য আলাদা line দিন।'},
+    {id:'tscash', label:'Tender Security — Cash Margin', tag:'SECURITY', title:'Tender Security Cash Margin Block',
+      when:'দরপত্র জামানত হিসেবে bank-এ cash margin blocked হয়েছে।',
+      kv:[['Form','Payment'],['Item','TS-CASH-BLOCK'],['Account','1130 Tender Security Margin'],['Ref.','PE-TenderID']],
+      journal:'Dr 1130 Tender Security Margin\nCr 1010 Bank',
+      note:'এটি asset; cash margin আপনার টাকা, নির্দিষ্ট সময়ের জন্য blocked।'},
+    {id:'tsbgonly', label:'Tender Security — BG-only', tag:'SECURITY', title:'Tender Security via BG (No Cash Block)',
+      when:'BG issue হয়েছে কিন্তু কোনো cash margin blocked হয়নি।',
+      kv:[['Ledger Entry','None (No 1130 entry)'],['Register','BG Number, Issue, Expiry, PE Code, Tender ID, Status'],['Commission','TS-BG-COMMISSION → 5710 (if paid)']],
+      journal:null,
+      warn:'BG-only হলে TS-BG item দিয়ে fake cash-margin entry করবেন না।'},
+    {id:'tsrelease', label:'Tender Security — Release', tag:'SECURITY', title:'Tender Security Margin Release',
+      when:'দরপত্র জামানত ফেরত পাওয়া গেছে।',
+      kv:[['Form','Receipt'],['Item','TS-RELEASE'],['Account','1130 Tender Security Margin'],['Ref.','Same PE-TenderID']],
+      journal:'Dr 1010 Bank\nCr 1130 Tender Security Margin'}
+  ],
+  site: [
+    {id:'material', label:'Material Purchase', tag:'DIRECT COST', title:'Site Material Purchase',
+      when:'Cement, Sand, MS Rod, Bitumen, Bricks ইত্যাদি সাইট মালামাল ক্রয়।',
+      kv:[['Form','Purchase Invoice'],['Account','5000 Direct Materials'],['Project','Yes'],['Ref.','No']]},
+    {id:'labor', label:'Labor Payment', tag:'DIRECT COST', title:'Site Labor Cash Payment',
+      when:'Mason, Skilled, Helper, Electrician labor payment।',
+      kv:[['Form','Payment'],['Account','5010 Direct Labor'],['Project','Yes'],['Ref.','No']]},
+    {id:'subcontractor', label:'Subcontractor Bill', tag:'DIRECT COST', title:'Subcontractor Progress Bill',
+      when:'Tier-1 subcontractor-এর progress bill প্রাপ্ত হয়েছে।',
+      kv:[['Form','Purchase Invoice'],['Account','5020 Subcontractor Cost'],['Project','Yes'],['Ref.','No']]},
+    {id:'equipment', label:'Equipment Allocation', tag:'DIRECT COST', title:'Equipment Cost Allocation',
+      when:'Equipment ব্যবহারের খরচ site Project-এ allocate করা হচ্ছে।',
+      kv:[['Form','Approved Journal method'],['Account','5030 Equipment Allocation'],['Project','Yes'],['Ref.','No']],
+      note:'Direct cost কোন Project-এর—সেটা Project tag দিয়ে বোঝা যাবে।'}
+  ],
+  ra: [
+    {id:'mobreceived', label:'Mobilization Advance Received', tag:'ADVANCE', title:'Mobilization Advance Received',
+      when:'কাজ শুরুর আগে PE থেকে advance টাকা এসেছে।',
+      kv:[['Form','Receipt'],['Item','MOB-RECEIVED'],['Account','2100 Mobilization Advance Received'],['Ref.','PE-TenderID']],
+      warn:'টাকা এসেছে, কিন্তু কাজের Revenue হয়নি—তাই এটি Liability।'},
+    {id:'mobrecovery', label:'Mobilization Advance Recovery', tag:'RA BILL', title:'Advance Recovery in RA Bill',
+      when:'RA Bill-এ পূর্বের advance থেকে কর্তন করা হচ্ছে।',
+      kv:[['Location','RA Bill negative line'],['Item','MOB-RECOVERY'],['Account','2100'],['Tag','Sales Invoice: Project context; Ref. line নয়']],
+      note:'Final RA Bill-এর পরে advance balance শূন্য হওয়া উচিত।'},
+    {id:'rasettle', label:'PE Payment Settlement', tag:'RA BILL', title:'Invoice Settlement — PE Payment',
+      when:'PE থেকে RA Bill-এর টাকা bank-এ এসেছে।',
+      kv:[['Action 1','Receipt খুলুন'],['Action 2','Invoice select করে settle করুন'],['Action 3','Project/Ref দ্বিতীয়বার দেবেন না']]},
+    {id:'retrelease', label:'Retention Release', tag:'CLOSEOUT', title:'Retention Release After DLP',
+      when:'DLP শেষে PE আটকে রাখা retention ফেরত দিয়েছে।',
+      kv:[['Form','Receipt'],['Item','RET-RELEASE'],['Account','1150 Retention Receivable'],['Ref.','PE-TenderID']],
+      note:'এটি নতুন Revenue নয়; receivable cash-এ বদলায়।'}
+  ],
+  security: [
+    {id:'psmargin', label:'Performance Security — Cash Margin', tag:'POST-NOA', title:'Performance Security Cash Margin',
+      when:'NOA পাওয়ার পর performance security cash margin blocked হয়েছে।',
+      kv:[['Form','Payment'],['Item','PS-CASH-BLOCK'],['Account','1140 Performance Security Margin'],['Ref.','PE-TenderID']],
+      note:'এটি asset; contractor-এর cash temporarily blocked।'},
+    {id:'psrelease', label:'Performance Security — Release', tag:'CLOSEOUT', title:'Performance Security Release',
+      when:'DLP শেষে PE performance security ফেরত দিয়েছে।',
+      kv:[['Form','Receipt'],['Item','PS-RELEASE'],['Account','1140 Performance Security Margin'],['Ref.','Same PE-TenderID']]},
+    {id:'bgcommission', label:'BG Commission — Choice', tag:'EXPENSE', title:'BG Commission Item Selection',
+      when:'Bank guarantee commission expense কীভাবে record হবে।',
+      kv:[['Short-period','PS-BG-COMMISSION → 5710'],['Multi-period','PS-BG-COMMISSION-PREPAID → 1300, then PS-BG-COMMISSION-AMORT → 5710']],
+      warn:'Source document ও approved policy ছাড়া treatment অনুমান করবেন না।'},
+    {id:'tlinterest', label:'Time Loan — Monthly Interest', tag:'TREASURY', title:'Time Loan Interest — Always Untagged',
+      when:'Bank monthly Time Loan interest কেটেছে।',
+      kv:[['Form','Payment'],['Item','TL-MONTHLY-ADJUST'],['Account','5700 Interest on Time Loan'],['Project','Blank'],['Ref.','Blank']],
+      note:'Bank interest সাধারণত lump sum; tender-wise safe split নেই।'},
+    {id:'banktransfer', label:'Bank-to-Bank Transfer', tag:'TREASURY', title:'Inter Account Transfer',
+      when:'এক bank account থেকে আরেক bank account-এ টাকা সরানো হচ্ছে।',
+      kv:[['Form','Native Inter Account Transfer'],['Never Use','Journal Entry বা Payment+Receipt pair']]}
+  ]
+};
+
+const ITEM_TABLE = [
+  ['TND-','Tender document / bid-stage cost','5800'],
+  ['TS-','Tender Security','1130 / 5710 / 5720'],
+  ['PS-','Performance Security','1140 / 5710 / 1300 / 5720'],
+  ['MOB-','Mobilization Advance','2100'],
+  ['RET-','Retention','1150 / 2050'],
+  ['TL-','Time Loan','2300 / 5700'],
+  ['BANK-','General bank charge','5720']
+];
+
+const CHECKLIST = [
+  '5000–5030: কোনো site P&L line-এ Project blank আছে?',
+  '1130/1140/1150/2050/2100/2300: tender-specific standalone line-এ Ref. blank আছে?',
+  '1150 Retention: পুরনো balance-এর follow-up list আছে?',
+  '2100 Advance: deduction schedule-এর সাথে balance মেলে?',
+  '5700 Interest: bank statement অনুযায়ী post হয়েছে?',
+  'BG Register: expiry/release date review হয়েছে?',
+  'Completed Project + retention settled? Inactive হয়েছে?',
+  '5টি active Project: Customer Code = Project PE CODE sample check করেছি?'
+];
+
+/* ===================== NAVIGATION ===================== */
+function showScreen(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.screen===name));
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>showScreen(t.dataset.screen)));
+document.querySelectorAll('.door').forEach(d=>d.addEventListener('click',()=>showScreen(d.dataset.screen)));
+
+/* ===================== EVENT CARD BUILDER ===================== */
+function buildEventUI(groupKey, listElId, cardsElId){
+  const listEl = document.getElementById(listElId);
+  const cardsEl = document.getElementById(cardsElId);
+  const items = EVENTS[groupKey];
+  items.forEach((ev,idx)=>{
+    const btn = document.createElement('div');
+    btn.className='event-btn'+(idx===0?' active':'');
+    btn.textContent=ev.label;
+    btn.addEventListener('click',()=>{
+      listEl.querySelectorAll('.event-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      cardsEl.querySelectorAll('.entry-card').forEach(c=>c.classList.remove('show'));
+      document.getElementById(groupKey+'-'+ev.id).classList.add('show');
+    });
+    listEl.appendChild(btn);
+
+    const card = document.createElement('div');
+    card.className='entry-card'+(idx===0?' show':'');
+    card.id=groupKey+'-'+ev.id;
+    let kvRows = ev.kv.map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
+    let journalHtml = ev.journal ? `<div class="journal">${ev.journal}</div>` : '';
+    let warnHtml = ev.warn ? `<div class="warn"><b>Warning:</b> ${ev.warn}</div>` : '';
+    let noteHtml = ev.note ? `<div class="note"><b>Note:</b> ${ev.note}</div>` : '';
+    card.innerHTML = `
+      <div class="entry-head"><div class="tag">${ev.tag}</div><h3>${ev.title}</h3></div>
+      <div class="entry-body">
+        <div class="when">${ev.when}</div>
+        <table class="kv">${kvRows}</table>
+        ${journalHtml}
+        ${noteHtml}
+        ${warnHtml}
+      </div>`;
+    cardsEl.appendChild(card);
+  });
+}
+buildEventUI('preNOA','events-preNOA','cards-preNOA');
+buildEventUI('site','events-site','cards-site');
+buildEventUI('ra','events-ra','cards-ra');
+buildEventUI('security','events-security','cards-security');
+
+/* ===================== QUICK CHECKER ===================== */
+document.querySelectorAll('#checker-options .checker-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('#checker-options .checker-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.checker-result').forEach(r=>r.classList.remove('show'));
+    document.getElementById('res-'+btn.dataset.r).classList.add('show');
+  });
+});
+
+/* ===================== NOA VALIDATOR ===================== */
+function checkMatch(){
+  const c = document.getElementById('custCode').value.trim();
+  const p = document.getElementById('projCode').value.trim();
+  const result = document.getElementById('matchResult');
+  if(c === p && c.length>0){
+    result.className='match-result match-ok';
+    result.textContent='✓ Exact Match — Project তৈরি করা নিরাপদ।';
+  } else {
+    result.className='match-result match-fail';
+    result.textContent='✗ Mismatch — capital letter, hyphen, space মিলিয়ে ঠিক করুন।';
+  }
+}
+document.getElementById('custCode').addEventListener('input',checkMatch);
+document.getElementById('projCode').addEventListener('input',checkMatch);
+
+/* ===================== RA BILL BUILDER ===================== */
+function fmtBDT(n){ return new Intl.NumberFormat('en-IN').format(n); }
+function updateRA(){
+  const g = parseFloat(document.getElementById('raGross').value)||0;
+  const r = parseFloat(document.getElementById('raRetention').value)||0;
+  const a = parseFloat(document.getElementById('raAdvance').value)||0;
+  const net = g - r - a;
+  document.getElementById('outGross').textContent = '+'+fmtBDT(g);
+  document.getElementById('outRetention').textContent = '-'+fmtBDT(r);
+  document.getElementById('outAdvance').textContent = '-'+fmtBDT(a);
+  document.getElementById('outNet').textContent = '= '+fmtBDT(net);
+}
+['raGross','raRetention','raAdvance'].forEach(id=>document.getElementById(id).addEventListener('input',updateRA));
+updateRA();
+
+/* ===================== MONTH-END CHECKLIST ===================== */
+const checklistEl = document.getElementById('checklist');
+const progressFill = document.getElementById('progressFill');
+let doneCount = 0;
+CHECKLIST.forEach((text,i)=>{
+  const item = document.createElement('div');
+  item.className='check-item';
+  item.innerHTML = `<div class="box"></div><p>${text}</p>`;
+  item.addEventListener('click',()=>{
+    item.classList.toggle('done');
+    doneCount = checklistEl.querySelectorAll('.check-item.done').length;
+    progressFill.style.width = (doneCount/CHECKLIST.length*100)+'%';
+  });
+  checklistEl.appendChild(item);
+});
+</script>
+
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+  Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
+  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
+  <br/><br/>
+  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+</footer>
+</body>
+</html>

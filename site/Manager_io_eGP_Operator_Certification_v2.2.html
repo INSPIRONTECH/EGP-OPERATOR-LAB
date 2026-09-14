@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manager.io e-GP Operator Certification — INSPIRON TECH</title>
+<style>
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Ultra.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+:root{--bg:#eef2f6;--paper:#fff;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#dbe3ea;--cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--gold:#d97706;--gold-d:#b45309;--gold-w:#fffbeb;--gold-b:#fde68a;--green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);min-height:100vh}.bn{font-family:var(--font-bn)}
+.top{height:60px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,4vw);position:sticky;top:0;z-index:20}.brand{font-weight:900;font-size:16px}.brand span{color:var(--cyan)}.progress-pill{font-size:12px;font-weight:800;color:var(--cyan-d);background:var(--cyan-w);border:1px solid var(--cyan-b);padding:6px 12px;border-radius:999px}
+.app{max-width:980px;margin:auto;padding:32px max(18px,4vw) 80px}.screen{display:none}.screen.active{display:block}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--cyan-d);text-transform:uppercase;margin-bottom:6px}.eyebrow:before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:7px}.title{font-size:clamp(28px,3.2vw,44px);margin:0 0 10px;font-weight:900;line-height:1.1}.sub{font-family:var(--font-bn);font-size:clamp(15px,1.15vw,19px);color:var(--muted);line-height:1.55;margin:0 0 24px}
+.intake{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px}.intake label{font-size:11px;font-weight:900;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:6px}.intake input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:7px;font-family:var(--font-en);font-size:15px;margin-bottom:16px}.startbtn{background:var(--cyan);color:#fff;border:0;border-radius:8px;padding:12px 22px;font-weight:900;cursor:pointer;font-size:14px}.startbtn:hover{background:var(--cyan-d)}
+.case-shell{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.case-head{padding:16px 22px;background:#f8fafc;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.case-head .tag{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--cyan-d);text-transform:uppercase}.case-head .counter{font-size:12px;font-weight:800;color:var(--muted)}
+.case-body{padding:24px}.situation{font-family:var(--font-bn);font-size:17px;line-height:1.6;color:var(--ink2);margin-bottom:18px;padding:14px 16px;background:var(--cyan-w);border-left:4px solid var(--cyan);border-radius:0 7px 7px 0}
+.answer-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}.afield{display:flex;flex-direction:column;gap:5px}.afield.full{grid-column:1/-1}.afield label{font-size:11px;font-weight:900;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}.afield select,.afield input{padding:10px 12px;border:1px solid var(--line);border-radius:7px;font-family:var(--font-en);font-size:14px}
+.submitbtn{background:var(--ink);color:#fff;border:0;border-radius:7px;padding:11px 20px;font-weight:900;cursor:pointer;font-size:13px}.submitbtn:hover{background:#1e293b}.nextbtn{background:var(--cyan);color:#fff;border:0;border-radius:7px;padding:11px 20px;font-weight:900;cursor:pointer;font-size:13px;display:none}.nextbtn.show{display:inline-block}
+.result-panel{display:none;margin-top:16px;padding:16px;border-radius:8px}.result-panel.show{display:block}.result-panel.pass{background:var(--green-w);border:1px solid var(--green-b)}.result-panel.review{background:var(--gold-w);border:1px solid var(--gold-b)}.result-panel.fail{background:var(--red-w);border:1px solid var(--red-b)}
+.result-panel h3{margin:0 0 8px;font-size:16px}.result-panel.pass h3{color:var(--green)}.result-panel.review h3{color:var(--gold-d)}.result-panel.fail h3{color:var(--red)}
+.check-line{font-family:var(--font-bn);font-size:13.5px;line-height:1.5;margin-bottom:5px;display:flex;gap:8px}.check-line b{font-family:var(--font-en)}
+.correct-answer{margin-top:10px;padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:6px;font-family:var(--font-bn);font-size:13px;line-height:1.55}code{font-family:var(--font-en);font-weight:800;padding:2px 5px;border-radius:4px;background:var(--cyan-w);color:var(--cyan-d);border:1px solid var(--cyan-b);font-size:.9em}
+.progress-track{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:22px}.progress-fill{height:100%;background:linear-gradient(90deg,#ffd700,#00d2ff);width:0%;transition:.3s}
+.case-nav-dots{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}.dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:var(--muted)}.dot.pass{background:var(--green);border-color:var(--green);color:#fff}.dot.review{background:var(--gold);border-color:var(--gold);color:#fff}.dot.fail{background:var(--red);border-color:var(--red);color:#fff}.dot.current{border-color:var(--cyan);color:var(--cyan-d)}
+.result-hero{background:#fff;border:1px solid var(--line);border-radius:14px;padding:40px;text-align:center}.result-hero .bigscore{font-size:70px;font-weight:900;line-height:1}.result-hero .status{display:inline-block;margin-top:14px;padding:9px 22px;border-radius:999px;font-weight:900;font-size:16px}.status.cleared{background:var(--green-w);color:var(--green);border:2px solid var(--green-b)}.status.notready{background:var(--red-w);color:var(--red);border:2px solid var(--red-b)}
+.breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}.bd-card{padding:16px;border-radius:9px;border:1px solid var(--line)}.bd-card.pass{background:var(--green-w);border-color:var(--green-b)}.bd-card.review{background:var(--gold-w);border-color:var(--gold-b)}.bd-card.fail{background:var(--red-w);border-color:var(--red-b)}.bd-card .num{font-size:30px;font-weight:900}.bd-card .lbl{font-family:var(--font-bn);font-size:13px;color:var(--ink2)}
+.weak-list{text-align:left;margin:22px 0}.weak-item{padding:11px 14px;border-left:4px solid var(--gold);background:var(--gold-w);border-radius:0 6px 6px 0;font-family:var(--font-bn);font-size:14px;margin-bottom:8px}
+.retrybtn{background:var(--cyan);color:#fff;border:0;border-radius:8px;padding:12px 22px;font-weight:900;cursor:pointer;margin-top:10px}
+.print-btn{background:#fff;border:1px solid var(--line);color:var(--ink2);padding:10px 18px;border-radius:7px;font-weight:800;cursor:pointer;margin-left:10px}
+@media print{.top,.print-btn,.retrybtn{display:none}}
+@media(max-width:700px){.answer-grid,.breakdown{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand">Operator <span>Certification</span></div><div class="progress-pill" id="progressPill">Not Started</div></header>
+<main class="app">
+
+<!-- INTAKE -->
+<section class="screen active" id="screen-intake">
+  <div class="eyebrow">Go / No-Go Assessment · v2.2 FINAL</div>
+  <h1 class="title">Manager.io e-GP Operator Certification</h1>
+  <p class="sub">15টি বাস্তব case সমাধান করুন। প্রতিটির জন্য সঠিক Form, Item/Account এবং Project/Ref rule নির্বাচন করুন। শেষে একটি Certification Report পাবেন — Supervised Live Entry-এর জন্য Cleared কি না তা নির্ধারণ করবে।</p>
+  <div class="intake">
+    <label>Operator Name</label><input id="opName" placeholder="e.g. Md. Karim Hossain" />
+    <label>Assessment Date</label><input id="opDate" type="date" />
+    <button class="startbtn" id="startBtn">Begin Certification →</button>
+  </div>
+</section>
+
+<!-- ASSESSMENT -->
+<section class="screen" id="screen-assess">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="case-nav-dots" id="caseDots"></div>
+  <div class="case-shell">
+    <div class="case-head"><div class="tag" id="caseTag">CASE 01</div><div class="counter" id="caseCounter">1 / 15</div></div>
+    <div class="case-body">
+      <div class="situation" id="caseSituation"></div>
+      <div class="answer-grid" id="answerGrid"></div>
+      <button class="submitbtn" id="submitCase">Submit Answer</button>
+      <button class="nextbtn" id="nextCase">Next Case →</button>
+      <div class="result-panel" id="resultPanel"></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="screen" id="screen-result">
+  <div class="result-hero">
+    <div class="eyebrow" style="justify-content:center">Certification Complete</div>
+    <div class="bigscore" id="finalScoreText">0 / 15</div>
+    <div class="status" id="statusBadge">—</div>
+    <p class="sub" id="opSummary" style="margin-top:18px"></p>
+    <div class="breakdown">
+      <div class="bd-card pass"><div class="num" id="countPass">0</div><div class="lbl">Fully Correct</div></div>
+      <div class="bd-card review"><div class="num" id="countReview">0</div><div class="lbl">Needs Review</div></div>
+      <div class="bd-card fail"><div class="num" id="countFail">0</div><div class="lbl">Critical Failure</div></div>
+    </div>
+    <div class="weak-list" id="weakList"></div>
+    <button class="retrybtn" id="retryBtn">↺ Retake Certification</button>
+    <button class="print-btn" onclick="window.print()">🖨 Print Report</button>
+  </div>
+</section>
+
+</main>
+<script>
+const CASES = [
+ {tag:'Case 01 · Pre-NOA',situation:'LGED-এর জন্য e-GP document fee প্রদান করা হয়েছে। NOA আসেনি।',fields:[
+   {key:'form',label:'Form',type:'select',options:['Payment','Receipt','Journal Entry'],correct:'Payment'},
+   {key:'account',label:'Account',type:'select',options:['5800 Bidding & Tender Expenses','1130 Tender Security Margin','4000 Contract Revenue'],correct:'5800 Bidding & Tender Expenses'},
+   {key:'project',label:'Project',type:'select',options:['Blank','Select actual Project'],correct:'Blank'},
+   {key:'ref',label:'Ref.',type:'text',correct:'LGED',hint:'PE code only, e.g. LGED'}
+ ],explain:'NOA আসেনি; Project নেই। 5800 pre-bid expense; Ref-এ শুধু PE code।'},
+ {tag:'Case 02 · Tender Security',situation:'Bank Tender Security-এর জন্য cash margin block করেছে।',fields:[
+   {key:'form',label:'Form',type:'select',options:['Payment','Receipt','Sales Invoice'],correct:'Payment'},
+   {key:'account',label:'Account',type:'select',options:['1130 Tender Security Margin','1140 Performance Security Margin','5710 BG Commission'],correct:'1130 Tender Security Margin'},
+   {key:'project',label:'Project',type:'select',options:['Blank / Not available','Select actual Project'],correct:'Blank / Not available'},
+   {key:'ref',label:'Ref.',type:'text',correct:'LGED-1142857',hint:'PE-TenderID format'}
+ ],explain:'1130 is the correct asset account for Tender Security cash margin; Ref. carries tender identity.'},
+ {tag:'Case 03 · BG-only',situation:'Bank BG issue করেছে, কিন্তু কোনো cash margin block হয়নি।',fields:[
+   {key:'ledger',label:'Ledger Entry',type:'select',options:['No cash-margin entry; update BG Register','Record BG face value in 1130','Record BG face value as Revenue'],correct:'No cash-margin entry; update BG Register'}
+ ],explain:'BG face value is not cash or expense unless commission is paid; only the BG Register is updated.'},
+ {tag:'Case 04 · NOA Day',situation:'NOA এসেছে LGED Barishal থেকে। Customer Code = LGED-BSL।',fields:[
+   {key:'action1',label:'Step 1',type:'select',options:['Check/Create Customer','Skip Customer, create Project only'],correct:'Check/Create Customer'},
+   {key:'projcode',label:'Project PE CODE should be',type:'text',correct:'LGED-BSL',hint:'Must exactly match Customer Code'}
+ ],explain:'Customer and Project are created together on NOA day; PE CODE must exactly match Customer Code.'},
+ {tag:'Case 05 · Code Mismatch',situation:'Customer Code = PWD-BSL। কেউ Project PE CODE-এ "PWD BSL" (space, no hyphen) লিখেছে।',fields:[
+   {key:'valid',label:'Is this acceptable?',type:'select',options:['No — must be fixed to PWD-BSL','Yes — same meaning'],correct:'No — must be fixed to PWD-BSL'}
+ ],explain:'Exact string match required. Space vs hyphen breaks long-term filtering and reporting.'},
+ {tag:'Case 06 · Performance Security',situation:'NOA-এর পরে Performance Security cash margin block হয়েছে।',fields:[
+   {key:'account',label:'Account',type:'select',options:['1140 Performance Security Margin','1130 Tender Security Margin','2100 Mobilization Advance'],correct:'1140 Performance Security Margin'},
+   {key:'ref',label:'Ref.',type:'text',correct:'PWD-1153409',hint:'PE-TenderID format'}
+ ],explain:'Performance Security uses 1140, separate from Tender Security (1130).'},
+ {tag:'Case 07 · Mobilization Advance',situation:'PE কাজ শুরুর জন্য advance টাকা পাঠিয়েছে।',fields:[
+   {key:'form',label:'Form',type:'select',options:['Receipt','Sales Invoice','Payment'],correct:'Receipt'},
+   {key:'account',label:'Account',type:'select',options:['2100 Mobilization Advance Received','4000 Contract Revenue','1150 Retention Receivable'],correct:'2100 Mobilization Advance Received'},
+   {key:'nature',label:'Nature',type:'select',options:['Liability','Revenue','Asset'],correct:'Liability'}
+ ],explain:'Cash received before work is earned is a liability, not revenue.'},
+ {tag:'Case 08 · Material Purchase',situation:'Awarded Project-এর জন্য Cement এবং MS Rod কেনা হয়েছে।',fields:[
+   {key:'account',label:'Account',type:'select',options:['5000 Direct Materials','5800 Bidding Expense','1130 Tender Security Margin'],correct:'5000 Direct Materials'},
+   {key:'project',label:'Project',type:'select',options:['Required — select actual Project','Blank'],correct:'Required — select actual Project'},
+   {key:'ref',label:'Ref.',type:'select',options:['Not required','Required'],correct:'Not required'}
+ ],explain:'Direct site cost requires Project tag; Ref. is not used on P&L direct cost lines.'},
+ {tag:'Case 09 · RA Bill Structure',situation:'Gross work 15,00,000; Retention 1,50,000; Advance recovery 3,00,000।',fields:[
+   {key:'structure',label:'Correct structure',type:'select',options:['Separate lines: 4000 gross, 1150 retention, 2100 advance recovery','One net Revenue line of 10,50,000','Retention as new bank payment'],correct:'Separate lines: 4000 gross, 1150 retention, 2100 advance recovery'},
+   {key:'lineref',label:'Sales Invoice-Line Ref.',type:'select',options:['NO','YES, always'],correct:'NO'}
+ ],explain:'Gross, Retention, and Advance Recovery must be separate lines. Sales Invoice-Line Ref. is locked to NO.'},
+ {tag:'Case 10 · PE Settlement',situation:'PE RA Bill-এর net payable টাকা পাঠিয়েছে।',fields:[
+   {key:'form',label:'Form',type:'select',options:['Receipt, select outstanding invoice','New Sales Invoice','Journal Entry'],correct:'Receipt, select outstanding invoice'},
+   {key:'tagging',label:'Additional tagging needed?',type:'select',options:['No — inherited from invoice','Yes — re-enter Project and Ref.'],correct:'No — inherited from invoice'}
+ ],explain:'Invoice settlement inherits metadata; no duplicate Project/Ref. entry.'},
+ {tag:'Case 11 · Retention Release',situation:'DLP শেষে PE retention টাকা ফেরত দিয়েছে।',fields:[
+   {key:'form',label:'Form',type:'select',options:['Receipt','Sales Invoice','Payment'],correct:'Receipt'},
+   {key:'account',label:'Account',type:'select',options:['1150 Retention Receivable','4000 Contract Revenue','2100 Mobilization Advance'],correct:'1150 Retention Receivable'},
+   {key:'nature',label:'Is this new revenue?',type:'select',options:['No — asset converts to cash','Yes — new revenue'],correct:'No — asset converts to cash'}
+ ],explain:'Retention release converts an existing receivable to cash; revenue was already recognized at RA Bill time.'},
+ {tag:'Case 12 · Time Loan Interest',situation:'Bank মাসিক Time Loan interest কেটেছে।',fields:[
+   {key:'account',label:'Account',type:'select',options:['5700 Interest on Time Loan','2300 Time Loan Payable','5710 BG Commission Expense'],correct:'5700 Interest on Time Loan'},
+   {key:'project',label:'Project',type:'select',options:['Blank','Select current Project'],correct:'Blank'},
+   {key:'ref',label:'Ref.',type:'select',options:['Blank','PE-TenderID'],correct:'Blank'}
+ ],explain:'5700 interest is always untagged — lump sum facility cost cannot be safely split by tender.'},
+ {tag:'Case 13 · Bank Transfer',situation:'এক Bank account থেকে আরেক Bank account-এ টাকা সরানো হচ্ছে।',fields:[
+   {key:'form',label:'Correct method',type:'select',options:['Native Inter Account Transfer','Journal Entry','Separate Payment + Receipt'],correct:'Native Inter Account Transfer'}
+ ],explain:'Bank-to-bank movement must use the native Inter Account Transfer form only.'},
+ {tag:'Case 14 · BG Commission Choice',situation:'Long-term Performance BG commission paid upfront for multiple years.',fields:[
+   {key:'treatment',label:'Correct treatment',type:'select',options:['1300 Prepaid, amortize monthly to 5710','Full expense immediately to 5710','Ignore until BG expires'],correct:'1300 Prepaid, amortize monthly to 5710'}
+ ],explain:'Multi-year commission should be capitalized as prepaid and amortized monthly, following approved policy.'},
+ {tag:'Case 15 · Month-End Audit',situation:'Month-end review: a completed Project has retention fully settled.',fields:[
+   {key:'action',label:'Correct action',type:'select',options:['Mark Project Inactive','Leave Project Active indefinitely','Delete the Project'],correct:'Mark Project Inactive'}
+ ],explain:'Completed projects with settled retention should be marked Inactive to keep the dropdown clean while preserving historical reports.'}
+];
+
+let opName='',opDate='',current=0,results=[];
+const $=s=>document.querySelector(s);
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$('#'+id).classList.add('active');window.scrollTo(0,0)}
+$('#startBtn').addEventListener('click',()=>{opName=$('#opName').value.trim()||'Unnamed Operator';opDate=$('#opDate').value||new Date().toISOString().slice(0,10);current=0;results=[];$('#progressPill').textContent='In Progress';renderDots();renderCase();showScreen('screen-assess')});
+
+function renderDots(){const wrap=$('#caseDots');wrap.innerHTML='';CASES.forEach((c,i)=>{const d=document.createElement('div');d.className='dot'+(i===current?' current':'')+(results[i]?' '+results[i].status:'');d.textContent=i+1;wrap.appendChild(d)})}
+
+function renderCase(){const c=CASES[current];$('#caseTag').textContent=c.tag.toUpperCase();$('#caseCounter').textContent=(current+1)+' / '+CASES.length;$('#caseSituation').textContent=c.situation;$('#progressFill').style.width=((current)/CASES.length*100)+'%';
+ const grid=$('#answerGrid');grid.innerHTML='';c.fields.forEach(f=>{const wrap=document.createElement('div');wrap.className='afield'+(f.type==='text'?' full':'');let inner=`<label>${f.label}</label>`;if(f.type==='select'){inner+=`<select data-key="${f.key}"><option value="">— Select —</option>`+f.options.map(o=>`<option value="${o}">${o}</option>`).join('')+`</select>`}else{inner+=`<input data-key="${f.key}" placeholder="${f.hint||'Type your answer'}" />`}wrap.innerHTML=inner;grid.appendChild(wrap)});
+ $('#resultPanel').className='result-panel';$('#resultPanel').innerHTML='';$('#submitCase').style.display='inline-block';$('#nextCase').classList.remove('show');renderDots()}
+
+$('#submitCase').addEventListener('click',()=>{const c=CASES[current];let correctCount=0,total=c.fields.length,lines=[];
+ c.fields.forEach(f=>{const el=document.querySelector(`[data-key="${f.key}"]`);const val=(el.value||'').trim();const isCorrect=f.type==='text'?val.toUpperCase()===f.correct.toUpperCase():val===f.correct;if(isCorrect)correctCount++;lines.push(`<div class="check-line">${isCorrect?'✓':'✗'} <b>${f.label}:</b> ${val||'(blank)'} ${isCorrect?'':'— expected: <code>'+f.correct+'</code>'}</div>`)});
+ let status;if(correctCount===total)status='pass';else if(correctCount>=Math.ceil(total/2))status='review';else status='fail';
+ results[current]={status,correctCount,total};
+ const panel=$('#resultPanel');panel.className='result-panel show '+status;panel.innerHTML=`<h3>${status==='pass'?'✓ Fully Correct':status==='review'?'⚠ Needs Review':'✗ Critical Failure'}</h3>${lines.join('')}<div class="correct-answer"><b>কেন?</b><br>${c.explain}</div>`;
+ $('#submitCase').style.display='none';$('#nextCase').classList.add('show');renderDots();$('#progressFill').style.width=((current+1)/CASES.length*100)+'%'});
+
+$('#nextCase').addEventListener('click',()=>{if(current<CASES.length-1){current++;renderCase()}else{finishCertification()}});
+
+function finishCertification(){showScreen('screen-result');const pass=results.filter(r=>r.status==='pass').length,review=results.filter(r=>r.status==='review').length,fail=results.filter(r=>r.status==='fail').length;
+ $('#finalScoreText').textContent=pass+' / '+CASES.length;$('#countPass').textContent=pass;$('#countReview').textContent=review;$('#countFail').textContent=fail;
+ const cleared=fail===0&&pass>=Math.ceil(CASES.length*0.8);
+ $('#statusBadge').className='status '+(cleared?'cleared':'notready');$('#statusBadge').textContent=cleared?'✓ CLEARED FOR SUPERVISED LIVE ENTRY':'✗ NOT READY — RETRAINING REQUIRED';
+ $('#opSummary').innerHTML=`<b>${opName}</b> · Assessment Date: ${opDate}<br>Total Cases: ${CASES.length} · Fully Correct: ${pass} · Needs Review: ${review} · Critical Failures: ${fail}`;
+ const weak=$('#weakList');weak.innerHTML='';CASES.forEach((c,i)=>{if(results[i].status!=='pass'){const d=document.createElement('div');d.className='weak-item';d.textContent='Review: '+c.tag.replace(/^Case \d+ · /,'');weak.appendChild(d)}});
+ if(!weak.children.length)weak.innerHTML='<div class="weak-item">✓ All cases passed. No retraining required.</div>';
+ $('#progressPill').textContent='Complete'}
+
+$('#retryBtn').addEventListener('click',()=>{showScreen('screen-intake');$('#progressPill').textContent='Not Started'});
+</script>
+
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+  Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
+  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
+  <br/><br/>
+  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+</footer>
+</body>
+</html>

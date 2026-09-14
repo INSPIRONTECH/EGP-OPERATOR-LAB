@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manager.io e-GP Operations Manual — INSPIRON TECH</title>
+<style>
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Ultra.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+
+:root {
+  --canvas-bg: #F1F5F9; --slide-bg: #FFFFFF;
+  --ink-900: #0F172A; --ink-700: #334155; --ink-600: #475569; --ink-400: #94A3B8;
+  --line: #CBD5E1; --line-soft: #E2E8F0;
+  --cyan: #0284C7; --cyan-dk: #0369A1; --cyan-wash: #F0F9FF; --cyan-bd: #BAE6FD;
+  --gold: #D97706; --gold-dk: #B45309; --gold-wash: #FFFBEB; --gold-bd: #FDE68A;
+  --green: #059669; --green-wash: #ECFDF5; --green-bd: #A7F3D0;
+  --red: #DC2626; --red-wash: #FEF2F2; --red-bd: #FECACA;
+  --slate: #F8FAFC;
+  --font-en: 'Neo Sans Pro', sans-serif;
+  --font-bn: 'Li Ador Noirrit', 'Noto Sans Bengali', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--canvas-bg); color: var(--ink-700); font-family: var(--font-en); min-height: 100vh; display: flex; flex-direction: column; align-items: stretch; }
+.bn { font-family: var(--font-bn); }
+#deck-viewport { width: 100vw; flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.slide-frame { display: none; width: min(100vw - 48px, 1420px); aspect-ratio: 16/9; background: var(--slide-bg); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 20px 45px -10px rgba(15,23,42,0.12); position: relative; overflow: hidden; padding: clamp(28px,3.8vw,52px) clamp(34px,4.8vw,72px) 46px; flex-direction: column; }
+.slide-frame.active { display: flex; }
+.top-brand-band { position: absolute; top:0; left:0; right:0; height:6px; background: linear-gradient(90deg, #FFD700 0 16%, #00D2FF 16% 100%); }
+.slide-header { margin-bottom: 14px; }
+.eyebrow-tag { font-family: var(--font-en); font-size: clamp(10px,.8vw,12px); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--cyan-dk); display:flex; align-items:center; gap:6px; margin-bottom:4px; }
+.eyebrow-tag::before { content:''; width:7px; height:7px; background: var(--gold); border-radius:50%; }
+.slide-main-title { font-family: var(--font-en); font-size: clamp(22px,2.3vw,36px); font-weight:900; color: var(--ink-900); line-height:1.15; border-bottom:1px solid var(--line-soft); padding-bottom:8px; }
+.slide-body-scroll { flex:1; display:flex; flex-direction:column; overflow-y:auto; }
+.prose-lead { font-family: var(--font-bn); font-size: clamp(15px,1.2vw,19px); line-height:1.55; color: var(--ink-900); margin-bottom:12px; }
+.slide-bottom-bar { margin-top:auto; padding-top:8px; border-top:1px solid var(--line-soft); display:flex; justify-content:space-between; align-items:center; font-family: var(--font-en); font-size:11px; color: var(--ink-400); }
+.slide-bottom-bar .tagline { font-weight:600; color: var(--ink-600); }
+.slide-bottom-bar .slide-num { font-weight:800; color: var(--cyan-dk); font-size:12px; }
+
+.hero-grid { display:grid; grid-template-columns: 1.25fr .75fr; gap: 22px; align-items:center; }
+.stage-panel { display:flex; flex-direction:column; align-items:center; justify-content:center; background: var(--slate); border:1px solid var(--line-soft); border-radius:10px; padding:14px; min-height:230px; }
+.illo { width:100%; max-width:250px; height:auto; }
+.illo.lg { max-width:360px; }
+.stage-caption { margin-top:8px; font-family: var(--font-en); font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color: var(--ink-600); }
+
+.grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:10px; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:10px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:10px; }
+.card { padding:14px 16px; border-radius:6px; border:1px solid var(--line); background: var(--slide-bg); }
+.card h3 { font-family: var(--font-en); font-size: clamp(14px,1.05vw,17px); font-weight:800; color: var(--ink-900); margin-bottom:4px; }
+.card p, .card li { font-family: var(--font-bn); font-size: clamp(13px,.92vw,15px); line-height:1.45; color: var(--ink-700); }
+.card.cyan { background: var(--cyan-wash); border-color: var(--cyan-bd); } .card.cyan h3 { color: var(--cyan-dk); }
+.card.gold { background: var(--gold-wash); border-color: var(--gold-bd); } .card.gold h3 { color: var(--gold-dk); }
+.card.green { background: var(--green-wash); border-color: var(--green-bd); } .card.green h3 { color: var(--green); }
+.card.red { background: var(--red-wash); border-color: var(--red-bd); } .card.red h3 { color: var(--red); }
+
+table.grid-table { width:100%; border-collapse:collapse; margin-bottom:10px; font-size: clamp(12px,.88vw,14px); }
+table.grid-table th { background: var(--cyan-wash); color: var(--cyan-dk); font-family: var(--font-en); font-weight:800; text-align:left; padding:7px 10px; border:1px solid var(--cyan-bd); font-size: clamp(11px,.75vw,12px); text-transform:uppercase; }
+table.grid-table td { padding:7px 10px; border:1px solid var(--line-soft); color: var(--ink-700); line-height:1.4; }
+table.grid-table tr:nth-child(even) td { background: var(--slate); }
+code, .pill { font-family: var(--font-en); font-weight:700; padding:2px 6px; border-radius:4px; background: var(--cyan-wash); color: var(--cyan-dk); border:1px solid var(--cyan-bd); font-size:.9em; }
+.pill.gold { background: var(--gold-wash); color: var(--gold-dk); border-color: var(--gold-bd); }
+.codebox { background:#0F172A; color:#38BDF8; padding:10px 14px; border-radius:6px; font-family: var(--font-en); font-size: clamp(12px,.9vw,15px); line-height:1.45; white-space:pre-wrap; margin:8px 0; border:1px solid #1E293B; }
+.callout { padding:10px 14px; border-radius:6px; border-left:4px solid var(--cyan-dk); background: var(--cyan-wash); font-family: var(--font-bn); font-size: clamp(13px,.9vw,15px); line-height:1.45; color: var(--ink-700); margin-top:8px; }
+.callout.risk { border-color: var(--red); background: var(--red-wash); } .callout.gold { border-color: var(--gold); background: var(--gold-wash); } .callout.success { border-color: var(--green); background: var(--green-wash); }
+
+.timeline { display:flex; gap:8px; margin:10px 0; }
+.tstep { flex:1; padding:12px; background: var(--slide-bg); border:1px solid var(--line); border-radius:6px; }
+.tstep .sid { font-family: var(--font-en); font-size:12px; font-weight:900; color: var(--gold); }
+.tstep h3 { font-family: var(--font-en); font-size:14px; font-weight:800; color: var(--cyan-dk); margin:3px 0 4px; }
+.tstep p { font-family: var(--font-bn); font-size:12px; color: var(--ink-600); line-height:1.35; }
+
+.centerpiece { justify-content:center; align-items:center; text-align:center; background: radial-gradient(circle at center, #F0F9FF 0%, #FFFFFF 75%); }
+.center-card { padding:28px 40px; border:2px solid var(--cyan-bd); background:#fff; border-radius:12px; box-shadow:0 20px 25px -5px rgba(2,132,199,.06); max-width:900px; }
+.center-h2 { font-family: var(--font-en); font-size: clamp(28px,3.4vw,50px); font-weight:900; color: var(--ink-900); line-height:1.1; margin-bottom:10px; }
+.center-pill { display:inline-block; padding:8px 20px; background: var(--gold-wash); border:2px solid var(--gold-bd); border-radius:999px; color: var(--gold-dk); font-family: var(--font-en); font-size: clamp(15px,1.4vw,22px); font-weight:800; margin-top:14px; }
+.no-badge { display:inline-block; padding:6px 18px; background: var(--red-wash); border:2px solid var(--red-bd); border-radius:999px; color: var(--red); font-family: var(--font-en); font-size: clamp(22px,2.5vw,38px); font-weight:900; margin:10px 0; }
+
+.stack { display:flex; flex-direction:column; gap:6px; margin:10px 0; }
+.srow { display:flex; justify-content:space-between; padding:8px 14px; border-radius:6px; font-family: var(--font-en); font-weight:700; font-size: clamp(13px,.95vw,16px); }
+.srow.gross { background: var(--green-wash); color: var(--green); border:1px solid var(--green-bd); }
+.srow.deduct { background: var(--red-wash); color: var(--red); border:1px solid var(--red-bd); }
+.srow.net { background: var(--cyan-wash); color: var(--cyan-dk); border:2px solid var(--cyan-bd); font-size: clamp(15px,1.1vw,18px); }
+
+.deck-controller { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); background:#0F172A; padding:6px 14px; border-radius:999px; display:flex; align-items:center; gap:12px; box-shadow:0 10px 25px rgba(0,0,0,.25); z-index:999; }
+.deck-controller button { background:#1E293B; color:#fff; border:1px solid rgba(255,255,255,.2); padding:5px 12px; border-radius:6px; font-family: var(--font-en); font-size:12px; font-weight:700; cursor:pointer; }
+.deck-controller button:hover:not(:disabled) { background: var(--cyan-dk); border-color: var(--cyan-dk); }
+.deck-controller button:disabled { opacity:.3; cursor:not-allowed; }
+.deck-controller .slide-indicator { color:#fff; font-family: var(--font-en); font-size:12px; font-weight:800; min-width:50px; text-align:center; }
+
+@media (max-width:850px) { .slide-frame { aspect-ratio:auto; min-height:85vh; padding:20px 16px 36px; } .hero-grid,.grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; } .timeline { flex-direction:column; } }
+@media print { body{background:#fff} #deck-viewport{padding:0} .slide-frame{display:flex!important;page-break-after:always;width:100%;aspect-ratio:16/9;box-shadow:none;border:none} .deck-controller{display:none} }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+
+<!-- Reusable gradient defs injected once, referenced across all slides -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+  <linearGradient id="gradCyan" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#7DD3FC"/><stop offset="100%" stop-color="#0284C7"/>
+  </linearGradient>
+  <linearGradient id="gradGold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#FDE68A"/><stop offset="100%" stop-color="#D97706"/>
+  </linearGradient>
+  <linearGradient id="gradGreen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#6EE7B7"/><stop offset="100%" stop-color="#059669"/>
+  </linearGradient>
+  <linearGradient id="gradNavy" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1E293B"/><stop offset="100%" stop-color="#0F172A"/>
+  </linearGradient>
+  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.18"/>
+  </filter>
+</defs>
+</svg>
+
+<!-- SLIDE 01: COVER -->
+<section class="slide-frame centerpiece active">
+  <div class="top-brand-band"></div>
+  <div class="center-card" style="background:transparent;border:none;box-shadow:none;">
+    <svg class="illo lg" viewBox="0 0 360 160" style="margin-bottom:6px;" filter="url(#softShadow)">
+      <rect x="30" y="30" width="300" height="100" rx="14" fill="url(#gradNavy)"/>
+      <path d="M55 55 h250 M55 78 h250 M55 101 h160" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+      <circle cx="285" cy="101" r="16" fill="url(#gradGold)"/>
+      <path d="M285 93 v16 M277 101 h16" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="80" cy="45" r="5" fill="#00D2FF"/>
+    </svg>
+    <div class="eyebrow-tag" style="justify-content:center;margin-bottom:8px;">INSPIRON TECH · OPERATOR TRAINING MANUAL</div>
+    <h1 class="center-h2" style="font-size:clamp(32px,3.8vw,54px);margin-bottom:8px;">Manager.io e-GP<br/>Operations Manual</h1>
+    <p class="prose-lead" style="font-size:clamp(18px,1.6vw,24px);color:var(--cyan-dk);margin-bottom:14px;">বাংলাদেশ e-GP ঠিকাদারদের জন্য সহজ Accounting SOP</p>
+    <div style="font-family:var(--font-bn);font-size:14px;color:var(--ink-600);line-height:1.5;">
+      <b>Version:</b> 2.2 FINAL · <b>Standard:</b> Editorial SVG Sovereign Edition<br/>
+      Operator Training — debit/credit জানাটা বাধ্যতামূলক নয় · <b>বাস্তব ঘটনা থেকে নির্ভুল হিসাব</b>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">GOVERNMENT PROCUREMENT OPERATING BLUEPRINT</span><span class="slide-num"> · 01 / 50</span></div>
+</section>
+
+<!-- SLIDE 02 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">01 · OPERATING PURPOSE</div><h2 class="slide-main-title">এই Manual-এর কাজ কী?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <p class="prose-lead">এই manual হিসাববিজ্ঞানের বই নয়। একটি e-GP tender-এর ঘটনা Manager.io-তে কোথায় বসবে এবং কেন বসবে—সেটা সহজ করে বলাই এর কাজ।</p>
+        <div class="grid-3">
+          <div class="card cyan"><h3>1. Customer</h3><p>যে PE office কাজ দিয়েছে। Office Identity।</p></div>
+          <div class="card gold"><h3>2. Project</h3><p>যে tenderটি awarded হয়েছে। Tender Identity।</p></div>
+          <div class="card green"><h3>3. Ref.</h3><p>Balance Sheet movement-এর পরিচয়।</p></div>
+        </div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 200 170" filter="url(#softShadow)">
+          <rect x="20" y="15" width="160" height="42" rx="8" fill="url(#gradCyan)"/>
+          <text x="100" y="40" font-family="Neo Sans Pro" font-size="12" font-weight="900" fill="#fff" text-anchor="middle">CUSTOMER</text>
+          <path d="M100 57 v18" stroke="#94A3B8" stroke-width="2" stroke-dasharray="3 3"/>
+          <rect x="18" y="80" width="78" height="60" rx="8" fill="url(#gradGold)"/>
+          <text x="57" y="105" font-family="Neo Sans Pro" font-size="11" font-weight="900" fill="#fff" text-anchor="middle">PROJECT</text>
+          <text x="57" y="122" font-family="Neo Sans Pro" font-size="8" fill="#fff" text-anchor="middle" opacity="0.9">P&amp;L Income/Cost</text>
+          <rect x="104" y="80" width="78" height="60" rx="8" fill="url(#gradCyan)"/>
+          <text x="143" y="105" font-family="Neo Sans Pro" font-size="11" font-weight="900" fill="#fff" text-anchor="middle">REF.</text>
+          <text x="143" y="122" font-family="Neo Sans Pro" font-size="8" fill="#fff" text-anchor="middle" opacity="0.9">Balance Sheet</text>
+        </svg>
+        <div class="stage-caption">3 Core Architectural Anchors</div>
+      </div>
+    </div>
+    <div class="callout"><b>মৌলিক নীতি:</b> Customer চেনে অফিসকে, Project চেনে টেন্ডারকে, আর Ref. চেনে ব্যালেন্স শিটের নির্দিষ্ট মুভমেন্টকে।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">SYSTEM CORE ANCHORS</span><span class="slide-num">02 / 50</span></div>
+</section>
+
+<!-- SLIDE 03 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">02 · TENDER LIFECYCLE</div><h2 class="slide-main-title">একটা Tender-এর জীবন</h2></div>
+  <div class="slide-body-scroll">
+    <p class="prose-lead">Tender শুরুতে শুধু সম্ভাবনা। NOA আসার পর কাজ শুরু হয়। RA Bill হয়, টাকা আসে, কিছু টাকা আটকে থাকে, একদিন সেই টাকাও ফেরত আসে।</p>
+    <svg viewBox="0 0 620 130" style="width:100%;max-height:120px;margin:4px 0;" filter="url(#softShadow)">
+      <circle cx="65" cy="55" r="34" fill="url(#gradCyan)"/><path d="M52 55 l8 8 17-17" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <text x="65" y="108" font-family="Neo Sans Pro" font-size="11" font-weight="800" fill="#0F172A" text-anchor="middle">1. BID</text>
+      <path d="M100 55 h95" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="5 5"/>
+      <circle cx="225" cy="55" r="34" fill="url(#gradGold)"/><rect x="212" y="43" width="26" height="24" rx="2" fill="none" stroke="#fff" stroke-width="2.6"/><path d="M225 43 v24" stroke="#fff" stroke-width="2.2"/>
+      <text x="225" y="108" font-family="Neo Sans Pro" font-size="11" font-weight="800" fill="#0F172A" text-anchor="middle">2. NOA</text>
+      <path d="M260 55 h95" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="5 5"/>
+      <circle cx="385" cy="55" r="34" fill="url(#gradCyan)"/><rect x="370" y="45" width="30" height="20" rx="2" fill="none" stroke="#fff" stroke-width="2.4"/><path d="M370 55 h30 M375 72 h20" stroke="#fff" stroke-width="2"/>
+      <text x="385" y="108" font-family="Neo Sans Pro" font-size="11" font-weight="800" fill="#0F172A" text-anchor="middle">3. RA BILL</text>
+      <path d="M420 55 h95" stroke="#CBD5E1" stroke-width="2.5" stroke-dasharray="5 5"/>
+      <circle cx="545" cy="55" r="34" fill="url(#gradGreen)"/><path d="M532 55 l8 8 16-16" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+      <text x="545" y="108" font-family="Neo Sans Pro" font-size="11" font-weight="800" fill="#0F172A" text-anchor="middle">4. RELEASE</text>
+    </svg>
+    <div class="timeline">
+      <div class="tstep"><div class="sid">STAGE 01</div><h3>সম্ভাবনা (Bid)</h3><p>e-GP Portal ফি, দরপত্র জামানত। কোনো Project খোলা যাবে না।</p></div>
+      <div class="tstep"><div class="sid">STAGE 02</div><h3>প্রাপ্তি (NOA)</h3><p>একই সাথে Customer ও Project সেটআপ।</p></div>
+      <div class="tstep"><div class="sid">STAGE 03</div><h3>কাজ ও বিল</h3><p>সাইটের খরচ, অগ্রিম গ্রহণ, রিটেনশন কর্তন।</p></div>
+      <div class="tstep"><div class="sid">STAGE 04</div><h3>সমাপ্তি</h3><p>DLP সমাপ্তি, জামানত অবমুক্তি, Inactive।</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">END-TO-END PROCUREMENT TRACK</span><span class="slide-num">03 / 50</span></div>
+</section>
+
+<!-- SLIDE 04 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">03 · MASTER DATA</div><h2 class="slide-main-title">PE কে?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <p class="prose-lead"><b>PE = Procuring Entity = Procurement Authority</b>। যে সরকারি office tender দেয়, কাজ দেখে, bill certify করে এবং টাকা দেয়।</p>
+        <div class="grid-2">
+          <div class="card cyan"><h3>Examples</h3><p>LGED, PWD, EED, RHD, BWDB ইত্যাদি।</p></div>
+          <div class="card gold"><h3>Manager.io Mapping</h3><p>একটি PE office/branch = একটি Customer।</p></div>
+        </div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 170 150" filter="url(#softShadow)">
+          <path d="M20 55 L85 20 L150 55 Z" fill="url(#gradGold)"/>
+          <rect x="32" y="55" width="106" height="70" fill="#fff" stroke="#D97706" stroke-width="2"/>
+          <path d="M48 55 v70 M68 55 v70 M100 55 v70 M120 55 v70" stroke="#FDE68A" stroke-width="3"/>
+          <rect x="74" y="85" width="22" height="40" fill="url(#gradGold)"/>
+          <path d="M16 125 h138" stroke="#B45309" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="stage-caption">Procuring Entity (Govt Office)</div>
+      </div>
+    </div>
+    <div class="callout"><b>Callout:</b> Customer হলো office identity। Tender হলো Project identity।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">PROCURING ENTITY ARCHITECTURE</span><span class="slide-num">04 / 50</span></div>
+</section>
+
+<!-- SLIDE 05 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">04 · MULTI-BRANCH DOCTRINE</div><h2 class="slide-main-title">একই Agency, ভিন্ন Office = ভিন্ন Customer</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <p class="prose-lead">একই Customer-এর নিচে দুই office রাখলে ভবিষ্যতে office-wise tender, receivable এবং history মিশে যাবে।</p>
+        <div class="codebox">LGED Barishal office    → Customer Code: LGED-BSL
+LGED Patuakhali office  → Customer Code: LGED-PTK</div>
+        <div class="callout risk"><b>Warning:</b> Customer Name-এর মধ্যে Tender ID বা Project name লিখবেন না।</div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 180 150" filter="url(#softShadow)">
+          <rect x="40" y="15" width="100" height="34" rx="6" fill="url(#gradCyan)"/>
+          <text x="90" y="36" font-family="Neo Sans Pro" font-size="10" font-weight="900" fill="#fff" text-anchor="middle">LGED AGENCY</text>
+          <path d="M90 49 v18 M90 67 L45 84 M90 67 L135 84" stroke="#94A3B8" stroke-width="2"/>
+          <rect x="10" y="86" width="72" height="48" rx="6" fill="#fff" stroke="#0284C7" stroke-width="2"/>
+          <text x="46" y="107" font-family="Neo Sans Pro" font-size="9" font-weight="800" fill="#0F172A" text-anchor="middle">LGED-BSL</text>
+          <text x="46" y="122" font-family="Li Ador Noirrit" font-size="9" fill="#64748B" text-anchor="middle">বরিশাল অফিস</text>
+          <rect x="98" y="86" width="72" height="48" rx="6" fill="#fff" stroke="#0284C7" stroke-width="2"/>
+          <text x="134" y="107" font-family="Neo Sans Pro" font-size="9" font-weight="800" fill="#0F172A" text-anchor="middle">LGED-PTK</text>
+          <text x="134" y="122" font-family="Li Ador Noirrit" font-size="9" fill="#64748B" text-anchor="middle">পটুয়াখালী অফিস</text>
+        </svg>
+        <div class="stage-caption">Branch Separation Rule</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">BRANCH ISOLATION GOVERNANCE</span><span class="slide-num">05 / 50</span></div>
+</section>
+
+<!-- SLIDE 06 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">05 · CUSTOMER SETUP</div><h2 class="slide-main-title">PE → Manager.io Customer</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>Customer field</th><th>কী লিখবেন</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><b>Name</b></td><td class="bn">PE office-এর পরিষ্কার official name</td><td>Local Government Engineering Department</td></tr>
+      <tr><td><b>Code</b></td><td class="bn">Agency + office/branch code</td><td><code>LGED-BSL</code></td></tr>
+      <tr><td><b>REGION/BRANCH/OFFICE</b></td><td class="bn">Office বা zone</td><td>BARISHAL</td></tr>
+    </tbody></table>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">MASTER DATA STANDARDIZATION</span><span class="slide-num">06 / 50</span></div>
+</section>
+
+<!-- SLIDE 07 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">06 · TENDER PROPOSAL ID</div><h2 class="slide-main-title">Tender ID কী?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <p class="prose-lead">Tender ID / Tender Proposal ID = e-GP tender-এর স্থায়ী পরিচয় নম্বর। NOA, security paper, certificate এবং bill-এ এই নম্বরটি সাধারণত পাওয়া যায়।</p>
+        <div class="codebox">Project: JHLKT-RoadRehab-LGED-1142857
+Ref.:    LGED-1142857</div>
+        <div class="callout"><b>Rule:</b> Ref. format সবসময় <code>PE-TenderID</code>; শুধু number একা লিখবেন না।</div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 120" filter="url(#softShadow)">
+          <path d="M30 20 h70 l40 40 v40 h-110 z" fill="url(#gradGold)"/>
+          <circle cx="50" cy="40" r="6" fill="#fff"/>
+          <rect x="40" y="65" width="80" height="26" rx="4" fill="#fff" stroke="#D97706" stroke-width="2"/>
+          <text x="80" y="83" font-family="Neo Sans Pro" font-size="12" font-weight="900" fill="#0F172A" text-anchor="middle">1142857</text>
+        </svg>
+        <div class="stage-caption">Permanent e-GP 7-Digit Tag</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">IDENTIFIER DISCIPLINE</span><span class="slide-num">07 / 50</span></div>
+</section>
+
+<!-- SLIDE 08 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">07 · AWARD EVENT TRIGGER</div><h2 class="slide-main-title">NOA কী?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card cyan"><h3>Notification of Award</h3><p>NOA = Notification of Award। এটি আসার মানে tender আর সম্ভাবনা নয়—কাজটি পাওয়া গেছে।</p></div>
+      <div class="card gold"><h3>Key Line</h3><p>NOA আসার আগে Project খুলবেন না। NOA আসার মুহূর্তটিই এই manual-এর সবচেয়ে গুরুত্বপূর্ণ মুহূর্ত।</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">AWARD CONFIRMATION</span><span class="slide-num">08 / 50</span></div>
+</section>
+
+<!-- SLIDE 09 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">08 · REVENUE OPERATIONS</div><h2 class="slide-main-title">RA Bill কী?</h2></div>
+  <div class="slide-body-scroll">
+    <p class="prose-lead">RA Bill = Running Account Bill = progress bill / certificate। Manager.io-তে RA Bill = <b>Sales Invoice</b>।</p>
+    <div class="grid-3">
+      <div class="card green"><h3>1. Certified Work</h3><p>এই মাসে কত টাকার কাজ সার্টিফাইড হলো।</p></div>
+      <div class="card gold"><h3>2. Retention</h3><p>PE কত টাকা জামানত হিসেবে আটকে রাখল।</p></div>
+      <div class="card red"><h3>3. Advance Recovery</h3><p>মোবিলাইজেশন অগ্রিম থেকে কত টাকা কর্তন হলো।</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">SALES INVOICE CONCEPT</span><span class="slide-num">09 / 50</span></div>
+</section>
+
+<!-- SLIDE 10 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">09 · ASSET ACCOUNTING</div><h2 class="slide-main-title">Retention কী?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <p class="prose-lead">PE bill-এর একটি অংশ এখন দেয় না। DLP/release condition পূরণ হলে সাধারণত ফেরত দেয়। এটি নতুন income নয়; Revenue RA Bill-এর সময়ই record হয়।</p>
+        <div class="card gold"><h3>Account Mapping</h3><p><b>Account:</b> <code>1150 Retention Receivable</code> (Asset)</p></div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 140" filter="url(#softShadow)">
+          <circle cx="80" cy="75" r="42" fill="url(#gradGold)"/>
+          <path d="M80 53 v44" stroke="#fff" stroke-width="3"/>
+          <path d="M66 66 c2-9 24-9 26 0 2 10-26 5-26 17 2 10 24 10 26 1" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path d="M58 40 v-15 c0-13 44-13 44 0 v15" stroke="#B45309" stroke-width="3" fill="none"/>
+        </svg>
+        <div class="stage-caption">Locked Retention Asset</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">RETENTION RECEIVABLE</span><span class="slide-num">10 / 50</span></div>
+</section>
+
+<!-- SLIDE 11 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">10 · LIABILITY ACCOUNTING</div><h2 class="slide-main-title">Mobilization Advance কী?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <p class="prose-lead">কাজ শুরুর আগে PE-এর দেওয়া টাকা। টাকা হাতে এসেছে, কিন্তু income হয়নি। RA Bill থেকে ধীরে ধীরে recover হবে।</p>
+        <div class="card cyan"><h3>Account Mapping</h3><p><b>Account:</b> <code>2100 Mobilization Advance Received — Liability</code></p></div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 140" filter="url(#softShadow)">
+          <rect x="20" y="35" width="120" height="75" rx="10" fill="url(#gradCyan)"/>
+          <circle cx="80" cy="72" r="24" fill="#fff" opacity="0.95"/>
+          <text x="80" y="78" font-family="Neo Sans Pro" font-size="16" font-weight="900" fill="#0369A1" text-anchor="middle">$</text>
+          <path d="M32 50 L52 50 M108 50 L128 50 M32 96 L52 96 M108 96 L128 96" stroke="#fff" stroke-width="2.4" opacity="0.7"/>
+        </svg>
+        <div class="stage-caption">Temporary Capital Liability</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">ADVANCE LIABILITY</span><span class="slide-num">11 / 50</span></div>
+</section>
+
+<!-- SLIDE 12 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">11 · SECURITY DOCTRINE</div><h2 class="slide-main-title">Tender Security, Performance Security ও BG</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-3">
+      <div class="card cyan"><h3>Tender Security</h3><p>Bid stage-এর security; cash, Pay Order, BG-only বা BG + cash margin হতে পারে।</p></div>
+      <div class="card gold"><h3>Performance Security</h3><p>Award-এর পরে কাজের performance নিশ্চিত করার security।</p></div>
+      <div class="card green"><h3>Bank Guarantee</h3><p>Face value ledger-এ নয়; cash margin/commission ledger-এ, details BG Register-এ।</p></div>
+    </div>
+    <div class="callout"><b>Rule:</b> Amount, method, expiry, release condition source document দেখে নেবেন—অনুমান করবেন না।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">SECURITY INSTRUMENTS</span><span class="slide-num">12 / 50</span></div>
+</section>
+
+<!-- SLIDE 13 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">12 · CLOSEOUT GOVERNANCE</div><h2 class="slide-main-title">DLP কী?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card cyan"><h3>Defect Liability Period</h3><p>DLP = Defect Liability Period। কাজ শেষের পর defect period; defect থাকলে contractor-এর দায় থাকতে পারে।</p></div>
+      <div class="card gold"><h3>Release Control</h3><p>retention/security release-এর condition contract document দেখে confirm করবেন।</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">CLOSEOUT MILESTONE</span><span class="slide-num">13 / 50</span></div>
+</section>
+
+<!-- SLIDE 14: NOA DAY RULE -->
+<section class="slide-frame centerpiece">
+  <div class="top-brand-band"></div>
+  <div class="center-card">
+    <svg viewBox="0 0 260 90" style="width:100%;max-width:260px;margin-bottom:8px;" filter="url(#softShadow)">
+      <circle cx="55" cy="45" r="28" fill="url(#gradCyan)"/>
+      <text x="55" y="49" font-family="Neo Sans Pro" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">CUSTOMER</text>
+      <circle cx="205" cy="45" r="28" fill="url(#gradGold)"/>
+      <text x="205" y="49" font-family="Neo Sans Pro" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">PROJECT</text>
+      <path d="M85 45 h90" stroke="#0284C7" stroke-width="3"/>
+      <path d="M120 37 l8 8 -8 8" stroke="#0284C7" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M135 53 l-8 -8 8 -8" stroke="#D97706" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="eyebrow-tag" style="justify-content:center;">13 · CRITICAL OPERATING CHECKPOINT</div>
+    <h2 class="center-h2">Customer (if missing) + Project<br/>at the same time</h2>
+    <p class="prose-lead" style="margin-bottom:0;">NOA পাওয়ার সঙ্গে সঙ্গে দুটি কাজ করবেন। এটি আলাদা দিনে করার কাজ নয়।</p>
+    <div class="center-pill">Customer Code = Project PE CODE</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">THE NOA DAY RULE</span><span class="slide-num">14 / 50</span></div>
+</section>
+
+<!-- SLIDE 15 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">14 · INTEGRITY AUDIT</div><h2 class="slide-main-title">একটা mismatch সব ভাঙে</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card green"><h3>✓ Exact Match</h3><div class="codebox">Customer Code:   LGED-BSL
+Project PE CODE: LGED-BSL</div></div>
+      <div class="card red"><h3>✗ Mismatch</h3><div class="codebox">Customer Code:   LGED-BSL
+Project PE CODE: LGED BSL
+Project PE CODE: lged-bsl</div></div>
+    </div>
+    <div class="callout risk"><b>Warning:</b> capital letter, hyphen, space—সবকিছু হুবহু একই হতে হবে।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">DATABASE INTEGRITY</span><span class="slide-num">15 / 50</span></div>
+</section>
+
+<!-- SLIDE 16 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">15 · SETUP CHECKLIST</div><h2 class="slide-main-title">NOA পাওয়ার দিন — Checklist</h2></div>
+  <div class="slide-body-scroll">
+    <div class="card cyan"><p style="font-size:15px;line-height:1.65;">
+      [ ] NOA/source paper থেকে PE office, Tender ID, Contract Value, Retention Rate দেখেছি<br/>
+      [ ] Customers-এ same PE office এবং Code খুঁজেছি<br/>
+      [ ] না থাকলে Customer তৈরি করেছি<br/>
+      [ ] Project Name format মেনে Project করেছি<br/>
+      [ ] Customer Code = Project PE CODE, exact match করেছি<br/>
+      [ ] Ref. helper note লিখেছি: PE-TenderID
+    </p></div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">EXECUTION CHECKLIST</span><span class="slide-num">16 / 50</span></div>
+</section>
+
+<!-- SLIDE 17 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">16 · NAMING CONVENTION</div><h2 class="slide-main-title">Project Name কীভাবে লিখবেন</h2></div>
+  <div class="slide-body-scroll">
+    <div class="codebox" style="font-size:18px;text-align:center;">Formula: [Location]-[ShortName]-[PE]-[TenderProposalID]
+Example: JHLKT-RoadRehab-LGED-1142857</div>
+    <table class="grid-table"><thead><tr><th>অংশ</th><th>কাজ</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Location</td><td class="bn">site/area চেনার অংশ</td><td><code>JHLKT</code></td></tr>
+      <tr><td>ShortName</td><td class="bn">কাজের ছোট নাম</td><td><code>RoadRehab</code></td></tr>
+      <tr><td>PE</td><td class="bn">agency code</td><td><code>LGED</code></td></tr>
+      <tr><td>TenderProposalID</td><td class="bn">e-GP identity</td><td><code>1142857</code></td></tr>
+    </tbody></table>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">PROJECT SEARCH OPTIMIZATION</span><span class="slide-num">17 / 50</span></div>
+</section>
+
+<!-- SLIDE 18 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">17 · NAMING HYGIENE</div><h2 class="slide-main-title">Project Name-এ যা লিখবেন না</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card red"><h3>Do Not Include</h3><p>• Contract No. with slashes<br/>• Package description<br/>• Legal reference<br/>• অনেক লম্বা বাক্য</p></div>
+      <div class="card cyan"><h3>Reason</h3><p>Project Name দ্রুত খোঁজার জন্য। বেশি information দিলে search কঠিন হয়।</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">NAME HYGIENE</span><span class="slide-num">18 / 50</span></div>
+</section>
+
+<!-- SLIDE 19 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">18 · REFERENCE SHORTCUT</div><h2 class="slide-main-title">Ref. কীভাবে বের করবেন</h2></div>
+  <div class="slide-body-scroll">
+    <p class="prose-lead">Project Name-এর শেষ দুই অংশ = Ref.</p>
+    <div class="codebox" style="font-size:22px;text-align:center;">JHLKT-RoadRehab-LGED-1142857
+                  ↓
+Ref.: LGED-1142857</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">REFERENCE DERIVATION</span><span class="slide-num">19 / 50</span></div>
+</section>
+
+<!-- SLIDE 20 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">19 · TAGGING MATRIX</div><h2 class="slide-main-title">Project, Ref. ও Untagged — তিনটি পথ</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-3">
+      <div class="card cyan"><h3>P&L → Project</h3><p><b>Revenue, Material, Labor, Subcontractor</b></p><p style="margin-top:8px;">Project select করুন।</p></div>
+      <div class="card gold"><h3>Standalone Balance Sheet → Ref.</h3><p><b>Margin, standalone retention release, advance receipt, loan principal</b></p><p style="margin-top:8px;">Ref. = <code>PE-TenderID</code></p></div>
+      <div class="card"><h3>Company-wide / Unsplittable → Blank</h3><p><b>General bank charge, Time Loan interest</b></p><p style="margin-top:8px;">Project blank + Ref. blank</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">THREE-LANE ENGINE</span><span class="slide-num">20 / 50</span></div>
+</section>
+
+<!-- SLIDE 21 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">20 · INVOICE POLICY</div><h2 class="slide-main-title">Sales Invoice-এর Final Policy</h2></div>
+  <div class="slide-body-scroll" style="text-align:center;">
+    <span class="no-badge">Sales Invoice-Line Ref. = NO</span>
+    <div class="grid-2" style="text-align:left;margin-top:14px;">
+      <div class="card cyan"><h3>Invoice Header Context</h3><p>• Invoice header-এ Customer থাকে<br/>• Invoice context-এ Project থাকে</p></div>
+      <div class="card gold"><h3>Line Logic</h3><p>• Revenue, Retention, Advance Recovery একই RA Bill-এর অংশ<br/>• তাই line-level Ref. আলাদা করে লাগবে না</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">SALES INVOICE POLICY</span><span class="slide-num">21 / 50</span></div>
+</section>
+
+<!-- SLIDE 22 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">21 · SYSTEM MAP</div><h2 class="slide-main-title">কোন ঘটনা কোথায় যায়</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>বাস্তব ঘটনা</th><th>Manager.io form/object</th></tr></thead>
+    <tbody>
+      <tr><td>PE office</td><td>Customers</td></tr>
+      <tr><td>Awarded tender</td><td>Projects</td></tr>
+      <tr><td>RA Bill / certificate</td><td>Sales Invoices</td></tr>
+      <tr><td>Material/supplier/subcontractor bill</td><td>Purchase Invoices</td></tr>
+      <tr><td>টাকা বের হলো</td><td>Payments</td></tr>
+      <tr><td>টাকা এলো</td><td>Receipts</td></tr>
+      <tr><td>Adjustment</td><td>Journal Entries</td></tr>
+      <tr><td>Bank/Cash</td><td>Bank & Cash Accounts</td></tr>
+    </tbody></table>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">VOUCHER DISPATCH MATRIX</span><span class="slide-num">22 / 50</span></div>
+</section>
+
+<!-- SLIDE 23 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">22 · ITEM CATALOG</div><h2 class="slide-main-title">Non-Inventory Items — Prefix মনে রাখুন</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>Prefix</th><th>Meaning</th><th>Main account area</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill">TND</span></td><td>Tender document / bid-stage cost</td><td>5800</td></tr>
+      <tr><td><span class="pill gold">TS</span></td><td>Tender Security</td><td>1130 / 5710 / 5720</td></tr>
+      <tr><td><span class="pill gold">PS</span></td><td>Performance Security</td><td>1140 / 5710 / 1300 / 5720</td></tr>
+      <tr><td><span class="pill">MOB</span></td><td>Mobilization Advance</td><td>2100</td></tr>
+      <tr><td><span class="pill">RET</span></td><td>Retention</td><td>1150 / 2050</td></tr>
+      <tr><td><span class="pill">TL</span></td><td>Time Loan</td><td>2300 / 5700</td></tr>
+      <tr><td><span class="pill">BANK</span></td><td>General bank charge</td><td>5720</td></tr>
+    </tbody></table>
+    <div class="callout">Item code মুখস্থ করার দরকার নেই; search করার জন্য prefix মনে রাখুন।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">ITEM PREFIX TAXONOMY</span><span class="slide-num">23 / 50</span></div>
+</section>
+
+<!-- SLIDE 24 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">23 · BID STAGE ITEMS</div><h2 class="slide-main-title">Non-Inventory Items — Bid Stage</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>কাজ</th><th>Item</th><th>Account</th><th>Project / Ref.</th></tr></thead>
+    <tbody>
+      <tr><td>e-GP submission fee</td><td><code>TND-DOC-FEE</code></td><td>5800</td><td>No Project; PE-only Ref. allowed</td></tr>
+      <tr><td>Bid preparation/printing/courier</td><td><code>TND-PREP-COST</code></td><td>5800</td><td>No Project; PE-only Ref. allowed</td></tr>
+      <tr><td>Other bid-stage cost</td><td><code>TND-MISC</code></td><td>5800</td><td>No Project; PE-only Ref. allowed</td></tr>
+    </tbody></table>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">PRE-AWARD COA ROUTING</span><span class="slide-num">24 / 50</span></div>
+</section>
+
+<!-- SLIDE 25 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">24 · TS ITEMS</div><h2 class="slide-main-title">Non-Inventory Items — Tender Security</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>কাজ</th><th>Item</th><th>Account</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Cash margin block</td><td><code>TS-CASH-BLOCK</code></td><td>1130</td><td>Ref. = PE-TenderID</td></tr>
+      <tr><td>BG commission</td><td><code>TS-BG-COMMISSION</code></td><td>5710</td><td>Pre-NOA; no invented allocation</td></tr>
+      <tr><td>Bank processing fee</td><td><code>TS-BANK-CHARGE</code></td><td>5720</td><td>No unsupported allocation</td></tr>
+      <tr><td>Margin release</td><td><code>TS-RELEASE</code></td><td>1130</td><td>Same PE-TenderID Ref.</td></tr>
+    </tbody></table>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">TENDER SECURITY ITEMS</span><span class="slide-num">25 / 50</span></div>
+</section>
+
+<!-- SLIDE 26 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">25 · PS ITEMS</div><h2 class="slide-main-title">Non-Inventory Items — Performance Security</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>কাজ</th><th>Item</th><th>Account</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Cash margin block</td><td><code>PS-CASH-BLOCK</code></td><td>1140</td><td>Ref. = PE-TenderID</td></tr>
+      <tr><td>Direct BG commission</td><td><code>PS-BG-COMMISSION</code></td><td>5710</td><td>Project if clearly single-tender</td></tr>
+      <tr><td>Prepaid BG commission</td><td><code>PS-BG-COMMISSION-PREPAID</code></td><td>1300</td><td>Approved policy</td></tr>
+      <tr><td>Monthly amortization</td><td><code>PS-BG-COMMISSION-AMORT</code></td><td>5710</td><td>Project if clearly single-tender</td></tr>
+      <tr><td>Margin release</td><td><code>PS-RELEASE</code></td><td>1140</td><td>Same PE-TenderID Ref.</td></tr>
+    </tbody></table>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">PERFORMANCE SECURITY ITEMS</span><span class="slide-num">26 / 50</span></div>
+</section>
+
+<!-- SLIDE 27 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">26 · ADVANCE RETENTION LOAN</div><h2 class="slide-main-title">Non-Inventory Items — MOB, RET, TL</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>কাজ</th><th>Item</th><th>Account</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td>Mobilization Advance received</td><td><code>MOB-RECEIVED</code></td><td>2100</td><td>Ref. = PE-TenderID</td></tr>
+      <tr><td>Advance recovery in RA Bill</td><td><code>MOB-RECOVERY</code></td><td>2100</td><td>Sales Invoice: Project context; no Ref. line</td></tr>
+      <tr><td>Retention withheld in RA Bill</td><td><code>RET-WITHHELD</code></td><td>1150</td><td>Sales Invoice: Project context; no Ref. line</td></tr>
+      <tr><td>Retention released</td><td><code>RET-RELEASE</code></td><td>1150</td><td>Receipt: Ref. = PE-TenderID</td></tr>
+      <tr><td>Time Loan principal movement</td><td><code>TL-CASH-MOVEMENT</code></td><td>2300</td><td>Ref. only if documented tender-specific</td></tr>
+      <tr><td>Time Loan month-end interest</td><td><code>TL-MONTHLY-ADJUST</code></td><td>5700</td><td>Always untagged</td></tr>
+    </tbody></table>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">LIABILITY ITEM MAPPING</span><span class="slide-num">27 / 50</span></div>
+</section>
+
+<!-- SLIDE 28 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">27 · ITEM CONTROL</div><h2 class="slide-main-title">Item না পেলে কী করবেন?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-3">
+      <div class="card cyan"><h3>1. Search Prefix</h3><p>Prefix দিয়ে search করুন: TND / TS / PS / MOB / RET / TL / BANK</p></div>
+      <div class="card gold"><h3>2. Verify Existing</h3><p>Existing item আছে কি না দেখুন</p></div>
+      <div class="card red"><h3>3. Escalate</h3><p>না পেলে administrator-কে বলুন</p></div>
+    </div>
+    <div class="callout risk"><b>Warning:</b> নতুন item create করে duplicate বানাবেন না। Duplicate item হলে reporting consistency নষ্ট হয়।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">ITEM DUPLICATION CONTROL</span><span class="slide-num">28 / 50</span></div>
+</section>
+
+<!-- SLIDE 29 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">28 · PRE-AWARD WORKFLOW</div><h2 class="slide-main-title">Pre-NOA Workflow — e-GP Document Fee</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>Field</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Form</td><td>Payment</td></tr>
+      <tr><td>Item</td><td><code>TND-DOC-FEE</code></td></tr>
+      <tr><td>Account</td><td>5800 Bidding & Tender Expenses</td></tr>
+      <tr><td>Project</td><td>Blank</td></tr>
+      <tr><td>Ref.</td><td>PE code only, e.g. LGED</td></tr>
+    </tbody></table>
+    <div class="callout risk"><b>Warning:</b> NOA না আসা পর্যন্ত Dummy Project খুলবেন না।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">PRE-AWARD VOUCHER DISCIPLINE</span><span class="slide-num">29 / 50</span></div>
+</section>
+
+<!-- SLIDE 30 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">29 · BATCH EXPENSE</div><h2 class="slide-main-title">এক Payment-এ একাধিক PE fee</h2></div>
+  <div class="slide-body-scroll">
+    <div class="codebox">e-GP document fee     Ref: EED      15,000
+e-GP document fee     Ref: LGED     25,000
+e-GP document fee     Ref: PWD      30,000</div>
+    <div class="callout"><b>Rule:</b> প্রতি PE-এর জন্য আলাদা line দিন।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">BATCH EXPENSE DISCIPLINE</span><span class="slide-num">30 / 50</span></div>
+</section>
+
+<!-- SLIDE 31 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">30 · TENDER SECURITY</div><h2 class="slide-main-title">Tender Security — Cash Margin</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <table class="grid-table"><thead><tr><th>Field</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Form</td><td>Payment</td></tr>
+          <tr><td>Item</td><td><code>TS-CASH-BLOCK</code></td></tr>
+          <tr><td>Account</td><td>1130 Tender Security Margin</td></tr>
+          <tr><td>Ref.</td><td>PE-TenderID</td></tr>
+        </tbody></table>
+        <div class="codebox">Dr 1130 Tender Security Margin
+Cr 1010 Bank</div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 130" filter="url(#softShadow)">
+          <rect x="20" y="35" width="120" height="65" rx="10" fill="url(#gradCyan)"/>
+          <path d="M42 35 v-16 c0-11 40-11 40 0 v16" stroke="#0369A1" stroke-width="3" fill="none"/>
+          <circle cx="80" cy="66" r="14" fill="#fff"/>
+          <path d="M80 59 v14 M73 66 h14" stroke="#0369A1" stroke-width="2.4"/>
+        </svg>
+        <div class="stage-caption">1130 Cash Margin Blocked</div>
+      </div>
+    </div>
+    <div class="callout success"><b>Note:</b> এটি asset; cash margin আপনার টাকা, নির্দিষ্ট সময়ের জন্য blocked।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">CASH MARGIN POSTING</span><span class="slide-num">31 / 50</span></div>
+</section>
+
+<!-- SLIDE 32 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">31 · NON-CASH BG</div><h2 class="slide-main-title">Tender Security — BG-only</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card cyan"><h3>BG-only, no cash block</h3><p>BG-only এবং cash block না হলে margin ledger entry হবে না। BG Register update করবেন।</p></div>
+      <div class="card gold"><h3>Commission Expense</h3><p>Commission থাকলে <code>TS-BG-COMMISSION</code> দিয়ে payment record হবে।</p></div>
+    </div>
+    <div class="callout risk"><b>Do not:</b> BG-only হলে TS-BG item দিয়ে fake cash-margin entry করবেন না।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">BG NON-CASH INSTRUMENTS</span><span class="slide-num">32 / 50</span></div>
+</section>
+
+<!-- SLIDE 33 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">32 · SECURITY RELEASE</div><h2 class="slide-main-title">Tender Security — Release</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>Field</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Form</td><td>Receipt</td></tr>
+      <tr><td>Item</td><td><code>TS-RELEASE</code></td></tr>
+      <tr><td>Account</td><td>1130 Tender Security Margin</td></tr>
+      <tr><td>Ref.</td><td>Same PE-TenderID</td></tr>
+    </tbody></table>
+    <div class="codebox">Dr 1010 Bank
+Cr 1130 Tender Security Margin</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">SECURITY RECOVERY</span><span class="slide-num">33 / 50</span></div>
+</section>
+
+<!-- SLIDE 34 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">33 · POST-AWARD MARGIN</div><h2 class="slide-main-title">Performance Security — Cash Margin</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <table class="grid-table"><thead><tr><th>Field</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Form</td><td>Payment</td></tr>
+          <tr><td>Item</td><td><code>PS-CASH-BLOCK</code></td></tr>
+          <tr><td>Account</td><td>1140 Performance Security Margin</td></tr>
+          <tr><td>Ref.</td><td>PE-TenderID</td></tr>
+        </tbody></table>
+        <div class="callout"><b>Note:</b> এটি asset; contractor-এর cash temporarily blocked।</div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 130" filter="url(#softShadow)">
+          <path d="M80 15 l42 16 v37 c0 27 -21 37 -42 47 c-21 -10 -42 -20 -42 -47 v-37 z" fill="url(#gradGold)"/>
+          <path d="M62 60 l12 12 24 -24" stroke="#fff" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="stage-caption">1140 Performance Security</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">PERFORMANCE MARGINS</span><span class="slide-num">34 / 50</span></div>
+</section>
+
+<!-- SLIDE 35 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">34 · GUARANTEE EXPENSES</div><h2 class="slide-main-title">BG Commission — কোন item?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card cyan"><h3>Short-period / direct expense</h3><p><code>PS-BG-COMMISSION</code> → 5710</p></div>
+      <div class="card gold"><h3>Multi-period / approved prepaid policy</h3><p><code>PS-BG-COMMISSION-PREPAID</code> → 1300, then <code>PS-BG-COMMISSION-AMORT</code> → 5710</p></div>
+    </div>
+    <div class="callout risk"><b>Warning:</b> source document এবং approved policy ছাড়া treatment অনুমান করবেন না।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">GUARANTEE AMORTIZATION</span><span class="slide-num">35 / 50</span></div>
+</section>
+
+<!-- SLIDE 36 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">35 · ADVANCE RECEIPT</div><h2 class="slide-main-title">Mobilization Advance Received</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>Field</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Form</td><td>Receipt</td></tr>
+      <tr><td>Item</td><td><code>MOB-RECEIVED</code></td></tr>
+      <tr><td>Account</td><td>2100 Mobilization Advance Received</td></tr>
+      <tr><td>Ref.</td><td>PE-TenderID</td></tr>
+    </tbody></table>
+    <div class="callout risk"><b>Concept:</b> টাকা এসেছে, কিন্তু কাজের Revenue হয়নি—তাই এটি Liability।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">ADVANCE DISBURSEMENT</span><span class="slide-num">36 / 50</span></div>
+</section>
+
+<!-- SLIDE 37 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">36 · ADVANCE RECOVERY</div><h2 class="slide-main-title">Mobilization Advance Recovery</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card cyan"><h3>RA Bill Line</h3><p>• RA Bill-এ negative recovery line ব্যবহার করুন<br/>• Item: <code>MOB-RECOVERY</code><br/>• Account: 2100<br/>• Sales Invoice: Customer + Project context; Ref. line নয়</p></div>
+      <div class="card green"><h3>Control</h3><p>Final RA Bill-এর পরে advance balance শূন্য হওয়া উচিত।</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">RECOVERY VERIFICATION</span><span class="slide-num">37 / 50</span></div>
+</section>
+
+<!-- SLIDE 38 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">37 · DIRECT SITE EXPENSES</div><h2 class="slide-main-title">Site Cost — Material Purchase</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <table class="grid-table"><thead><tr><th>Field</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Form</td><td>Purchase Invoice</td></tr>
+          <tr><td>Account</td><td>5000 Direct Materials</td></tr>
+          <tr><td>Project</td><td>Yes</td></tr>
+          <tr><td>Ref.</td><td>No</td></tr>
+        </tbody></table>
+        <div class="callout"><b>Example item types:</b> Cement, Sand, MS Rod, Bitumen, Bricks.</div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 130" filter="url(#softShadow)">
+          <path d="M30 45 l32 -22 l42 11 l-32 22 z" fill="url(#gradCyan)"/>
+          <path d="M30 45 v42 l42 22 v-42 z" fill="url(#gradCyan)" opacity="0.85"/>
+          <path d="M72 67 l32 -22 v42 l-32 22 z" fill="#fff" stroke="#0284C7" stroke-width="2"/>
+        </svg>
+        <div class="stage-caption">5000 Direct Materials</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">MATERIAL PROCUREMENT</span><span class="slide-num">38 / 50</span></div>
+</section>
+
+<!-- SLIDE 39 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">38 · DIRECT SITE EXPENSES</div><h2 class="slide-main-title">Site Cost — Labor Payment</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <table class="grid-table"><thead><tr><th>Field</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Form</td><td>Payment</td></tr>
+          <tr><td>Account</td><td>5010 Direct Labor</td></tr>
+          <tr><td>Project</td><td>Yes</td></tr>
+          <tr><td>Ref.</td><td>No</td></tr>
+        </tbody></table>
+        <div class="callout"><b>Example item types:</b> Mason Labor, Skilled Labor, Helper Labor, Electrician Labor.</div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 130" filter="url(#softShadow)">
+          <circle cx="80" cy="38" r="18" fill="url(#gradGreen)"/>
+          <path d="M52 80 c0 -17 17 -28 28 -28 s28 11 28 28 v28 h-56 z" fill="url(#gradGreen)" opacity="0.9"/>
+        </svg>
+        <div class="stage-caption">5010 Direct Labor</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">LABOR PAYROLL</span><span class="slide-num">39 / 50</span></div>
+</section>
+
+<!-- SLIDE 40 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">39 · DIRECT SITE EXPENSES</div><h2 class="slide-main-title">Site Cost — Subcontractor & Equipment</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>ঘটনা</th><th>Form</th><th>Account</th><th>Project</th><th>Ref.</th></tr></thead>
+    <tbody>
+      <tr><td>Subcontractor bill</td><td>Purchase Invoice</td><td>5020</td><td>Yes</td><td>No</td></tr>
+      <tr><td>Equipment allocation</td><td>Approved Journal method</td><td>5030</td><td>Yes</td><td>No</td></tr>
+    </tbody></table>
+    <div class="callout"><b>Rule:</b> Direct cost কোন Project-এর—সেটা Project tag দিয়ে বোঝা যাবে।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">SUBCONTRACTOR & ASSETS</span><span class="slide-num">40 / 50</span></div>
+</section>
+
+<!-- SLIDE 41 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">40 · SALES INVOICE SETUP</div><h2 class="slide-main-title">RA Bill → Sales Invoice Header</h2></div>
+  <div class="slide-body-scroll">
+    <table class="grid-table"><thead><tr><th>Field</th><th>কী দেবেন</th></tr></thead>
+    <tbody>
+      <tr><td>Customer</td><td class="bn">PE office Customer</td></tr>
+      <tr><td>Project</td><td class="bn">Awarded Project</td></tr>
+      <tr><td>Cert. No.</td><td class="bn">Approved certificate number, if used</td></tr>
+    </tbody></table>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">INVOICE HEADER GOVERNANCE</span><span class="slide-num">41 / 50</span></div>
+</section>
+
+<!-- SLIDE 42 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">41 · REVENUE RECOGNITION</div><h2 class="slide-main-title">RA Bill Anatomy — Gross থেকে Net</h2></div>
+  <div class="slide-body-scroll">
+    <div class="stack">
+      <div class="srow gross"><span>4000 Contract Revenue (Certified Work)</span><span>+15,00,000 BDT</span></div>
+      <div class="srow deduct"><span>1150 Retention Receivable (Withheld)</span><span>-1,50,000 BDT</span></div>
+      <div class="srow deduct"><span>2100 Mobilization Advance (Recovery)</span><span>-3,00,000 BDT</span></div>
+      <div class="srow net"><span>Net Payable (Bank-এ আসবে)</span><span>= 10,50,000 BDT</span></div>
+    </div>
+    <div class="callout"><b>Key insight:</b> Net amount দেখলেই সব বোঝা যায় না। Gross, Retention ও Recovery আলাদা line-এ না রাখলে report-এর আসল চিত্র হারিয়ে যায়।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">REVENUE STACK STRUCTURE</span><span class="slide-num">42 / 50</span></div>
+</section>
+
+<!-- SLIDE 43 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">42 · INVOICE PURITY</div><h2 class="slide-main-title">RA Bill Sales Invoice Lines — Ref. = NO</h2></div>
+  <div class="slide-body-scroll" style="text-align:center;">
+    <span class="no-badge">Sales Invoice লাইনে কখনো Ref. ব্যবহার করবেন না</span>
+    <div class="grid-2" style="text-align:left;margin-top:14px;">
+      <div class="card cyan"><h3>Logic</h3><p>• Invoice header-এ Customer থাকে<br/>• Invoice context-এ Project থাকে</p></div>
+      <div class="card gold"><h3>Result</h3><p>• Revenue, retention এবং advance recovery একই RA Bill-এর অংশ<br/>• তাই line-level Ref. দরকার নেই</p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">INVOICE TAGGING INTEGRITY</span><span class="slide-num">43 / 50</span></div>
+</section>
+
+<!-- SLIDE 44 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">43 · SETTLEMENT & RELEASE</div><h2 class="slide-main-title">PE টাকা পাঠালে ও Retention ফেরত এলে</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card cyan"><h3>Invoice settlement</h3><p>• Receipt খুলুন<br/>• Invoice select করে settle করুন<br/>• Project/Ref দ্বিতীয়বার দেবেন না</p></div>
+      <div class="card gold"><h3>Retention release</h3><p>• Form: Receipt<br/>• Item: <code>RET-RELEASE</code><br/>• Account: 1150 Retention Receivable<br/>• Ref.: <code>PE-TenderID</code><br/>• <b>এটি নতুন Revenue নয়; receivable cash-এ বদলায়</b></p></div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">COLLECTION LIFECYCLE</span><span class="slide-num">44 / 50</span></div>
+</section>
+
+<!-- SLIDE 45 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">44 · RISK CONTROL</div><h2 class="slide-main-title">BG Register — Ledger-এর বাইরে কেন?</h2></div>
+  <div class="slide-body-scroll">
+    <div class="card cyan" style="margin-bottom:10px;"><p>• BG face value ledger-এ ওঠে না<br/>• Ledger-এ শুধু cash margin এবং bank commission ওঠে<br/>• BG details আলাদা register-এ track করতে হবে</p></div>
+    <div class="callout"><b>Fields:</b> BG Number, Type, Issuing Bank, Face Value, Issue Date, Expiry Date, PE Code, Tender ID, Status, File Reference</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">OFF-BOOK REGISTER</span><span class="slide-num">45 / 50</span></div>
+</section>
+
+<!-- SLIDE 46 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">45 · TREASURY RULES</div><h2 class="slide-main-title">Bank Transfer ও Bank Charge</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <div class="card cyan"><h3>Bank-to-bank</h3><p>Native <b>Inter Account Transfer</b> form ব্যবহার করুন। Journal Entry বা আলাদা Payment+Receipt দিয়ে transfer বানাবেন না।</p></div>
+        <div class="card gold" style="margin-top:10px;"><h3>General Bank Charge</h3>
+          <table class="grid-table" style="margin-top:4px;"><thead><tr><th>Item</th><th>Account</th><th>Project</th><th>Ref.</th></tr></thead>
+          <tbody><tr><td><code>BANK-CHARGE-GEN</code></td><td>5720</td><td>Blank</td><td>Blank</td></tr></tbody></table>
+        </div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 120" filter="url(#softShadow)">
+          <rect x="12" y="38" width="55" height="48" rx="6" fill="url(#gradCyan)"/>
+          <text x="39" y="66" font-family="Neo Sans Pro" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">BANK A</text>
+          <path d="M72 55 h20 M72 68 h20" stroke="#0284C7" stroke-width="2.4"/>
+          <path d="M88 50 l7 5 -7 5" stroke="#0284C7" stroke-width="2.4" fill="none"/>
+          <rect x="94" y="38" width="55" height="48" rx="6" fill="url(#gradGold)"/>
+          <text x="121" y="66" font-family="Neo Sans Pro" font-size="9" font-weight="900" fill="#fff" text-anchor="middle">BANK B</text>
+        </svg>
+        <div class="stage-caption">Inter Account Transfer</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">TREASURY GOVERNANCE</span><span class="slide-num">46 / 50</span></div>
+</section>
+
+<!-- SLIDE 47 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">46 · LOAN FACILITY</div><h2 class="slide-main-title">Time Loan — Interest সবসময় Untagged</h2></div>
+  <div class="slide-body-scroll">
+    <div class="hero-grid">
+      <div>
+        <table class="grid-table"><thead><tr><th>Field</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Form</td><td>Payment</td></tr>
+          <tr><td>Item</td><td><code>TL-MONTHLY-ADJUST</code></td></tr>
+          <tr><td>Account</td><td>5700 Interest on Time Loan</td></tr>
+          <tr><td>Project</td><td>Blank</td></tr>
+          <tr><td>Ref.</td><td>Blank</td></tr>
+        </tbody></table>
+        <div class="callout"><b>Reason:</b> Bank interest সাধারণত lump sum; tender-wise safe split নেই।</div>
+      </div>
+      <div class="stage-panel">
+        <svg class="illo" viewBox="0 0 160 120" filter="url(#softShadow)">
+          <circle cx="80" cy="58" r="38" fill="url(#gradGold)"/>
+          <path d="M80 32 v26 l17 11" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+          <text x="80" y="110" font-family="Neo Sans Pro" font-size="9" font-weight="800" fill="#B45309" text-anchor="middle">ALWAYS UNTAGGED</text>
+        </svg>
+        <div class="stage-caption">5700 Facility Interest</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">FINANCIAL COST ISOLATION</span><span class="slide-num">47 / 50</span></div>
+</section>
+
+<!-- SLIDE 48 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">47 · CLOSEOUT CONTROLS</div><h2 class="slide-main-title">মাস শেষের ২০ মিনিট</h2></div>
+  <div class="slide-body-scroll">
+    <div class="card cyan"><p style="font-size:14.5px;line-height:1.65;">
+      [ ] 5000–5030: কোনো site P&L line-এ Project blank আছে?<br/>
+      [ ] 1130/1140/1150/2050/2100/2300: tender-specific standalone line-এ Ref. blank আছে?<br/>
+      [ ] 1150 Retention: পুরনো balance-এর follow-up list আছে?<br/>
+      [ ] 2100 Advance: deduction schedule-এর সাথে balance মেলে?<br/>
+      [ ] 5700 Interest: bank statement অনুযায়ী post হয়েছে?<br/>
+      [ ] BG Register: expiry/release date review হয়েছে?<br/>
+      [ ] Completed Project + retention settled? Inactive হয়েছে?<br/>
+      [ ] 5টি active Project: Customer Code = Project PE CODE sample check করেছি?
+    </p></div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">MONTH-END AUDIT PROTOCOL</span><span class="slide-num">48 / 50</span></div>
+</section>
+
+<!-- SLIDE 49 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">48 · PRINT THEME GOVERNANCE</div><h2 class="slide-main-title">Procurement Print Theme — Safe Rule</h2></div>
+  <div class="slide-body-scroll">
+    <div class="card green" style="margin-bottom:10px;"><p>• Approved theme direction = stateless<br/>• One document-view payload only<br/>• No document UUID decoder<br/>• No secondary payment/project/customer/item enrichment calls<br/>• No hard-coded customer/project/custom-field UUIDs</p></div>
+    <div class="callout gold"><b>Approved baseline:</b> <code>PROCUREMENT-LEDGER-V1.8.0-STATELESS.html</code><br/><b>Operator instruction:</b> printout-এ তথ্য missing হলে fake description লিখবেন না; administrator-কে জানান।</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">THEME INTEGRITY MANDATE</span><span class="slide-num">49 / 50</span></div>
+</section>
+
+<!-- SLIDE 50 -->
+<section class="slide-frame">
+  <div class="top-brand-band"></div>
+  <div class="slide-header"><div class="eyebrow-tag">49 · OPERATOR DESK CARD</div><h2 class="slide-main-title">Operator Desk Card — Do's & Don'ts</h2></div>
+  <div class="slide-body-scroll">
+    <div class="grid-2">
+      <div class="card green"><h3>✓ সঠিক কাজ</h3><p>• Customer check ও Project একই সময়ে তৈরি করুন<br/>• আলাদা office হলে আলাদা Customer খুলুন<br/>• Customer Code হুবহু Project PE CODE-এ কপি করুন<br/>• Standard item prefix দিয়ে search করুন<br/>• Mobilization Advance-কে 2100 Liability হিসেবে রাখুন<br/>• Approved stateless print theme ব্যবহার করুন</p></div>
+      <div class="card red"><h3>✗ ভুল কাজ</h3><p>• Customer Name-এ Tender ID লিখবেন না<br/>• NOA-এর আগে Dummy Project খুলবেন না<br/>• Sales Invoice লাইনে Ref. লিখবেন না<br/>• BG-only হলে fake cash-margin entry করবেন না<br/>• Retention release-কে নতুন Revenue বলবেন না<br/>• Time Loan interest tag করবেন না<br/>• Enriched theme live-এ inject করবেন না</p></div>
+    </div>
+    <div class="callout" style="margin-top:8px;"><b>Closing line:</b> Setup থেকে closeout পর্যন্ত — clean Customer, clean Project, correct Ref., correct item, and safe print theme.</div>
+  </div>
+  <div class="slide-bottom-bar"><span class="tagline">INSPIRON TECH · MD ABU HASAN · Visualized by ARTIFACT-FORGE</span><span class="slide-num">50 / 50</span></div>
+</section>
+
+</div>
+<div class="deck-controller"><button id="btn-prev" onclick="advanceSlide(-1)">← Prev</button><span class="slide-indicator" id="slide-indicator">01 / 50</span><button id="btn-next" onclick="advanceSlide(1)">Next →</button></div>
+<script>
+let currentIdx=0;const frames=document.querySelectorAll('.slide-frame');const ind=document.getElementById('slide-indicator');const bp=document.getElementById('btn-prev'),bn=document.getElementById('btn-next');
+function render(i){frames.forEach((f,x)=>f.classList.toggle('active',x===i));ind.textContent=`${String(i+1).padStart(2,'0')} / 50`;bp.disabled=i===0;bn.disabled=i===frames.length-1;window.scrollTo(0,0)}
+function advanceSlide(d){const n=currentIdx+d;if(n>=0&&n<frames.length){currentIdx=n;render(currentIdx)}}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();advanceSlide(1)}else if(e.key==='ArrowLeft'){e.preventDefault();advanceSlide(-1)}});
+render(0);
+</script>
+
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+  Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
+  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
+  <br/><br/>
+  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+</footer>
+</body>
+</html>

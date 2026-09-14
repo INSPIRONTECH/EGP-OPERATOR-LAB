@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manager.io e-GP Operator Training System — INSPIRON TECH</title>
+<meta name="description" content="Interactive Manager.io accounting training tools for Bangladesh e-GP contractors — built by INSPIRON TECH, Bangladesh's only listed Manager.io Advisor." />
+<meta name="robots" content="index,follow" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="INSPIRON TECH" />
+<meta property="og:title" content="Manager.io e-GP Operator Training System — INSPIRON TECH" />
+<meta property="og:description" content="Interactive e-GP accounting training, workflow tools, decision simulators, and certification practice for Bangladesh government contractors." />
+<meta property="og:url" content="https://egp.inspiron.tech/" />
+<meta property="og:image" content="https://egp.inspiron.tech/og-egp-operator-portal.png" />
+<meta property="og:image:width" content="1376" />
+<meta property="og:image:height" content="768" />
+<meta property="og:image:alt" content="INSPIRON TECH — Manager.io e-GP Operator Training System" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Manager.io e-GP Operator Training System — INSPIRON TECH" />
+<meta name="twitter:description" content="Interactive e-GP accounting training tools for Bangladesh government contractors." />
+<meta name="twitter:image" content="https://egp.inspiron.tech/og-egp-operator-portal.png" />
+<link rel="canonical" href="https://egp.inspiron.tech/" />
+<style>
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Ultra.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+:root{--bg:#eef2f6;--paper:#fff;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#dbe3ea;--cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--gold:#d97706;--gold-d:#b45309;--gold-w:#fffbeb;--gold-b:#fde68a;--green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);min-height:100vh}.bn{font-family:var(--font-bn)}
+.hero{background:radial-gradient(circle at 20% 0%,var(--cyan-w) 0%,#fff 55%,var(--gold-w) 100%);border-bottom:1px solid var(--line);padding:clamp(50px,7vw,90px) max(20px,8vw) 60px}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--cyan-d);text-transform:uppercase;display:flex;align-items:center;gap:7px;margin-bottom:10px}.eyebrow:before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.hero h1{font-size:clamp(34px,4.2vw,62px);line-height:1.05;margin:0 0 14px;font-weight:900}.hero .bn{font-family:var(--font-bn);font-size:clamp(18px,1.5vw,24px);color:var(--cyan-d);margin:0 0 16px}.hero p{font-family:var(--font-bn);font-size:clamp(15px,1.15vw,19px);line-height:1.6;color:var(--muted);max-width:760px;margin:0}
+.status-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.status-chip{padding:8px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--ink2)}.status-chip b{color:var(--cyan-d)}
+.app{max-width:1320px;margin:auto;padding:50px max(20px,6vw) 90px}
+.section-title{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}.section-title h2{font-size:clamp(22px,2.2vw,32px);margin:0;font-weight:900}.section-title .step{font-size:13px;font-weight:900;color:var(--gold-d);background:var(--gold-w);border:1px solid var(--gold-b);padding:4px 10px;border-radius:999px}
+.section-desc{font-family:var(--font-bn);font-size:15px;color:var(--muted);line-height:1.5;margin:0 0 22px;max-width:800px}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:56px}
+.tool-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:.18s;position:relative;overflow:hidden}
+.tool-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(2,132,199,.13);border-color:var(--cyan-b)}
+.tool-card .badge{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;width:max-content;margin-bottom:12px}
+.badge.core{background:var(--cyan-w);color:var(--cyan-d);border:1px solid var(--cyan-b)}
+.badge.practice{background:var(--gold-w);color:var(--gold-d);border:1px solid var(--gold-b)}
+.badge.reference{background:#f1f5f9;color:var(--ink2);border:1px solid var(--line)}
+.badge.gate{background:var(--green-w);color:var(--green);border:1px solid var(--green-b)}
+.tool-card h3{margin:0 0 8px;font-size:19px}
+.tool-card p{font-family:var(--font-bn);font-size:14px;line-height:1.5;color:var(--muted);margin:0 0 16px;flex:1}
+.tool-card .open{font-size:13px;font-weight:900;color:var(--cyan-d);display:flex;align-items:center;gap:5px}
+.tool-card .filename{margin-top:10px;padding:8px 10px;background:#f8fafc;border:1px solid var(--line);border-radius:6px;font-size:11px;color:var(--muted);word-break:break-all}
+.pathway{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px;margin-bottom:56px}
+.pathway h2{margin:0 0 8px;font-size:24px}
+.pathway p{font-family:var(--font-bn);color:var(--muted);font-size:15px;line-height:1.55;margin:0 0 22px}
+.pathway-steps{display:flex;gap:0;flex-wrap:wrap}
+.pstep{flex:1;min-width:150px;padding:16px;border:1px solid var(--line);background:#fafbfc;position:relative}
+.pstep:not(:last-child):after{content:'→';position:absolute;right:-15px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:22px;font-weight:900;z-index:2;background:#fff;padding:0 3px}
+.pstep .pnum{font-size:12px;font-weight:900;color:var(--gold-d)}
+.pstep h4{margin:5px 0;font-size:15px;color:var(--cyan-d)}
+.pstep p{font-family:var(--font-bn);font-size:12.5px;color:var(--muted);margin:0;line-height:1.4}
+.footer{text-align:center;padding:36px 20px;border-top:3px solid;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:var(--muted);line-height:1.9}
+.footer strong{color:var(--ink);font-weight:900}
+.footer a{color:var(--cyan-d);font-weight:800;text-decoration:none}
+.footer a:hover,.footer a:focus{color:var(--gold-d);text-decoration:underline}
+.locked-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:56px}
+.locked-item{padding:12px 14px;border-left:4px solid var(--cyan);background:var(--cyan-w);border-radius:0 7px 7px 0;font-family:var(--font-bn);font-size:13.5px;line-height:1.5}
+@media(max-width:1000px){.card-grid{grid-template-columns:repeat(2,1fr)}.locked-list{grid-template-columns:1fr}}
+@media(max-width:680px){.card-grid{grid-template-columns:1fr}.pathway-steps{flex-direction:column}.pstep:not(:last-child):after{content:'↓';right:auto;left:50%;top:auto;bottom:-19px;transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="eyebrow">INSPIRON TECH · Manager.io e-GP Operator Training System · v2.2</div>
+  <h1>Manager.io e-GP<br/>Operator Portal</h1>
+  <p class="bn">বাংলাদেশ e-GP contractor accounting-এর সম্পূর্ণ training ও operations ecosystem — এক জায়গায়। SOP পড়া থেকে শুরু করে, system বোঝা, practice করা, এবং certification পাওয়া পর্যন্ত সবকিছু এখানে সংযুক্ত।</p>
+  <div class="status-row">
+    <div class="status-chip">Architecture: <b>Option A Locked</b></div>
+    <div class="status-chip">Sales Invoice-Line Ref.: <b>NO</b></div>
+    <div class="status-chip">Print Theme: <b>V1.8.0 Stateless</b></div>
+    <div class="status-chip">Tools Connected: <b>8</b></div>
+  </div>
+</section>
+
+<main class="app">
+
+  <!-- PATHWAY -->
+  <div class="pathway">
+    <h2>Recommended Learning Pathway</h2>
+    <p class="bn">নতুন operator হলে এই ক্রমে অগ্রসর হন। প্রতিটি পর্যায় আগেরটির উপর ভিত্তি করে তৈরি।</p>
+    <div class="pathway-steps">
+      <div class="pstep"><div class="pnum">STEP 1</div><h4>Read the SOP</h4><p>e-GP glossary, NOA Day Rule, workflows।</p></div>
+      <div class="pstep"><div class="pnum">STEP 2</div><h4>See the System Map</h4><p>Operations Atlas দিয়ে পুরো architecture দেখুন।</p></div>
+      <div class="pstep"><div class="pnum">STEP 3</div><h4>Understand Effects</h4><p>Accounting X-Ray দিয়ে প্রতিটি entry-এর প্রভাব দেখুন।</p></div>
+      <div class="pstep"><div class="pnum">STEP 4</div><h4>Practice Decisions</h4><p>Tender Path Trainer দিয়ে scenario অনুশীলন করুন।</p></div>
+      <div class="pstep"><div class="pnum">STEP 5</div><h4>Practice Forms</h4><p>Living Ledger Simulator-এ নিজে entry দিন।</p></div>
+      <div class="pstep"><div class="pnum">STEP 6</div><h4>Certification Preview</h4><p>১৫টি scenario-based assessment preview করুন। Official certification rollout later.</p></div>
+    </div>
+  </div>
+
+  <!-- CORE DOCUMENTATION -->
+  <div class="section-title"><h2>Core Documentation</h2><span class="step">START HERE</span></div>
+  <p class="section-desc">লিখিত SOP এবং item catalog — সবকিছুর ভিত্তি। প্রতিটি interactive tool এই দুটি document-এর উপর ভিত্তি করে তৈরি।</p>
+  <div class="card-grid">
+    <a class="tool-card" href="sop-manual.html"><span class="badge reference">SOP Document</span><h3>Operator SOP Manual</h3><p>e-GP glossary, NOA Day Rule, daily workflows, month-end controls, item catalog references — সম্পূর্ণ Bangla+English SOP।</p><div class="filename">sop-manual.html</div><span class="open">Open Document →</span></a>
+    <a class="tool-card" href="item-catalog.html"><span class="badge reference">Item Catalog</span><h3>Non-Inventory Item Reference</h3><p>সব TND/TS/PS/MOB/RET/TL/BANK item, account mapping, ও unit রেফারেন্স।</p><div class="filename">item-catalog.html</div><span class="open">Open Document →</span></a>
+    <a class="tool-card" href="slide-deck-source.html"><span class="badge reference">NotebookLM Source</span><h3>50-Slide Deck Source</h3><p>Verbatim slide-by-slide content — NotebookLM অথবা কোনো slide generator-এর জন্য single source of truth।</p><div class="filename">slide-deck-source.html</div><span class="open">Open Document →</span></a>
+  </div>
+
+  <!-- TRAINING PRESENTATIONS -->
+  <div class="section-title"><h2>Training Presentations</h2><span class="step">DEEP DIVE</span></div>
+  <p class="section-desc">দুটি full-length training format — scrollable narrative guide এবং 50-slide operations deck। Bookmark করুন এবং নিজের গতিতে পড়ুন।</p>
+  <div class="card-grid">
+    <a class="tool-card" href="Manager_io_eGP_Operations_Guide_Scrollytelling_v2.2.html"><span class="badge core">Narrative Guide</span><h3>Operations Guide</h3><p>Scrollytelling format-এ পুরো e-GP lifecycle — Chapter by chapter: Before NOA, NOA Day, Site Work, RA Bill, BG, Month-End Controls। পড়তে পড়তে শিখুন।</p><div class="filename">Manager_io_eGP_Operations_Guide_Scrollytelling_v2.2.html</div><span class="open">Read Guide →</span></a>
+    <a class="tool-card" href="Manager_io_eGP_Operations_Manual_v2.2_EditorialSVG_50Slides.html"><span class="badge core">50-Slide Deck</span><h3>Operations Manual Deck</h3><p>৫০টি editorial SVG slide — প্রতিটি transaction, account effect, tagging rule, এবং workflow একটি presentable deck format-এ। Share করুন বা self-study করুন।</p><div class="filename">Manager_io_eGP_Operations_Manual_v2.2_EditorialSVG_50Slides.html</div><span class="open">Open Deck →</span></a>
+  </div>
+
+  <!-- SYSTEM UNDERSTANDING -->
+  <div class="section-title"><h2>System Understanding</h2><span class="step">STEP 2–3</span></div>
+  <p class="section-desc">পুরো architecture একবারে দেখুন এবং প্রতিটি entry-এর hidden accounting effect বুঝুন।</p>
+  <div class="card-grid">
+    <a class="tool-card" href="Manager_io_eGP_Operations_Atlas_v2.2.html"><span class="badge core">System Map</span><h3>Operations Atlas</h3><p>Tender lifecycle, PE/Customer layer, RA Bill engine, Treasury layer — একটি clickable visual map। ৫টি mode: Journey, Accounts, Tagging, Items, Controls।</p><div class="filename">Manager_io_eGP_Operations_Atlas_v2.2.html</div><span class="open">Open Tool →</span></a>
+    <a class="tool-card" href="Manager_io_eGP_Accounting_XRay_v2.2.html"><span class="badge core">Effect Lab</span><h3>Accounting X-Ray</h3><p>১২টি real transaction বেছে নিয়ে দেখুন Balance Sheet, P&L, Project profitability-এ ঠিক কী পরিবর্তন হয়।</p><div class="filename">Manager_io_eGP_Accounting_XRay_v2.2.html</div><span class="open">Open Tool →</span></a>
+    <a class="tool-card" href="Manager_io_eGP_Tender_Command_Center_v2.2.html"><span class="badge core">Lookup Tool</span><h3>Tender Command Center</h3><p>৬টি operational door: Before NOA, NOA Day, Site Work, RA Bill, Security &amp; BG, Month-End। তাৎক্ষণিক transaction lookup।</p><div class="filename">Manager_io_eGP_Tender_Command_Center_v2.2.html</div><span class="open">Open Tool →</span></a>
+  </div>
+
+  <!-- PRACTICE -->
+  <div class="section-title"><h2>Guided Practice</h2><span class="step">STEP 4–5</span></div>
+  <p class="section-desc">সিদ্ধান্ত নেওয়া এবং ফর্ম পূরণ করার বাস্তব অনুশীলন — সবকিছু নিরাপদ sandbox-এ, কোনো live data প্রভাবিত হয় না।</p>
+  <div class="card-grid">
+    <a class="tool-card" href="Manager_io_eGP_Tender_Path_Trainer_v2.2.html"><span class="badge practice">Decision Game</span><h3>Tender Path Trainer</h3><p>দুটি path: Without Time Loan ও Active Time Loan Facility। প্রতিটি stage-এ সিদ্ধান্ত নিন, immediate feedback পান।</p><div class="filename">Manager_io_eGP_Tender_Path_Trainer_v2.2.html</div><span class="open">Open Tool →</span></a>
+    <a class="tool-card" href="Manager_io_eGP_Living_Ledger_Simulator_v2.2.html"><span class="badge practice">Form Sandbox</span><h3>Living Ledger Simulator</h3><p>Fake Manager.io interface-এ নিজে Payment, Receipt, Sales Invoice, Journal Entry পূরণ করুন। Live validation ও mini reports সহ।</p><div class="filename">Manager_io_eGP_Living_Ledger_Simulator_v2.2.html</div><span class="open">Open Tool →</span></a>
+    <a class="tool-card" href="Manager_io_eGP_Operator_Certification_v2.2.html"><span class="badge gate">Preview Assessment</span><h3>Operator Certification Console</h3><p>১৫টি real case। শেষে একটি Certification Report — Cleared for Supervised Live Entry কি না তা নির্ধারণ করে।</p><div class="filename">Manager_io_eGP_Operator_Certification_v2.2.html</div><span class="open">Open Tool →</span></a>
+  </div>
+
+  <!-- LOCKED RULES -->
+  <div class="section-title"><h2>Locked System Rules</h2><span class="step">ALWAYS TRUE</span></div>
+  <p class="section-desc">এই নিয়মগুলো প্রতিটি tool-এ সামঞ্জস্যপূর্ণভাবে প্রয়োগ করা হয়েছে।</p>
+  <div class="locked-list">
+    <div class="locked-item"><b>NOA Day:</b> Customer (if missing) + Project তৈরি হয় একই সময়ে; Customer Code = Project PE CODE exact match।</div>
+    <div class="locked-item"><b>Tagging:</b> Site P&L cost/income → Project। Standalone tender-specific Balance Sheet movement → Ref. = PE-TenderID। Company-wide/unsplittable → both blank।</div>
+    <div class="locked-item"><b>Sales Invoice Policy:</b> Sales Invoice-Line Ref. = NO। Invoice Header Customer + Project পুরো context বহন করে।</div>
+    <div class="locked-item"><b>Time Loan Interest:</b> Account 5700 সবসময় untagged — Project blank, Ref blank।</div>
+    <div class="locked-item"><b>BG Face Value:</b> BG-only হলে ledger-এ কোনো cash-margin entry হবে না; শুধু BG Register track করবে।</div>
+    <div class="locked-item"><b>Print Theme:</b> Approved production baseline = PROCUREMENT-LEDGER-V1.8.0-STATELESS.html। Enriched themes deploy করা যাবে না।</div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <strong>INSPIRON TECH</strong> · Built by MD ABU HASAN<br/>
+  Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
+  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+  &nbsp;·&nbsp;
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer">inspiron.tech</a>
+  <br/><br/>
+  <small>Educational demonstration only. Static, client-side tools — no live Manager.io data connection.</small>
+</footer>
+
+<script>
+function notice(name){alert('This is a Markdown reference document:\n\n'+name+'\n\nOpen it directly from your Project Files panel — this portal links to interactive HTML tools only.');return false}
+</script>
+</body>
+</html>

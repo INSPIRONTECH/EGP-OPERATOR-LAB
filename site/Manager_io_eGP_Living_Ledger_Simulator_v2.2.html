@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manager.io e-GP Living Ledger Simulator — INSPIRON TECH</title>
+<style>
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+:root{--bg:#eef2f6;--paper:#fff;--ink:#172033;--muted:#64748b;--line:#dbe3ea;--cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;--amber:#d97706;--amber-w:#fffbeb;--amber-b:#fde68a;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--sidebar:#f8fafc;--font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);min-height:100vh}.bn{font-family:var(--font-bn)}
+.top{height:58px;display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid var(--line);padding:0 22px;position:sticky;top:0;z-index:20}.brand{font-weight:900;font-size:16px}.brand span{color:var(--cyan)}.safe{font-family:var(--font-bn);font-size:12px;color:var(--amber-d);background:var(--amber-w);border:1px solid var(--amber-b);padding:5px 10px;border-radius:999px}
+.app{display:grid;grid-template-columns:220px minmax(0,1fr) 300px;min-height:calc(100vh - 58px)}
+.sidebar{background:var(--sidebar);border-right:1px solid var(--line);padding:18px 12px}.business{padding:12px;border:1px solid var(--cyan-b);background:var(--cyan-w);border-radius:8px;margin-bottom:16px}.business h3{margin:0;color:var(--cyan-d);font-size:14px}.business p{font-family:var(--font-bn);font-size:12px;line-height:1.45;color:var(--muted);margin:5px 0 0}.navitem{padding:10px 12px;border-radius:6px;font-size:14px;font-weight:700;color:var(--muted);cursor:pointer;margin-bottom:4px}.navitem:hover{background:#eaf6fc;color:var(--cyan-d)}.navitem.active{background:var(--cyan);color:#fff}.navitem .icon{display:inline-block;width:22px;text-align:center}.reset{margin-top:16px;width:100%;border:1px solid var(--red-b);background:var(--red-w);color:var(--red);padding:8px;border-radius:6px;font-family:var(--font-en);font-weight:800;font-size:12px;cursor:pointer}
+.main{padding:26px;min-width:0}.page-tag{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--cyan-d);text-transform:uppercase;margin-bottom:4px}.page-title{font-size:28px;margin:0 0 6px}.page-desc{font-family:var(--font-bn);font-size:15px;color:var(--muted);line-height:1.5;margin:0 0 20px}.workspace{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}.workspace-head{padding:14px 18px;background:#f8fafc;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.workspace-head h2{margin:0;font-size:18px}.workspace-head .doc{font-size:12px;color:var(--muted)}.form{padding:18px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:11px;font-weight:900;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}.field input,.field select{padding:10px 12px;border:1px solid var(--line);border-radius:6px;font-family:var(--font-en);font-size:14px;color:var(--ink);background:#fff}.field input:disabled{background:#f1f5f9;color:#94a3b8}.hint{font-family:var(--font-bn);font-size:12px;color:var(--muted);margin-top:2px}.warning{display:none;margin-top:12px;padding:10px 12px;background:var(--amber-w);border-left:4px solid var(--amber);font-family:var(--font-bn);font-size:13px;line-height:1.45}.warning.show{display:block}.warning.error{background:var(--red-w);border-color:var(--red);color:var(--red)}.form-actions{margin-top:18px;display:flex;gap:10px;align-items:center}.create{background:var(--cyan);color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:900;font-family:var(--font-en);cursor:pointer}.create:hover{background:var(--cyan-d)}.clear{background:#fff;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:10px 14px;font-weight:800;font-family:var(--font-en);cursor:pointer}
+.form-screen{display:none}.form-screen.active{display:block}.empty{padding:36px;text-align:center;color:var(--muted);font-family:var(--font-bn)}
+.right{background:#fff;border-left:1px solid var(--line);padding:18px;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto}.right h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}.metric{border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:9px}.metric .name{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}.metric .value{font-size:20px;font-weight:900;margin-top:4px}.metric.good .value{color:var(--green)}.metric.info .value{color:var(--cyan-d)}.metric.gold .value{color:var(--amber)}.ledger{margin-top:22px}.feed{display:flex;flex-direction:column;gap:8px}.feed-item{padding:10px;border-radius:7px;border:1px solid var(--line);font-family:var(--font-bn);font-size:12px;line-height:1.45}.feed-item.ok{background:var(--green-w);border-color:var(--green-b)}.feed-item.warn{background:var(--amber-w);border-color:var(--amber-b)}.feed-item.bad{background:var(--red-w);border-color:var(--red-b)}.feed-item .meta{font-family:var(--font-en);font-weight:900;font-size:11px;margin-bottom:3px}.rules{margin-top:20px}.rule{padding:8px 10px;border-left:3px solid var(--cyan);background:var(--cyan-w);font-family:var(--font-bn);font-size:12px;line-height:1.4;margin-bottom:7px}.rule.gold{border-color:var(--amber);background:var(--amber-w)}
+.table-wrap{padding:0 18px 18px;overflow-x:auto}.ledger-table{width:100%;border-collapse:collapse;font-size:13px}.ledger-table th{background:#f8fafc;text-align:left;padding:9px;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.ledger-table td{padding:9px;border-bottom:1px solid #eef1f5}.ledger-table tr:last-child td{border-bottom:0}code{font-family:var(--font-en);font-weight:800;color:var(--cyan-d);background:var(--cyan-w);border:1px solid var(--cyan-b);border-radius:4px;padding:2px 5px;font-size:.9em}
+@media(max-width:1050px){.app{grid-template-columns:180px 1fr}.right{display:none}}@media(max-width:700px){.app{grid-template-columns:1fr}.sidebar{display:flex;overflow-x:auto;gap:4px;padding:10px;position:sticky;top:58px;z-index:15;border-bottom:1px solid var(--line);border-right:0}.business,.reset{display:none}.navitem{white-space:nowrap;margin:0}.main{padding:18px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.top{padding:0 16px}.safe{display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand">Manager.io <span>Living Ledger</span></div><div class="safe">Sandbox only · No real Manager.io data is changed</div></header>
+<div class="app">
+  <aside class="sidebar">
+    <div class="business"><h3>Sandbox Tender</h3><p><b>Customer:</b> LGED-BSL<br><b>Project:</b> JHLKT-RoadRehab-LGED-1142857<br><b>Stage:</b> Post-NOA Training</p></div>
+    <div class="navitem active" data-form="payment"><span class="icon">💸</span> Payments</div>
+    <div class="navitem" data-form="receipt"><span class="icon">💰</span> Receipts</div>
+    <div class="navitem" data-form="sales"><span class="icon">🧾</span> Sales Invoices</div>
+    <div class="navitem" data-form="purchase"><span class="icon">📦</span> Purchase Invoices</div>
+    <div class="navitem" data-form="journal"><span class="icon">📓</span> Journal Entries</div>
+    <div class="navitem" data-form="ledger"><span class="icon">📊</span> Live Ledger</div>
+    <button class="reset" id="resetBtn">↺ Reset Sandbox</button>
+  </aside>
+  <main class="main">
+    <!-- PAYMENT -->
+    <section class="form-screen active" id="form-payment">
+      <div class="page-tag">Sandbox Form · Post simulated transaction</div><h1 class="page-title">New Payment</h1><p class="page-desc">Cash out transaction। Item নির্বাচন করলে Account route হবে। Balance Sheet account হলে Project automatically disabled হবে।</p>
+      <div class="workspace"><div class="workspace-head"><h2>Payment Voucher</h2><span class="doc">Practice mode</span></div><div class="form">
+        <div class="form-grid">
+          <div class="field"><label>Paid From</label><select id="payBank"><option value="bank">Bank — SBAC Operating</option><option value="cash">Hand Cash</option></select></div>
+          <div class="field"><label>Payee / Description</label><input id="payee" placeholder="e.g. SBAC Bank / Supplier" /></div>
+          <div class="field full"><label>Non-inventory Item</label><select id="paymentItem"></select><div class="hint" id="payItemHint">Select an item to auto-route Account.</div></div>
+          <div class="field"><label>Account</label><input id="paymentAccount" disabled /></div>
+          <div class="field"><label>Amount (BDT)</label><input id="paymentAmount" type="number" min="0" placeholder="e.g. 100000" /></div>
+          <div class="field"><label>Project</label><select id="paymentProject"></select><div class="hint" id="payProjectHint"></div></div>
+          <div class="field"><label>Ref.</label><input id="paymentRef" placeholder="e.g. LGED-1142857" /><div class="hint" id="payRefHint"></div></div>
+        </div>
+        <div class="warning" id="paymentWarning"></div>
+        <div class="form-actions"><button class="create" id="postPayment">Create Payment</button><button class="clear" data-clear="payment">Clear Form</button></div>
+      </div></div>
+    </section>
+    <!-- RECEIPT -->
+    <section class="form-screen" id="form-receipt">
+      <div class="page-tag">Sandbox Form · Post simulated transaction</div><h1 class="page-title">New Receipt</h1><p class="page-desc">Money received from PE, security release, retention release, or other sources.</p>
+      <div class="workspace"><div class="workspace-head"><h2>Receipt Voucher</h2><span class="doc">Practice mode</span></div><div class="form">
+        <div class="form-grid">
+          <div class="field"><label>Received Into</label><select id="recBank"><option value="bank">Bank — SBAC Operating</option><option value="cash">Hand Cash</option></select></div>
+          <div class="field"><label>Received From</label><input id="recFrom" placeholder="e.g. LGED / PWD" /></div>
+          <div class="field full"><label>Transaction / Item</label><select id="receiptItem"></select><div class="hint" id="recItemHint">Select an item to auto-route Account.</div></div>
+          <div class="field"><label>Account</label><input id="receiptAccount" disabled /></div>
+          <div class="field"><label>Amount (BDT)</label><input id="receiptAmount" type="number" min="0" placeholder="e.g. 150000" /></div>
+          <div class="field"><label>Project</label><select id="receiptProject"></select><div class="hint" id="recProjectHint"></div></div>
+          <div class="field"><label>Ref.</label><input id="receiptRef" placeholder="e.g. LGED-1142857" /><div class="hint" id="recRefHint"></div></div>
+        </div>
+        <div class="warning" id="receiptWarning"></div>
+        <div class="form-actions"><button class="create" id="postReceipt">Create Receipt</button><button class="clear" data-clear="receipt">Clear Form</button></div>
+      </div></div>
+    </section>
+    <!-- SALES INVOICE -->
+    <section class="form-screen" id="form-sales">
+      <div class="page-tag">Sandbox Form · RA Bill practice</div><h1 class="page-title">New Sales Invoice — RA Bill</h1><p class="page-desc">Gross work, retention and Mobilization Advance recovery আলাদা line হিসেবে দিন। Locked policy: Sales Invoice-Line Ref. = NO.</p>
+      <div class="workspace"><div class="workspace-head"><h2>Sales Invoice / RA Bill</h2><span class="doc">Project context on header</span></div><div class="form">
+        <div class="form-grid">
+          <div class="field"><label>Customer</label><select id="salesCustomer"><option value="LGED-BSL">LGED-BSL</option><option value="PWD-BSL">PWD-BSL</option></select></div>
+          <div class="field"><label>Project</label><select id="salesProject"><option value="JHLKT-RoadRehab-LGED-1142857">JHLKT-RoadRehab-LGED-1142857</option><option value="BAKRGNJ-Building-PWD-1153409">BAKRGNJ-Building-PWD-1153409</option></select></div>
+          <div class="field"><label>Cert. No.</label><input id="certNo" placeholder="e.g. RA-02" /></div>
+          <div class="field"><label>Gross Work (4000)</label><input id="salesGross" type="number" min="0" value="1500000" /></div>
+          <div class="field"><label>Retention Withheld (1150)</label><input id="salesRetention" type="number" min="0" value="150000" /></div>
+          <div class="field"><label>Advance Recovery (2100)</label><input id="salesAdvance" type="number" min="0" value="300000" /></div>
+        </div>
+        <div class="warning show" id="salesWarning">Locked Policy: Sales Invoice-Line Ref. = NO. Customer + Project header context carries the tender identity.</div>
+        <div class="form-actions"><button class="create" id="postSales">Create Sales Invoice</button><button class="clear" data-clear="sales">Clear Form</button></div>
+      </div></div>
+    </section>
+    <!-- PURCHASE INVOICE -->
+    <section class="form-screen" id="form-purchase">
+      <div class="page-tag">Sandbox Form · Direct cost practice</div><h1 class="page-title">New Purchase Invoice</h1><p class="page-desc">Supplier bill for materials, subcontractor cost, equipment rental, or other direct Project cost.</p>
+      <div class="workspace"><div class="workspace-head"><h2>Purchase Invoice</h2><span class="doc">Direct cost routing</span></div><div class="form">
+        <div class="form-grid">
+          <div class="field"><label>Supplier</label><input id="supplier" placeholder="e.g. ABC Traders" /></div>
+          <div class="field"><label>Item</label><select id="purchaseItem"></select></div>
+          <div class="field"><label>Account</label><input id="purchaseAccount" disabled /></div>
+          <div class="field"><label>Amount (BDT)</label><input id="purchaseAmount" type="number" min="0" placeholder="e.g. 200000" /></div>
+          <div class="field"><label>Project</label><select id="purchaseProject"></select><div class="hint">Direct cost item = Project required.</div></div>
+          <div class="field"><label>Ref.</label><input id="purchaseRef" disabled placeholder="Not used on P&L direct cost" /></div>
+        </div>
+        <div class="warning" id="purchaseWarning"></div>
+        <div class="form-actions"><button class="create" id="postPurchase">Create Purchase Invoice</button><button class="clear" data-clear="purchase">Clear Form</button></div>
+      </div></div>
+    </section>
+    <!-- JOURNAL -->
+    <section class="form-screen" id="form-journal">
+      <div class="page-tag">Sandbox Form · Adjustment practice</div><h1 class="page-title">Journal Entry</h1><p class="page-desc">Use only for approved adjustments. Not for Bank-to-Bank transfer. Project is blocked on Balance Sheet accounts; Ref. is required for tender-specific movement.</p>
+      <div class="workspace"><div class="workspace-head"><h2>Journal Entry</h2><span class="doc">Adjustment only</span></div><div class="form">
+        <div class="form-grid">
+          <div class="field"><label>Debit Account</label><select id="journalDebit"></select></div>
+          <div class="field"><label>Credit Account</label><select id="journalCredit"></select></div>
+          <div class="field"><label>Amount (BDT)</label><input id="journalAmount" type="number" min="0" placeholder="e.g. 50000" /></div>
+          <div class="field"><label>Ref.</label><input id="journalRef" placeholder="e.g. LGED-1142857" /></div>
+          <div class="field full"><label>Narration</label><input id="journalNarration" placeholder="Explain approved adjustment" /></div>
+        </div>
+        <div class="warning" id="journalWarning"></div>
+        <div class="form-actions"><button class="create" id="postJournal">Create Journal Entry</button><button class="clear" data-clear="journal">Clear Form</button></div>
+      </div></div>
+    </section>
+    <!-- LEDGER -->
+    <section class="form-screen" id="form-ledger">
+      <div class="page-tag">Sandbox Audit Trail</div><h1 class="page-title">Live Simulated Ledger</h1><p class="page-desc">সব practice entry এখানে দেখা যাবে। এই data browser refresh করলে reset হবে।</p>
+      <div class="workspace"><div class="workspace-head"><h2>Transaction Ledger</h2><span class="doc" id="ledgerCount">0 entries</span></div><div class="table-wrap"><table class="ledger-table"><thead><tr><th>#</th><th>Type</th><th>Item / Account</th><th>Project / Ref.</th><th>Amount</th><th>Status</th></tr></thead><tbody id="ledgerRows"><tr><td colspan="6" class="empty">No practice entries yet. Use the forms to create a simulated transaction.</td></tr></tbody></table></div></div>
+    </section>
+  </main>
+  <aside class="right">
+    <h3>Live Mini Reports</h3>
+    <div class="metric info"><div class="name">Bank Balance</div><div class="value" id="mBank">৳ 0</div></div>
+    <div class="metric gold"><div class="name">Tender Security Margin</div><div class="value" id="mTS">৳ 0</div></div>
+    <div class="metric gold"><div class="name">Performance Security Margin</div><div class="value" id="mPS">৳ 0</div></div>
+    <div class="metric good"><div class="name">Retention Receivable</div><div class="value" id="mRetention">৳ 0</div></div>
+    <div class="metric gold"><div class="name">Mobilization Advance Liability</div><div class="value" id="mAdvance">৳ 0</div></div>
+    <div class="metric"><div class="name">Contract Revenue</div><div class="value" id="mRevenue">৳ 0</div></div>
+    <div class="ledger"><h3>Supervisor Review Feed</h3><div class="feed" id="feed"><div class="feed-item ok"><div class="meta">READY</div>Sandbox is ready. Post a practice entry to begin.</div></div></div>
+    <div class="rules"><h3>Locked Rules</h3><div class="rule">P&L direct site line → Project</div><div class="rule gold">Tender-specific standalone Balance Sheet → Ref.</div><div class="rule">Sales Invoice-Line Ref. = NO</div><div class="rule gold">5700 Interest = Blank Project + Blank Ref.</div></div>
+  </aside>
+</div>
+<script>
+const PROJECTS=['','JHLKT-RoadRehab-LGED-1142857','BAKRGNJ-Building-PWD-1153409'];
+const paymentItems=[
+  {name:'TND-DOC-FEE · Tender Doc - Submission Fee',acc:'5800 Bidding & Tender Expenses',type:'pnl',tag:'pe',note:'Pre-NOA: Project blank. Ref may use PE code only.'},
+  {name:'TS-CASH-BLOCK · Tender Security Cash Margin',acc:'1130 Tender Security Margin',type:'bs',tag:'ref',note:'Tender-specific Balance Sheet movement: Ref required.'},
+  {name:'TS-BG-COMMISSION · Tender BG Commission',acc:'5710 BG Commission Expense',type:'pnl',tag:'prebid',note:'Pre-NOA P&L cost: Project blank.'},
+  {name:'PS-CASH-BLOCK · Performance Security Cash Margin',acc:'1140 Performance Security Margin',type:'bs',tag:'ref',note:'Tender-specific Balance Sheet movement: Ref required.'},
+  {name:'PS-BG-COMMISSION · Performance BG Commission',acc:'5710 BG Commission Expense',type:'pnl',tag:'project',note:'Single-tender P&L cost: Project required.'},
+  {name:'TL-MONTHLY-ADJUST · Time Loan Interest',acc:'5700 Interest on Time Loan',type:'untagged',tag:'blank',note:'Always untagged: Project blank, Ref blank.'},
+  {name:'BANK-CHARGE-GEN · General Bank Charge',acc:'5720 Bank Charges — Other',type:'untagged',tag:'blank',note:'Company-wide overhead: Project blank, Ref blank.'}
+];
+const receiptItems=[
+  {name:'MOB-RECEIVED · Mobilization Advance Received',acc:'2100 Mobilization Advance Received',type:'bs',tag:'ref',note:'Liability received from PE: Ref required.'},
+  {name:'RET-RELEASE · Retention Release',acc:'1150 Retention Receivable',type:'bs',tag:'ref',note:'Asset released to bank: Ref required.'},
+  {name:'TS-RELEASE · Tender Security Release',acc:'1130 Tender Security Margin',type:'bs',tag:'ref',note:'Security asset returned: Ref required.'},
+  {name:'PS-RELEASE · Performance Security Release',acc:'1140 Performance Security Margin',type:'bs',tag:'ref',note:'Security asset returned: Ref required.'},
+  {name:'Invoice Settlement · Accounts Receivable',acc:'1100 Accounts Receivable',type:'settlement',tag:'none',note:'Settlement inherits invoice metadata: no extra Project / Ref.'}
+];
+const purchaseItems=[
+  {name:'Cement · Direct Material',acc:'5000 Direct Materials'},
+  {name:'MS Rod - 500W · Direct Material',acc:'5000 Direct Materials'},
+  {name:'Sand · Direct Material',acc:'5000 Direct Materials'},
+  {name:'Equipment Rental',acc:'5030 Equipment Allocation'},
+  {name:'Subcontractor Cost',acc:'5020 Subcontractor Cost'}
+];
+const accounts=['1010 Bank — SBAC Operating','1130 Tender Security Margin','1140 Performance Security Margin','1150 Retention Receivable','2100 Mobilization Advance Received','2300 Time Loan Payable','4000 Contract Revenue','5000 Direct Materials','5010 Direct Labor','5020 Subcontractor Cost','5700 Interest on Time Loan','5720 Bank Charges — Other'];
+const state={bank:0,ts:0,ps:0,retention:0,advance:0,revenue:0,entries:[]};
+function opt(select,items){select.innerHTML=items.map((x,i)=>`<option value="${i}">${typeof x==='string'?x:x.name}</option>`).join('')}
+function optProject(select){select.innerHTML=PROJECTS.map(p=>`<option value="${p}">${p||'— Blank —'}</option>`).join('')}
+opt(paymentItem,paymentItems);opt(receiptItem,receiptItems);opt(purchaseItem,purchaseItems);opt(journalDebit,accounts);opt(journalCredit,accounts);optProject(paymentProject);optProject(receiptProject);optProject(purchaseProject);
+function showForm(name){document.querySelectorAll('.form-screen').forEach(x=>x.classList.remove('active'));document.getElementById('form-'+name).classList.add('active');document.querySelectorAll('.navitem').forEach(x=>x.classList.toggle('active',x.dataset.form===name))}
+document.querySelectorAll('.navitem').forEach(x=>x.addEventListener('click',()=>showForm(x.dataset.form)));
+function money(n){return '৳ '+new Intl.NumberFormat('en-IN',{maximumFractionDigits:0}).format(n)}
+function updateMetrics(){mBank.textContent=money(state.bank);mTS.textContent=money(state.ts);mPS.textContent=money(state.ps);mRetention.textContent=money(state.retention);mAdvance.textContent=money(state.advance);mRevenue.textContent=money(state.revenue)}
+function addFeed(kind,heading,text){const d=document.createElement('div');d.className='feed-item '+kind;d.innerHTML=`<div class="meta">${heading}</div>${text}`;feed.prepend(d)}
+function addEntry(type,item,account,project,ref,amount,status='ok',msg=''){state.entries.unshift({type,item,account,project,ref,amount,status,msg});renderLedger();addFeed(status,status==='ok'?'✓ POSTED':'⚠ REVIEW FLAG',msg||`${type}: ${item} · ${account} · ${money(amount)}`)}
+function renderLedger(){ledgerCount.textContent=state.entries.length+' entries';ledgerRows.innerHTML=state.entries.length?state.entries.map((e,i)=>`<tr><td>${state.entries.length-i}</td><td>${e.type}</td><td><b>${e.item}</b><br><small>${e.account}</small></td><td>${e.project||'—'} ${e.ref?'<br><code>'+e.ref+'</code>':''}</td><td>${money(e.amount)}</td><td>${e.status==='ok'?'✓ Posted':'⚠ Flagged'}</td></tr>`).join(''):`<tr><td colspan="6" class="empty">No practice entries yet.</td></tr>`}
+function paymentConfig(){const it=paymentItems[+paymentItem.value];paymentAccount.value=it.acc;payItemHint.textContent=it.note;const isBS=it.type==='bs';const blank=it.tag==='blank'||it.tag==='prebid';paymentProject.disabled=isBS||blank;paymentProject.value='';paymentRef.disabled=it.tag==='blank';if(it.tag==='blank')paymentRef.value='';payProjectHint.textContent=isBS?'Balance Sheet account: Project is unavailable.':blank?'This item is untagged / pre-bid: Project blank.':it.tag==='project'?'Direct tender P&L: Project required.':'Project rule applies.';payRefHint.textContent=it.tag==='ref'?'Ref required: use PE-TenderID.':it.tag==='pe'?'Pre-bid: PE code only allowed.':it.tag==='blank'?'Ref must remain blank.':'';paymentWarning.className='warning'}
+paymentItem.addEventListener('change',paymentConfig);paymentConfig();
+function receiptConfig(){const it=receiptItems[+receiptItem.value];receiptAccount.value=it.acc;recItemHint.textContent=it.note;receiptProject.disabled=true;receiptProject.value='';receiptRef.disabled=it.tag==='none';if(it.tag==='none')receiptRef.value='';recProjectHint.textContent='Receipt balance-sheet settlement: Project unavailable / no extra tag.';recRefHint.textContent=it.tag==='ref'?'Ref required: use PE-TenderID.':'Invoice settlement: no extra Ref.';receiptWarning.className='warning'}
+receiptItem.addEventListener('change',receiptConfig);receiptConfig();
+purchaseItem.addEventListener('change',()=>purchaseAccount.value=purchaseItems[+purchaseItem.value].acc);purchaseAccount.value=purchaseItems[0].acc;
+function validationError(el,msg){el.textContent=msg;el.className='warning show error';return false}
+function clearWarning(el){el.className='warning';el.textContent=''}
+function mustAmount(input,warning){if(!(+input.value>0))return validationError(warning,'Amount দিন। Practice entry post করার আগে BDT amount required।');return true}
+postPayment.addEventListener('click',()=>{const it=paymentItems[+paymentItem.value],amt=+paymentAmount.value;clearWarning(paymentWarning);if(!mustAmount(paymentAmount,paymentWarning))return;let project=paymentProject.value,ref=paymentRef.value.trim();if(it.tag==='ref'&&!ref)return validationError(paymentWarning,'Ref. required — tender-specific Balance Sheet movement-এ PE-TenderID দিন।');if(it.tag==='blank'&&(project||ref))return validationError(paymentWarning,'Locked rule: এই item untaged। Project ও Ref. দুটোই Blank রাখুন।');if(it.tag==='project'&&!project)return validationError(paymentWarning,'Project required — single-tender BG commission P&L cost।');if(it.tag==='pe'&&!ref)return validationError(paymentWarning,'Pre-NOA document fee-তে PE code Ref. দিন (e.g. LGED)।');
+ state.bank-=amt;if(it.acc.startsWith('1130'))state.ts+=amt;if(it.acc.startsWith('1140'))state.ps+=amt;if(it.acc.startsWith('5700')){};updateMetrics();addEntry('Payment',it.name,it.acc,project,ref,amt,'ok');paymentAmount.value='';});
+postReceipt.addEventListener('click',()=>{const it=receiptItems[+receiptItem.value],amt=+receiptAmount.value;clearWarning(receiptWarning);if(!mustAmount(receiptAmount,receiptWarning))return;let project=receiptProject.value,ref=receiptRef.value.trim();if(it.tag==='ref'&&!ref)return validationError(receiptWarning,'Ref. required — tender-specific Balance Sheet receipt-এ PE-TenderID দিন।');if(it.tag==='none'&&(project||ref))return validationError(receiptWarning,'Invoice settlement-এ Project/Ref দ্বিতীয়বার দেবেন না।');state.bank+=amt;if(it.acc.startsWith('2100'))state.advance+=amt;if(it.acc.startsWith('1150'))state.retention-=amt;if(it.acc.startsWith('1130'))state.ts-=amt;if(it.acc.startsWith('1140'))state.ps-=amt;updateMetrics();addEntry('Receipt',it.name,it.acc,project,ref,amt,'ok');receiptAmount.value='';});
+postPurchase.addEventListener('click',()=>{const it=purchaseItems[+purchaseItem.value],amt=+purchaseAmount.value,project=purchaseProject.value;clearWarning(purchaseWarning);if(!mustAmount(purchaseAmount,purchaseWarning))return;if(!project)return validationError(purchaseWarning,'Project required — direct site P&L cost line।');addEntry('Purchase Invoice',it.name,it.acc,project,'',amt,'ok');purchaseAmount.value='';});
+postSales.addEventListener('click',()=>{const gross=+salesGross.value,ret=+salesRetention.value,adv=+salesAdvance.value,project=salesProject.value,cust=salesCustomer.value; if(!(gross>0))return;if(ret>gross||adv>gross)return;state.revenue+=gross;state.retention+=ret;state.advance-=adv;updateMetrics();addEntry('Sales Invoice','RA Bill: Gross / Retention / Advance Recovery','4000 / 1150 / 2100',project,'',gross,'ok',`RA Bill posted. Customer: ${cust}; Project: ${project}; Ref. line: NO (locked policy).`);});
+postJournal.addEventListener('click',()=>{const d=journalDebit.value,c=journalCredit.value,amt=+journalAmount.value,ref=journalRef.value.trim();clearWarning(journalWarning);if(!mustAmount(journalAmount,journalWarning))return;let bs=/1130|1140|1150|2100|2300/.test(d)||/1130|1140|1150|2100|2300/.test(c);if(bs&&!ref)return validationError(journalWarning,'Balance Sheet tender adjustment-এ Ref. required।');if(/Inter Account/.test(d)||/Inter Account/.test(c))return validationError(journalWarning,'Bank transfer Journal Entry দিয়ে করবেন না; Inter Account Transfer form ব্যবহার করুন।');addEntry('Journal Entry',journalNarration.value||'Approved adjustment',`${d} / ${c}`,'',ref,amt,'ok');journalAmount.value='';});
+document.querySelectorAll('[data-clear]').forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.clear;document.querySelectorAll('#form-'+f+' input').forEach(x=>{if(x.type==='number')x.value='';else if(!x.disabled)x.value=''});if(f==='payment')paymentConfig();if(f==='receipt')receiptConfig()}));
+resetBtn.addEventListener('click',()=>{if(!confirm('Reset all simulated entries and balances?'))return;Object.assign(state,{bank:0,ts:0,ps:0,retention:0,advance:0,revenue:0,entries:[]});updateMetrics();renderLedger();feed.innerHTML='<div class="feed-item ok"><div class="meta">RESET COMPLETE</div>Sandbox ledger cleared safely.</div>'});
+updateMetrics();renderLedger();
+</script>
+
+<footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:#64748b;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
+  <strong style="color:#0f172a;font-weight:900">INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+  Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
+  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">Connect on LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" style="color:#0369a1;font-weight:800;text-decoration:none">inspiron.tech</a>
+  <br/><br/>
+  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+</footer>
+</body>
+</html>

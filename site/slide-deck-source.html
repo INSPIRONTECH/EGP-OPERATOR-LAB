@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>50-Slide Deck Source — INSPIRON TECH</title>
+<meta name="description" content="Verbatim slide-by-slide source content of the Manager.io e-GP Operations Manual." />
+<style>
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Bold.woff') format('woff');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Neo Sans Pro';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/NeoSansPro-Ultra.woff') format('woff');font-weight:900;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Li Ador Noirrit';src:url('https://raw.githubusercontent.com/INSPIRONTECH/INSPIRON-TECH/main/public/fonts/LiAdorNoirrit-SemiBold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+:root{--bg:#eef2f6;--paper:#fff;--ink:#0f172a;--ink2:#334155;--muted:#64748b;--line:#dbe3ea;--cyan:#0284c7;--cyan-d:#0369a1;--cyan-w:#f0f9ff;--cyan-b:#bae6fd;--gold:#d97706;--gold-d:#b45309;--gold-w:#fffbeb;--gold-b:#fde68a;--green:#059669;--green-w:#ecfdf5;--green-b:#a7f3d0;--red:#dc2626;--red-w:#fef2f2;--red-b:#fecaca;--font-en:'Neo Sans Pro',sans-serif;--font-bn:'Li Ador Noirrit','Noto Sans Bengali',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);min-height:100vh;display:flex;flex-direction:column}
+.bn{font-family:var(--font-bn)}
+.header{background:#fff;border-bottom:1px solid var(--line);padding:18px clamp(20px,6vw,90px);display:flex;justify-content:space-between;align-items:center}
+.logo-area{display:flex;align-items:center;gap:12px}
+.logo-title{font-size:16px;font-weight:900;letter-spacing:.05em;color:var(--ink)}
+.logo-title span{color:var(--cyan)}
+.nav-back{font-size:13px;font-weight:900;color:var(--cyan-d);text-decoration:none;display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--gold-d)}
+.container{max-width:920px;margin:40px auto;padding:40px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 30px rgba(15,23,42,0.04);flex:1;width:100%}
+.prose{line-height:1.65;font-size:15px;color:var(--ink2)}
+.prose h1, .prose h2, .prose h3, .prose h4{font-family:var(--font-en);color:var(--ink);font-weight:900;margin-top:1.8em;margin-bottom:0.6em;line-height:1.2}
+.prose h1{font-size:32px;border-bottom:2px solid var(--line);padding-bottom:8px;margin-top:0}
+.prose h2{font-size:24px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.prose h3{font-size:19px}
+.prose p{margin:0 0 1.2em;font-family:var(--font-bn);font-size:15px}
+.prose ul, .prose ol{margin:0 0 1.2em;padding-left:22px;font-family:var(--font-bn)}
+.prose li{margin-bottom:0.4em}
+.prose blockquote{margin:1.6em 0;padding:12px 18px;border-left:4px solid var(--cyan);background:var(--cyan-w);border-radius:0 8px 8px 0;font-family:var(--font-bn);font-size:14px;color:var(--ink2)}
+.prose table{width:100%;border-collapse:collapse;margin:1.6em 0;font-size:13.5px;font-family:var(--font-bn)}
+.prose th, .prose td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+.prose th{background:#f8fafc;font-weight:800;color:var(--ink);font-family:var(--font-en)}
+.prose code{font-family:Consolas, Monaco, monospace;background:#f1f5f9;padding:2px 6px;border-radius:4px;font-size:13px;color:var(--red)}
+.prose pre{background:#0f172a;color:#f8fafc;padding:16px;border-radius:8px;overflow-x:auto;margin:1.6em 0}
+.prose pre code{background:transparent;padding:0;color:inherit;font-size:13px}
+.footer{text-align:center;padding:36px 20px;border-top:3px solid;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#fff;font-size:12px;color:var(--muted);line-height:1.9}
+.footer strong{color:var(--ink);font-weight:900}
+.footer a{color:var(--cyan-d);font-weight:800;text-decoration:none}
+.footer a:hover{color:var(--gold-d);text-decoration:underline}
+@media(max-width:768px){
+  .container{margin:16px auto;padding:20px;border-radius:0;border-left:none;border-right:none}
+  .prose h1{font-size:26px}
+  .prose h2{font-size:20px}
+  .prose table{display:block;overflow-x:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo-area">
+    <div class="logo-title">INSPIRON <span>TECH</span></div>
+  </div>
+  <a class="nav-back" href="index.html">← Back to Portal</a>
+</header>
+
+<main class="container">
+  <article class="prose" id="content">Loading document content...</article>
+</main>
+
+<footer class="footer">
+  <strong>INSPIRON TECH</strong> &middot; Built by MD ABU HASAN<br/>
+  Bangladesh's only listed Manager.io Advisor &amp; Official Partner<br/>
+  Interactive e-GP accounting training tools for Bangladesh government contractors.<br/>
+  <a href="https://www.linkedin.com/in/cyberhasan/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+  &nbsp;&middot;&nbsp;
+  <a href="https://inspiron.tech" target="_blank" rel="noopener noreferrer">inspiron.tech</a>
+  <br/><br/>
+  <small>Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  const md = \$escapedMd\;
+  document.getElementById('content').innerHTML = marked.parse(md);
+</script>
+</body>
+</html>

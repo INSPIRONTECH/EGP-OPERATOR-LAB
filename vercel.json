@@ -1,0 +1,17 @@
+{
+  "outputDirectory": "site",
+  "rewrites": [
+    { "source": "/portal",             "destination": "/index.html" },
+    { "source": "/scrollytelling",     "destination": "/Manager_io_eGP_Operations_Guide_Scrollytelling_v2.2.html" },
+    { "source": "/command-center",     "destination": "/Manager_io_eGP_Tender_Command_Center_v2.2.html" },
+    { "source": "/path-trainer",       "destination": "/Manager_io_eGP_Tender_Path_Trainer_v2.2.html" },
+    { "source": "/x-ray",              "destination": "/Manager_io_eGP_Accounting_XRay_v2.2.html" },
+    { "source": "/atlas",              "destination": "/Manager_io_eGP_Operations_Atlas_v2.2.html" },
+    { "source": "/simulator",          "destination": "/Manager_io_eGP_Living_Ledger_Simulator_v2.2.html" },
+    { "source": "/certification",      "destination": "/Manager_io_eGP_Operator_Certification_v2.2.html" },
+    { "source": "/deck",               "destination": "/Manager_io_eGP_Operations_Manual_v2.2_EditorialSVG_50Slides.html" },
+    { "source": "/sop-manual",         "destination": "/sop-manual.html" },
+    { "source": "/item-catalog",       "destination": "/item-catalog.html" },
+    { "source": "/slide-deck-source",  "destination": "/slide-deck-source.html" }
+  ]
+}
