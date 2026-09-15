@@ -70,9 +70,9 @@
 .brand-nav{background:#FFFFFF;border-bottom:1px solid var(--line);padding:14px clamp(20px,6vw,90px);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
 .brand-lockup{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
 .brand-sentry{width:34px;height:33.2px;flex-shrink:0;display:block}
-.brand-wordmark{font-family:var(--font-en);font-size:19px;letter-spacing:-0.02em;color:var(--ink);line-height:1}
-.brand-wordmark .bold{font-weight:900}
-.brand-wordmark .regular{font-weight:400}
+.brand-wordmark{font-family:var(--font-en);font-size:20px;letter-spacing:-0.02em;line-height:1;display:inline-flex;align-items:baseline}
+.brand-wordmark .regular{font-weight:500;color:var(--ink);text-transform:lowercase}
+.brand-wordmark .gold{font-weight:300;color:var(--gold-d);text-transform:uppercase;margin-left:5px}
 .brand-badge{font-size:11px;font-weight:700;color:var(--cyan-d);background:var(--cyan-w);border:1px solid var(--cyan-b);padding:4px 10px;border-radius:999px;letter-spacing:.04em}
 @media(max-width:640px){.brand-badge{display:none}}
 .hero-credo{background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:0 10px 10px 0;padding:14px 18px;margin-top:22px;max-width:760px}
@@ -87,7 +87,7 @@
 <header class="brand-nav">
   <a class="brand-lockup" href="https://inspiron.tech" target="_blank" rel="noopener noreferrer" title="INSPIRON TECH Sovereign Home">
     <svg class="brand-sentry" viewBox="0 0 358.846 350.3" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="INSPIRON TECH Sentry Icon"><path d="M87.046 349.3c-30.8 0-57.9-14.8-74.3-40.9-15.4-24.2-16.9-55-4.2-80.5 7.8-14.2 32.9-53.9 57.4-92.4 15.1-23.7 29.3-46.1 39.3-62.6 2.7-4.3 4.8-7.8 8.4-11.5 11.4-13.1 28.1-20.6 45.6-20.6s33.8 8.1 43.8 22.1c5.5 7.8 9.1 16.9 10.3 26.4.3 2.5-.4 4.8-2.1 7.5-1.9 3.3-21.8 34.6-21.8 34.6-.6.9-1.2 1.9-1.8 2.8-1.3 2.2-2.4 4.2-3.9 4.2s-1.2-.3-1.8-.9c-4.2-4.9-8.2-11.5-12-18-2.4-4-4.5-7.9-6.9-11.2-1.8-2.8-4.8-4.5-7.8-4.5s-4.2 1-5.8 3c-5.2 8.1-27.5 43.8-45.6 72.7-11.8 18.9-22.1 35.3-25.4 40.4-2.2 3.6-5.2 8.1-7.9 12.5-1.6 2.7-3.3 5.4-4.8 7.8-.6 1-1.3 2.1-1.9 3.1-2.5 4-4.6 7.5-6.1 11.1-5.2 12.4-.4 27.3 10.9 34.6 5.5 3.6 11.4 5.4 17.5 5.4 12.3 0 25-7.6 32.9-20 5.5-8.1 23.6-37 45-70.6 31.7-50.4 67.9-107.5 76.1-118.7 6.3-6.7 14.5-10.8 22.7-10.8 9.3 0 18.2 5.1 23.2 13.1 4.8 7.9 5.4 16.8 1 24.7-3.6 7-6.6 11.3-10.9 18-3.1 4.9-7.3 11.2-13 20.6-14.4 22.5-31 48.7-47 74.2-24.4 38.9-47.7 75.7-55.3 86.8-17.5 24.1-45.5 38.6-75.1 38.6z" fill="#00D2FF"/><path d="M321.346 350c-10.6-1-19.3-6.1-26-15.3-.3-.6-4.3-7.3-10-16.5-49.2-81.1-52.8-87.8-52.6-88.4 5.5-8.8 19.4-31.2 27.4-43.8 3.3-5.4 5.7-9 6-9.4 1.6 2.7 27.4 45.3 49.4 81.8 17 28.2 31.9 52.8 32.2 53.5 4.2 7 4.2 15.2 0 22.5-5.2 9-15.4 14.9-25.6 14.9h-.8z" fill="#00D2FF"/><circle cx="321.346" cy="37.5" r="37.5" fill="#FFD700"/></svg>
-    <div class="brand-wordmark"><span class="regular">inspiron</span><span class="bold">TECH</span></div>
+    <div class="brand-wordmark"><span class="regular">inspiron</span><span class="gold">TECH</span></div>
   </a>
   <span class="brand-badge">Official Manager.io Advisor &amp; Partner &middot; e-GP Operator Lab</span>
 </header>
@@ -104,7 +104,7 @@
   <div class="status-row">
     <div class="status-chip">✅ <b>Free — No Login Required</b></div>
     <div class="status-chip">✅ <b>Works Offline</b></div>
-    <div class="status-chip">✅ <b>13 Interactive Modules</b></div>
+    <div class="status-chip">✅ <b>11 Modules &amp; Reference Manuals</b></div>
     <div class="status-chip">✅ <b>Bilingual: English + বাংলা</b></div>
   </div>
 </section>
@@ -121,7 +121,7 @@
       <div class="pstep"><div class="pnum">STEP 3</div><h4>Understand Effects</h4><p>Accounting X-Ray দিয়ে প্রতিটি entry-এর প্রভাব দেখুন।</p></div>
       <div class="pstep"><div class="pnum">STEP 4</div><h4>Practice Decisions</h4><p>Tender Path Trainer দিয়ে scenario অনুশীলন করুন।</p></div>
       <div class="pstep"><div class="pnum">STEP 5</div><h4>Practice Forms</h4><p>Living Ledger Simulator-এ নিজে entry দিন।</p></div>
-      <div class="pstep"><div class="pnum">STEP 6</div><h4>Certification Preview</h4><p>১৫টি scenario-based assessment preview করুন। Official certification rollout later.</p></div>
+      <div class="pstep"><div class="pnum">STEP 6</div><h4>Operator Certification</h4><p>১৫টি scenario-based assessment সমাধান করে Certification Report নিন।</p></div>
     </div>
   </div>
 
@@ -143,12 +143,21 @@
   </div>
 
   <!-- PRACTICE -->
-  <div class="section-title"><h2>Guided Practice</h2><span class="step">STEP 4–5</span></div>
+  <div class="section-title"><h2>Guided Practice</h2><span class="step">STEP 4–6</span></div>
   <p class="section-desc">সিদ্ধান্ত নেওয়া এবং ফর্ম পূরণ করার বাস্তব অনুশীলন — সবকিছু নিরাপদ sandbox-এ, কোনো live data প্রভাবিত হয় না।</p>
   <div class="card-grid">
     <a class="tool-card" href="Manager_io_eGP_Tender_Path_Trainer_v2.2.html"><span class="badge practice">Decision Game</span><h3>Tender Path Trainer</h3><p>দুটি path: Without Time Loan ও Active Time Loan Facility। প্রতিটি stage-এ সিদ্ধান্ত নিন, immediate feedback পান।</p><div class="filename">Manager_io_eGP_Tender_Path_Trainer_v2.2.html</div><span class="open">Open Tool →</span></a>
     <a class="tool-card" href="Manager_io_eGP_Living_Ledger_Simulator_v2.2.html"><span class="badge practice">Form Sandbox</span><h3>Living Ledger Simulator</h3><p>Fake Manager.io interface-এ নিজে Payment, Receipt, Sales Invoice, Journal Entry পূরণ করুন। Live validation ও mini reports সহ।</p><div class="filename">Manager_io_eGP_Living_Ledger_Simulator_v2.2.html</div><span class="open">Open Tool →</span></a>
-    <a class="tool-card" href="Manager_io_eGP_Operator_Certification_v2.2.html"><span class="badge gate">Preview Assessment</span><h3>Operator Certification Console</h3><p>১৫টি real case। শেষে একটি Certification Report — Cleared for Supervised Live Entry কি না তা নির্ধারণ করে।</p><div class="filename">Manager_io_eGP_Operator_Certification_v2.2.html</div><span class="open">Open Tool →</span></a>
+    <a class="tool-card" href="Manager_io_eGP_Operator_Certification_v2.2.html"><span class="badge gate">15-Case Assessment</span><h3>Operator Certification Console</h3><p>১৫টি real case। শেষে একটি Certification Report — Cleared for Supervised Live Entry কি না তা নির্ধারণ করে।</p><div class="filename">Manager_io_eGP_Operator_Certification_v2.2.html</div><span class="open">Open Tool →</span></a>
+  </div>
+
+  <!-- REFERENCE & SOURCE MANUALS -->
+  <div class="section-title"><h2>Reference &amp; Source Manuals</h2><span class="step">DOCUMENTATION</span></div>
+  <p class="section-desc">সম্পূর্ণ SOP manual, item catalog dictionary এবং slide deck source markdown — offline-ready এবং searchable reference।</p>
+  <div class="card-grid">
+    <a class="tool-card" href="sop-manual.html"><span class="badge reference">Full Manual</span><h3>e-GP Accounting SOP v2.2</h3><p>৯৬৯ লাইনের সম্পূর্ণ Standard Operating Procedure — Glossary, NOA Day Rule, Workflows, এবং Controls।</p><div class="filename">sop-manual.html</div><span class="open">Read SOP →</span></a>
+    <a class="tool-card" href="item-catalog.html"><span class="badge reference">Item Dictionary</span><h3>Non-Inventory Item Catalog</h3><p>Part 4 Item Dictionary — ২৪টি standard item-এর কোড, নাম, GL Account, এবং Project/Ref tagging নিয়ম।</p><div class="filename">item-catalog.html</div><span class="open">View Catalog →</span></a>
+    <a class="tool-card" href="slide-deck-source.html"><span class="badge reference">Deck Source</span><h3>50-Slide Deck Source</h3><p>৫০টি স্লাইডের সম্পূর্ণ verbatim টেক্সট ও স্ট্রাকচার — NotebookLM ও offline research-এর জন্য প্রস্তুত।</p><div class="filename">slide-deck-source.html</div><span class="open">View Source →</span></a>
   </div>
 
 </main>

@@ -18,11 +18,11 @@
 
 ## What Is This?
 
-The **eGP Operator Lab** is a suite of **13 free, interactive HTML modules** that teach government contractors how to manage their accounting using [Manager.io](https://manager.io) — specifically for Bangladesh's e-GP (electronic Government Procurement) ecosystem.
+The **eGP Operator Lab** is a suite of **11 interactive modules and reference manuals** (plus central Navigation Portal) that teach government contractors how to manage their accounting using [Manager.io](https://manager.io) — specifically for Bangladesh's e-GP (electronic Government Procurement) ecosystem.
 
 Whether you work with **PWD, LGED, RHD, BWDB, BREB, EED**, or any other procuring entity — this lab covers the complete workflow from tender bidding to final payment collection.
 
-### 🎓 Available Modules
+### 🎓 Available Modules & Reference Manuals
 
 | Module | Route | Description |
 |---|---|---|
@@ -56,7 +56,7 @@ Whether you work with **PWD, LGED, RHD, BWDB, BREB, EED**, or any other procurin
 - **Hosting:** [Vercel](https://vercel.com) (static deployment)
 - **Domain:** `egp.inspiron.tech`
 
-All 13 modules are single-file HTML applications. Open any `.html` file in a browser — it works offline.
+All modules and manuals are single-file HTML applications. Open any `.html` file in a browser — it works offline.
 
 ---
 
