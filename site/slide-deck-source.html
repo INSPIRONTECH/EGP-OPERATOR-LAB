@@ -63,7 +63,1201 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);m
 </header>
 
 <main class="container">
-  <article class="prose" id="content">Loading document content...</article>
+  <article class="prose" id="content">
+<hr />
+<p>created: 2026-08-15T00:19:43 (UTC +06:00)
+tags: []
+source: https://gemini.google.com/app/22278bdb82bec02a
+author: </p>
+<hr />
+<h1>Document Recommendation For Two Scenarios - Google Gemini</h1>
+<blockquote>
+<h2>Excerpt</h2>
+<p>Gemini said Here is the completely fixed and updated Version 3.1 package.Because we fundamentally changed the architecture to "The Project Dropdown is King", the old 50-slide source document had criti</p>
+</blockquote>
+<hr />
+<h2>Gemini said</h2>
+<p>Here is the completely fixed and updated <strong>Version 3.1</strong> package.</p>
+<p>Because we fundamentally changed the architecture to <strong>"The Project Dropdown is King"</strong>, the old 50-slide source document had critical errors (it was still teaching operators to type the Tender ID into the <code>Ref.</code> box for Balance Sheet items).</p>
+<p>I have completely rewritten <strong>File 1 (The 50-Slide Source Content)</strong> so it perfectly teaches the "Zero-Thought Data Entry" rules. I also updated <strong>File 2 (The Prompt)</strong> to include the HTML/Markdown rendering fixes and the token-limit continuation rule we discussed.</p>
+<p>Copy and save these two files. You are ready to generate.</p>
+<h3>FILE 1: The Updated Slide Source</h3>
+<p>Save this file exactly as: <code>SOURCE_50-Slide-Deck-Content_v3.1_FINAL.md</code></p>
+<p>Markdown</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># SOURCE FILE — 50-Slide Deck Content</span>
+<span class="c1">## Manager.io e-GP Operations Manual · v3.1 FINAL</span>
+<span class="err">*</span><span class="nv">*Source</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">basis:** `11_eGP-Contractor-SOP-User-Manual_v3.1_FINAL.md`</span><span class="w">  </span>
+<span class="l l-Scalar l-Scalar-Plain">**Use:** Upload this file as the ONLY source in NotebookLM Studio for the v3.1 deck.</span><span class="w">  </span>
+<span class="l l-Scalar l-Scalar-Plain">**Rule:** Render exactly 50 slides. Each `SLIDE` section below is one complete slide. Do not merge, summarize, omit, or invent content.</span>
+
+<span class="nn">---</span>
+
+<span class="c1">## SLIDE 01 — Cover</span>
+<span class="err">*</span><span class="nv">*Title</span><span class="l l-Scalar l-Scalar-Plain">:** Manager.io e-GP Operations Manual</span>
+<span class="l l-Scalar l-Scalar-Plain">**Subtitle:** বাংলাদেশ e-GP ঠিকাদারদের জন্য সহজ Accounting SOP (Zero-Thought Data Entry)</span>
+<span class="l l-Scalar l-Scalar-Plain">**Body:**</span>
+<span class="l l-Scalar l-Scalar-Plain">- Version</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.1 FINAL (Stateless Engine Edition)</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Operator Training — debit/credit জানাটা বাধ্যতামূলক নয়</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">বাস্তব ঘটনা থেকে নির্ভুল হিসাব</span>
+<span class="err">*</span><span class="nv">*Branding</span><span class="l l-Scalar l-Scalar-Plain">:** Brand-neutral. No company name or logo.</span>
+
+<span class="nn">---</span>
+
+<span class="c1">## SLIDE 02 — Why this guide exists</span>
+<span class="err">*</span><span class="nv">*Title</span><span class="l l-Scalar l-Scalar-Plain">:** এই manual-এর কাজ কী?</span>
+<span class="l l-Scalar l-Scalar-Plain">**Body:**</span>
+<span class="l l-Scalar l-Scalar-Plain">এই manual হিসাববিজ্ঞানের বই নয়। একটি e-GP tender-এর ঘটনা Manager.io-তে কোথায় বসবে এবং কেন বসবে—সেটা সহজ করে বলাই এর কাজ।</span>
+
+<span class="l l-Scalar l-Scalar-Plain">**The Grand Illusion:**</span>
+<span class="l l-Scalar l-Scalar-Plain">আমাদের সিস্টেমে Data Entry একদম সোজা। আপনি শুধু সঠিক Item আর Project সিলেক্ট করবেন। ভেতরের কঠিন হিসাব, ব্যালেন্স শিট, টেন্ডার আইডি বের করা, আর রিপোর্টের সুন্দর ডিজাইন—সবকিছু সিস্টেমের ব্যাকএন্ড (Magic Theme) অটোমেটিক করে নেবে।</span>
+
+<span class="nn">---</span>
+
+<span class="c1">## SLIDE 03 — Tender life story</span>
+<span class="err">*</span><span class="nv">*Title</span><span class="l l-Scalar l-Scalar-Plain">:** একটা tender-র জীবন</span>
+<span class="l l-Scalar l-Scalar-Plain">**Four-stage flow:**</span>
+<span class="l l-Scalar l-Scalar-Plain">1. সম্ভাবনা — Tender Bid (Pre-NOA)</span>
+<span class="l l-Scalar l-Scalar-Plain">2. প্রাপ্তি — NOA (Award)</span>
+<span class="l l-Scalar l-Scalar-Plain">3. কাজ ও বিল — RA Bill</span>
+<span class="l l-Scalar l-Scalar-Plain">4. সমাপ্তি — Retention Release</span>
+<span class="l l-Scalar l-Scalar-Plain">**Caption:** Tender শুরুতে শুধু সম্ভাবনা। NOA আসার পর কাজ শুরু হয়। RA Bill হয়, টাকা আসে, কিছু টাকা আটকে থাকে, একদিন সেই টাকাও ফেরত আসে।</span>
+
+<span class="nn">---</span>
+
+<span class="c1">## SLIDE 04 — PE definition</span>
+<span class="err">*</span><span class="nv">*Title</span><span class="l l-Scalar l-Scalar-Plain">:** PE কে?</span>
+<span class="l l-Scalar l-Scalar-Plain">**Body:**</span>
+<span class="l l-Scalar l-Scalar-Plain">- PE = Procuring Entity = Procurement Authority</span>
+<span class="l l-Scalar l-Scalar-Plain">- যে সরকারি office tender দেয়, কাজ দেখে, bill certify করে এবং টাকা দেয়</span>
+<span class="l l-Scalar l-Scalar-Plain">- Examples</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LGED, PWD, EED, RHD, BWDB</span>
+<span class="err">*</span><span class="nv">*Callout</span><span class="l l-Scalar l-Scalar-Plain">:** Customer হলো office identity। Tender হলো Project identity।</span>
+
+<span class="nn">---</span>
+
+<span class="c1">## SLIDE 05 — PE branch rule</span>
+<span class="err">*</span><span class="nv">*Title</span><span class="l l-Scalar l-Scalar-Plain">:** একই Agency, ভিন্ন Office = ভিন্ন Customer</span>
+<span class="l l-Scalar l-Scalar-Plain">**Body:**</span>
+<span class="l l-Scalar l-Scalar-Plain">```text</span>
+<span class="l l-Scalar l-Scalar-Plain">LGED Barishal office    → Customer Code</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LGED-BSL</span>
+<span class="nt">LGED Patuakhali office  → Customer Code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LGED-PTK</span>
+</code></pre></div>
+
+<p><strong>Explanation:</strong> একই Customer-এর নিচে দুই office রাখলে ভবিষ্যতে office-wise tender, receivable এবং history মিশে যাবে। <strong>Warning:</strong> Customer Name-এর মধ্যে Tender ID বা Project name লিখবেন না।</p>
+<h2>SLIDE 06 — PE to Customer mapping</h2>
+<p><strong>Title:</strong> PE → Manager.io Customer <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Customer field</th>
+<th>কী লিখবেন</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>PE office-এর পরিষ্কার official name</td>
+<td>Local Government Engineering Department</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Agency + office/branch code</td>
+<td>LGED-BSL</td>
+</tr>
+<tr>
+<td>REGION/BRANCH/OFFICE</td>
+<td>Office বা zone</td>
+<td>BARISHAL</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 07 — Tender ID</h2>
+<p><strong>Title:</strong> Tender ID কী? <strong>Body:</strong></p>
+<ul>
+<li>
+<p>Tender ID / Tender Proposal ID = e-GP tender-এর স্থায়ী পরিচয় নম্বর</p>
+</li>
+<li>
+<p>NOA, security paper, certificate এবং bill-এ এই নম্বরটি সাধারণত পাওয়া যায় <strong>Example:</strong> <code>1142857</code> <strong>Rule:</strong> আমাদের সিস্টেমে Tender ID ম্যানুয়ালি লেখার প্রয়োজন নেই; এটি Project Name-এর ভেতরেই থাকে।</p>
+</li>
+</ul>
+<h2>SLIDE 08 — NOA</h2>
+<p><strong>Title:</strong> NOA কী? <strong>Body:</strong></p>
+<ul>
+<li>
+<p>NOA = Notification of Award</p>
+</li>
+<li>
+<p>এটি আসার মানে tender আর সম্ভাবনা নয়—কাজটি পাওয়া গেছে</p>
+</li>
+<li>
+<p>NOA আসার আগে Project খুলবেন না <strong>Key line:</strong> NOA আসার মুহূর্তটিই এই manual-এর সবচেয়ে গুরুত্বপূর্ণ মুহূর্ত।</p>
+</li>
+</ul>
+<h2>SLIDE 09 — RA Bill</h2>
+<p><strong>Title:</strong> RA Bill কী? <strong>Body:</strong></p>
+<ul>
+<li>
+<p>RA Bill = Running Account Bill = progress bill / certificate</p>
+</li>
+<li>
+<p>Manager.io-তে RA Bill = Sales Invoice <strong>RA Bill-এ সাধারণত থাকে:</strong></p>
+</li>
+<li>
+<p>Certified work value (Gross Work)</p>
+</li>
+<li>
+<p>Retention withheld</p>
+</li>
+<li>
+<p>Mobilization Advance recovery</p>
+</li>
+</ul>
+<h2>SLIDE 10 — Retention</h2>
+<p><strong>Title:</strong> Retention কী? <strong>Body:</strong></p>
+<ul>
+<li>
+<p>PE bill-এর একটি অংশ এখন দেয় না</p>
+</li>
+<li>
+<p>DLP/release condition পূরণ হলে সাধারণত ফেরত দেয়</p>
+</li>
+<li>
+<p>এটি নতুন income নয়; Revenue RA Bill-এর সময়ই record হয় <strong>Account:</strong> 1150 Retention Receivable</p>
+</li>
+</ul>
+<h2>SLIDE 11 — Mobilization Advance</h2>
+<p><strong>Title:</strong> Mobilization Advance কী? <strong>Body:</strong></p>
+<ul>
+<li>
+<p>কাজ শুরুর আগে PE-এর দেওয়া টাকা</p>
+</li>
+<li>
+<p>টাকা হাতে এসেছে, কিন্তু income হয়নি</p>
+</li>
+<li>
+<p>RA Bill থেকে ধীরে ধীরে recover হবে <strong>Account:</strong> 2100 Mobilization Advance Received — Liability</p>
+</li>
+</ul>
+<h2>SLIDE 12 — Security and BG</h2>
+<p><strong>Title:</strong> Tender Security, Performance Security ও BG <strong>Three cards:</strong></p>
+<ul>
+<li>
+<p><strong>Tender Security:</strong> Bid stage-এর security; সাধারণত Pre-NOA ধাপে হয়।</p>
+</li>
+<li>
+<p><strong>Performance Security:</strong> Award-এর পরে কাজের performance নিশ্চিত করার security।</p>
+</li>
+<li>
+<p><strong>Bank Guarantee:</strong> Face value ledger-এ নয়; cash margin/commission ledger-এ, details BG Register-এ।</p>
+</li>
+</ul>
+<h2>SLIDE 13 — DLP</h2>
+<p><strong>Title:</strong> DLP কী? <strong>Body:</strong></p>
+<ul>
+<li>
+<p>DLP = Defect Liability Period</p>
+</li>
+<li>
+<p>কাজ শেষের পর defect period</p>
+</li>
+<li>
+<p>defect থাকলে contractor-এর দায় থাকতে পারে</p>
+</li>
+<li>
+<p>retention/security release-এর condition contract document দেখে confirm করবেন</p>
+</li>
+</ul>
+<h2>SLIDE 14 — THE NOA DAY RULE</h2>
+<p><strong>Title:</strong> THE NOA DAY RULE <strong>Large centerpiece text:</strong></p>
+<p>Plaintext</p>
+<div class="codehilite"><pre><span></span><code>Customer<span class="w"> </span><span class="o">(</span><span class="k">if</span><span class="w"> </span>missing<span class="o">)</span><span class="w"> </span>+<span class="w"> </span>Project
+<span class="w">          </span>at<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span><span class="nb">time</span>
+</code></pre></div>
+
+<p><strong>Body:</strong> NOA পাওয়ার সঙ্গে সঙ্গে দুটি কাজ করবেন। এটি আলাদা দিনে করার কাজ নয়। <strong>Sub-rule:</strong> Customer Code must exactly match Project PE CODE.</p>
+<h2>SLIDE 15 — NOA mismatch warning</h2>
+<p><strong>Title:</strong> একটা mismatch সব ভাঙে <strong>Visual comparison:</strong></p>
+<p>Plaintext</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">Customer</span><span class="w"> </span><span class="nt">Code</span><span class="o">:</span><span class="w">      </span><span class="nt">LGED-BSL</span><span class="w">   </span><span class="err">✅</span>
+<span class="nt">Project</span><span class="w"> </span><span class="nt">PE</span><span class="w"> </span><span class="nt">CODE</span><span class="o">:</span><span class="w">    </span><span class="nt">LGED-BSL</span><span class="w">   </span><span class="err">✅</span>
+
+<span class="nt">Customer</span><span class="w"> </span><span class="nt">Code</span><span class="o">:</span><span class="w">      </span><span class="nt">LGED-BSL</span>
+<span class="nt">Project</span><span class="w"> </span><span class="nt">PE</span><span class="w"> </span><span class="nt">CODE</span><span class="o">:</span><span class="w">    </span><span class="nt">LGED</span><span class="w"> </span><span class="nt">BSL</span><span class="w">   </span><span class="err">❌</span>
+<span class="nt">Project</span><span class="w"> </span><span class="nt">PE</span><span class="w"> </span><span class="nt">CODE</span><span class="o">:</span><span class="w">    </span><span class="nt">lged-bsl</span><span class="w">   </span><span class="err">❌</span>
+</code></pre></div>
+
+<p><strong>Warning:</strong> capital letter, hyphen, space—সবকিছু হুবহু একই হতে হবে।</p>
+<h2>SLIDE 16 — Award Day Checklist</h2>
+<p><strong>Title:</strong> NOA পাওয়ার দিন — Checklist <strong>Checklist:</strong></p>
+<p>Plaintext</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="nv">NOA</span><span class="o">/</span><span class="nv">source</span><span class="w"> </span><span class="nv">paper</span><span class="w"> </span><span class="err">থেকে</span><span class="w"> </span><span class="nv">PE</span><span class="w"> </span><span class="nv">office</span><span class="p">,</span><span class="w"> </span><span class="nv">Tender</span><span class="w"> </span><span class="nv">ID</span><span class="p">,</span><span class="w"> </span><span class="nv">Contract</span><span class="w"> </span><span class="nv">Value</span><span class="w"> </span><span class="err">দেখেছি</span>
+<span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="nv">Customers</span><span class="o">-</span><span class="err">এ</span><span class="w"> </span><span class="nv">same</span><span class="w"> </span><span class="nv">PE</span><span class="w"> </span><span class="nv">office</span><span class="w"> </span><span class="err">এবং</span><span class="w"> </span><span class="nv">Code</span><span class="w"> </span><span class="err">খুঁজেছি</span>
+<span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="err">না</span><span class="w"> </span><span class="err">থাকলে</span><span class="w"> </span><span class="nv">Customer</span><span class="w"> </span><span class="err">তৈরি</span><span class="w"> </span><span class="err">করেছি</span>
+<span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="nv">Project</span><span class="w"> </span><span class="nv">Name</span><span class="w"> </span><span class="nv">format</span><span class="w"> </span><span class="err">মেনে</span><span class="w"> </span><span class="nv">Project</span><span class="w"> </span><span class="err">করেছি</span>
+<span class="p">[</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="nv">Customer</span><span class="w"> </span><span class="nv">Code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">Project</span><span class="w"> </span><span class="nv">PE</span><span class="w"> </span><span class="nv">CODE</span><span class="p">,</span><span class="w"> </span><span class="nv">exact</span><span class="w"> </span><span class="nv">match</span><span class="w"> </span><span class="err">করেছি</span>
+</code></pre></div>
+
+<h2>SLIDE 17 — Project Name</h2>
+<p><strong>Title:</strong> Project Name কীভাবে লিখবেন <strong>Formula:</strong></p>
+<p>Plaintext</p>
+<div class="codehilite"><pre><span></span><code><span class="o">[</span><span class="nt">Location</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">ShortName</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">PE</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nt">TenderProposalID</span><span class="o">]</span>
+</code></pre></div>
+
+<p><strong>Example:</strong></p>
+<p>Plaintext</p>
+<div class="codehilite"><pre><span></span><code>BAKRGNJ-Building-PWD-1153409
+</code></pre></div>
+
+<p><strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>অংশ</th>
+<th>কাজ</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location</td>
+<td>site/area চেনার অংশ</td>
+<td>BAKRGNJ</td>
+</tr>
+<tr>
+<td>ShortName</td>
+<td>কাজের ছোট নাম</td>
+<td>Building</td>
+</tr>
+<tr>
+<td>PE</td>
+<td>agency code</td>
+<td>PWD</td>
+</tr>
+<tr>
+<td>TenderProposalID</td>
+<td>e-GP identity</td>
+<td>1153409</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 18 — Project name hygiene</h2>
+<p><strong>Title:</strong> Project Name-এ যা লিখবেন না <strong>Body:</strong></p>
+<ul>
+<li>
+<p>Contract No. with slashes</p>
+</li>
+<li>
+<p>Package description</p>
+</li>
+<li>
+<p>Legal reference</p>
+</li>
+<li>
+<p>অনেক লম্বা বাক্য <strong>Reason:</strong> সিস্টেম অটোমেটিক এই নাম থেকে টেন্ডার আইডি বের করে নেয়। নাম ভুল হলে রিপোর্ট নষ্ট হবে।</p>
+</li>
+</ul>
+<h2>SLIDE 19 — The Golden Rule</h2>
+<p><strong>Title:</strong> The Golden Rule (কখন Project, কখন Ref?) <strong>Large statement:</strong> "IF PROJECT CAN BE SELECTED, NO NEED TO TYPE IN REF" <strong>Body:</strong> আগে ধারণা ছিল ব্যালেন্স শিটে Ref. বসে। আমাদের নতুন সিস্টেমে নিয়মটা আরও সহজ। টেন্ডার জেতার পর সব কিছুতেই Project ড্রপডাউন ব্যবহার করতে হবে।</p>
+<h2>SLIDE 20 — Three Simple Entry Rules</h2>
+<p><strong>Title:</strong> ৩টি সাধারণ এন্ট্রি নিয়ম <strong>Three columns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Post-NOA (সব কাজ)</th>
+<th>Pre-NOA (বিডিং)</th>
+<th>Settlement &amp; Interest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue, Material, Labor, Margin, Retention, Advance</td>
+<td>e-GP Fee, Tender Security</td>
+<td>Invoice Settlement, Time Loan Interest</td>
+</tr>
+<tr>
+<td>Project Select করুন (Ref. Blank)</td>
+<td>Ref. = LGED (Project Blank)</td>
+<td>Project Blank + Ref Blank</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 21 — The Non-Inventory Item Firewall</h2>
+<p><strong>Title:</strong> The Non-Inventory Item Firewall <strong>Body:</strong> এন্ট্রি করার সময় নিজে থেকে Account খুঁজবেন না। সিস্টেমে নির্দিষ্ট <strong>Item</strong> তৈরি করা আছে। এগুলো ফায়ারওয়ালের মতো কাজ করে—সঠিক Item সিলেক্ট করলে টাকা অটোমেটিক সঠিক অ্যাকাউন্টে চলে যাবে। ভুল হওয়ার কোনো সুযোগ নেই।</p>
+<h2>SLIDE 22 — Manager.io object map</h2>
+<p><strong>Title:</strong> কোন ঘটনা কোথায় যায় <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>বাস্তব ঘটনা</th>
+<th>Manager.io form/object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PE office</td>
+<td>Customers</td>
+</tr>
+<tr>
+<td>Awarded tender</td>
+<td>Projects</td>
+</tr>
+<tr>
+<td>RA Bill / certificate</td>
+<td>Sales Invoices</td>
+</tr>
+<tr>
+<td>Material/supplier/subcontractor bill</td>
+<td>Purchase Invoices</td>
+</tr>
+<tr>
+<td>টাকা বের হলো</td>
+<td>Payments</td>
+</tr>
+<tr>
+<td>টাকা এলো</td>
+<td>Receipts</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 23 — Standard item prefixes</h2>
+<p><strong>Title:</strong> Item Prefix মনে রাখুন <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Meaning</th>
+<th>Main account area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TND</td>
+<td>Tender document / bid-stage cost</td>
+<td>5800</td>
+</tr>
+<tr>
+<td>TS</td>
+<td>Tender Security</td>
+<td>1130 / 5710</td>
+</tr>
+<tr>
+<td>PS</td>
+<td>Performance Security</td>
+<td>1140 / 5710</td>
+</tr>
+<tr>
+<td>MOB</td>
+<td>Mobilization Advance</td>
+<td>2100</td>
+</tr>
+<tr>
+<td>RET</td>
+<td>Retention</td>
+<td>1150 / 2050</td>
+</tr>
+<tr>
+<td>TL</td>
+<td>Time Loan</td>
+<td>2300 / 5700</td>
+</tr>
+<tr>
+<td>BANK</td>
+<td>General bank charge</td>
+<td>5720</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 24 — Item lookup: bid stage (Pre-NOA)</h2>
+<p><strong>Title:</strong> Items — Bid Stage (Project Blank) <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>কাজ</th>
+<th>Item</th>
+<th>Account</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e-GP submission fee</td>
+<td>TND-DOC-FEE</td>
+<td>5800</td>
+<td>Project Blank; Ref = LGED</td>
+</tr>
+<tr>
+<td>Tender Security Cash</td>
+<td>TS-CASH-BLOCK</td>
+<td>1130</td>
+<td>Project Blank; Ref = LGED</td>
+</tr>
+<tr>
+<td><strong>Note:</strong> টেন্ডার জেতার আগে কোনো Project থাকে না, তাই Ref. বক্সে এজেন্সির নাম লিখে রাখতে হয়।</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 25 — Item lookup: Performance Security</h2>
+<p><strong>Title:</strong> Items — Performance Security (Post-NOA) <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>কাজ</th>
+<th>Item</th>
+<th>Account</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash margin block</td>
+<td>PS-CASH-BLOCK</td>
+<td>1140</td>
+<td><strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+<tr>
+<td>Margin release</td>
+<td>PS-RELEASE</td>
+<td>1140</td>
+<td><strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+<tr>
+<td>Direct BG commission</td>
+<td>PS-BG-COMMISSION</td>
+<td>5710</td>
+<td><strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 26 — Item lookup: Advance &amp; Retention</h2>
+<p><strong>Title:</strong> Items — MOB &amp; RET (Post-NOA) <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>কাজ</th>
+<th>Item</th>
+<th>Account</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mob Advance received</td>
+<td>MOB-RECEIVED</td>
+<td>2100</td>
+<td><strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+<tr>
+<td>Advance recovery</td>
+<td>MOB-RECOVERY</td>
+<td>2100</td>
+<td>Invoice-এ <strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+<tr>
+<td>Retention withheld</td>
+<td>RET-WITHHELD</td>
+<td>1150</td>
+<td>Invoice-এ <strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+<tr>
+<td>Retention released</td>
+<td>RET-RELEASE</td>
+<td>1150</td>
+<td><strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 27 — Item lookup: Materials &amp; Labor</h2>
+<p><strong>Title:</strong> Items — Site P&amp;L Costs <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>কাজ</th>
+<th>Item Examples</th>
+<th>Account</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Materials</td>
+<td>Cement, Sand, Bricks_হাজার, MS Rod</td>
+<td>5000</td>
+<td><strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+<tr>
+<td>Labor</td>
+<td>Mason Labor, Regular Labor</td>
+<td>5010</td>
+<td><strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+<tr>
+<td>Equipment</td>
+<td>Equipment Rental, EQP-ALLOC</td>
+<td>5030</td>
+<td><strong>Project = YES</strong>; Ref = Blank</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 28 — Item selection safety</h2>
+<p><strong>Title:</strong> Item না পেলে কী করবেন? <strong>Body:</strong></p>
+<ol>
+<li>
+<p>Prefix দিয়ে search করুন: TND / TS / PS / MOB / RET / TL / BANK</p>
+</li>
+<li>
+<p>Existing item আছে কি না দেখুন</p>
+</li>
+<li>
+<p>না পেলে administrator-কে বলুন <strong>Warning:</strong> নতুন item create করে duplicate বানাবেন না। Duplicate item হলে reporting consistency নষ্ট হয়।</p>
+</li>
+</ol>
+<h2>SLIDE 29 — Workflow: Pre-NOA Fee</h2>
+<p><strong>Title:</strong> Pre-NOA Workflow — e-GP Document Fee <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>TND-DOC-FEE</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>5800 Bidding &amp; Tender Expenses</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>Blank (খালি রাখুন)</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>PE code only (e.g., LGED)</td>
+</tr>
+<tr>
+<td><strong>Warning:</strong> NOA না আসা পর্যন্ত Dummy Project খুলবেন না।</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 30 — Workflow: Pre-NOA TS Block</h2>
+<p><strong>Title:</strong> Pre-NOA Workflow — Tender Security Cash Block <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>TS-CASH-BLOCK</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>1130 Tender Security Margin</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>Blank</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>LGED</td>
+</tr>
+<tr>
+<td><strong>Note:</strong> এটি asset; cash margin আপনার টাকা, নির্দিষ্ট সময়ের জন্য blocked।</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 31 — Tender Security BG-only</h2>
+<p><strong>Title:</strong> Tender Security — BG-only <strong>Body:</strong></p>
+<ul>
+<li>
+<p>BG-only এবং cash block না হলে margin ledger entry হবে না।</p>
+</li>
+<li>
+<p>BG Register update করবেন।</p>
+</li>
+<li>
+<p>Commission থাকলে TS-BG-COMMISSION দিয়ে payment record হবে। <strong>Do not:</strong> BG-only হলে TS-CASH-BLOCK item দিয়ে fake cash-margin entry করবেন না।</p>
+</li>
+</ul>
+<h2>SLIDE 32 — Workflow: Performance Security</h2>
+<p><strong>Title:</strong> Post-NOA Workflow — Performance Security Block <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>PS-CASH-BLOCK</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>1140 Performance Security Margin</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>BAKRGNJ-Building-PWD-1153409 (Select)</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>Blank</td>
+</tr>
+<tr>
+<td><strong>Note:</strong> টেন্ডার জেতার পর সব কিছুতেই Project ড্রপডাউন ব্যবহার করতে হবে।</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 33 — BG commission choice</h2>
+<p><strong>Title:</strong> BG Commission — কোন item? <strong>Two cards:</strong></p>
+<ul>
+<li>
+<p><strong>Short-period / direct expense:</strong> PS-BG-COMMISSION → 5710</p>
+</li>
+<li>
+<p><strong>Multi-period / approved prepaid policy:</strong> PS-BG-COMMISSION-PREPAID → 1300, then PS-BG-COMMISSION-AMORT → 5710 <strong>Warning:</strong> source document এবং approved policy ছাড়া treatment অনুমান করবেন না।</p>
+</li>
+</ul>
+<h2>SLIDE 34 — Workflow: Mobilization Advance</h2>
+<p><strong>Title:</strong> Post-NOA Workflow — Mobilization Advance Receipt <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>MOB-RECEIVED</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>2100 Mobilization Advance Received</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>BAKRGNJ-Building-PWD-1153409 (Select)</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>Blank</td>
+</tr>
+<tr>
+<td><strong>Concept:</strong> টাকা এসেছে, কিন্তু কাজের Revenue হয়নি—তাই এটি Liability।</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 35 — Workflow: Mobilization Recovery</h2>
+<p><strong>Title:</strong> Post-NOA Workflow — Mobilization Advance Recovery <strong>Body:</strong></p>
+<ul>
+<li>
+<p>RA Bill-এ negative recovery line ব্যবহার করুন</p>
+</li>
+<li>
+<p>Item: MOB-RECOVERY</p>
+</li>
+<li>
+<p>Account: 2100</p>
+</li>
+<li>
+<p>Sales Invoice-এ Project Select করুন; Ref. Line খালি রাখুন। <strong>Control:</strong> Final RA Bill-এর পরে advance balance শূন্য হওয়া উচিত।</p>
+</li>
+</ul>
+<h2>SLIDE 36 — Workflow: Site Cost (Material)</h2>
+<p><strong>Title:</strong> Post-NOA Workflow — Material Purchase <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Purchase Invoice বা Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>Cement (বা অন্য Material Item)</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>5000 Direct Materials (Auto)</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>BAKRGNJ-Building-PWD-1153409 (Select)</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>Blank</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 37 — Workflow: Site Cost (Labor)</h2>
+<p><strong>Title:</strong> Post-NOA Workflow — Labor Payment <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>Mason Labor</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>5010 Direct Labor (Auto)</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>BAKRGNJ-Building-PWD-1153409 (Select)</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>Blank</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 38 — RA Bill header</h2>
+<p><strong>Title:</strong> RA Bill → Sales Invoice Header <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>কী দেবেন</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer</td>
+<td>PE office Customer (e.g., PWD-BSL)</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>Awarded Project (e.g., BAKRGNJ-Building...)</td>
+</tr>
+<tr>
+<td>Cert. No.</td>
+<td>Approved certificate number, if used</td>
+</tr>
+<tr>
+<td><strong>Note:</strong> Header-এ Project থাকলে লাইনে নতুন করে ট্যাগ লাগে না।</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 39 — RA Bill anatomy</h2>
+<p><strong>Title:</strong> RA Bill Anatomy — Gross থেকে Net <strong>Stack:</strong></p>
+<p>Plaintext</p>
+<div class="codehilite"><pre><span></span><code><span class="mi">4000</span><span class="w"> </span><span class="n">Contract</span><span class="w"> </span><span class="nf">Revenue</span><span class="w"> </span><span class="p">(</span><span class="n">Certified</span><span class="w"> </span><span class="n">Work</span><span class="p">)</span><span class="w">       </span><span class="o">+</span><span class="mi">15</span><span class="p">,</span><span class="mo">00</span><span class="p">,</span><span class="mo">000</span>
+<span class="mi">1150</span><span class="w"> </span><span class="n">Retention</span><span class="w"> </span><span class="nf">Receivable</span><span class="w"> </span><span class="p">(</span><span class="n">RET</span><span class="o">-</span><span class="n">WITHHELD</span><span class="p">)</span><span class="w">     </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mo">000</span>
+<span class="mi">2100</span><span class="w"> </span><span class="n">Mobilization</span><span class="w"> </span><span class="nf">Advance</span><span class="w"> </span><span class="p">(</span><span class="n">MOB</span><span class="o">-</span><span class="n">RECOVERY</span><span class="p">)</span><span class="w">     </span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mo">00</span><span class="p">,</span><span class="mo">000</span>
+<span class="err">──────────────────────────────────────────────────────</span>
+<span class="n">Net</span><span class="w"> </span><span class="nf">Payable</span><span class="w"> </span><span class="p">(</span><span class="n">Bank</span><span class="o">-</span><span class="n">এ</span><span class="w"> </span><span class="n">আসব</span><span class="err">ে</span><span class="p">)</span><span class="w">                     </span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mo">000</span>
+</code></pre></div>
+
+<p><strong>Key insight:</strong> Gross, Retention ও Recovery আলাদা line-এ না রাখলে report-এর আসল চিত্র হারিয়ে যায়।</p>
+<h2>SLIDE 40 — RA Bill final Ref. policy</h2>
+<p><strong>Title:</strong> Sales Invoice Lines — Ref. = NO <strong>Large statement:</strong> Sales Invoice লাইনে কখনো Ref. ব্যবহার করবেন না। <strong>Logic:</strong></p>
+<ul>
+<li>
+<p>Invoice header-এ Project সিলেক্ট করা থাকে।</p>
+</li>
+<li>
+<p>Revenue, retention এবং advance recovery একই RA Bill-এর অংশ।</p>
+</li>
+<li>
+<p>তাই line-level-এ Ref. বা Project কিছুই দেওয়ার দরকার নেই।</p>
+</li>
+</ul>
+<h2>SLIDE 41 — Workflow: Invoice Settlement</h2>
+<p><strong>Title:</strong> PE টাকা পাঠালে (Invoice Settlement) <strong>Body:</strong></p>
+<ul>
+<li>
+<p>Form: Receipt</p>
+</li>
+<li>
+<p>Customer সিলেক্ট করুন এবং Invoice select করে settle করুন।</p>
+</li>
+<li>
+<p><strong>Project: Blank</strong></p>
+</li>
+<li>
+<p><strong>Ref: Blank</strong> <strong>Reason:</strong> Manager.io ইনভয়েস থেকেই প্রজেক্টের হিসাব বুঝে নেয়। ডাবল ট্যাগিং করলে এরর হবে।</p>
+</li>
+</ul>
+<h2>SLIDE 42 — Workflow: Retention Release</h2>
+<p><strong>Title:</strong> Retention Release (DLP শেষে) <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>RET-RELEASE</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>1150 Retention Receivable</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>BAKRGNJ-Building-PWD-1153409 (Select)</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>Blank</td>
+</tr>
+<tr>
+<td><strong>Note:</strong> এটি নতুন Revenue নয়; পুরনো পাওনা cash-এ বদলায়।</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 43 — BG Register</h2>
+<p><strong>Title:</strong> BG Register — Ledger-এর বাইরে কেন? <strong>Body:</strong></p>
+<ul>
+<li>
+<p>BG face value ledger-এ ওঠে না।</p>
+</li>
+<li>
+<p>Ledger-এ শুধু cash margin এবং bank commission ওঠে।</p>
+</li>
+<li>
+<p>BG details আলাদা register-এ track করতে হবে। <strong>Fields:</strong> BG Number, Type, Issuing Bank, Face Value, Issue Date, Expiry Date, PE Code, Tender ID, Status, File Reference.</p>
+</li>
+</ul>
+<h2>SLIDE 44 — Bank transfer and bank charges</h2>
+<p><strong>Title:</strong> Bank Transfer ও Bank Charge <strong>Bank-to-bank:</strong> Native <strong>Inter Account Transfer</strong> form ব্যবহার করুন। Journal Entry বা আলাদা Payment+Receipt দিয়ে transfer বানাবেন না।</p>
+<p><strong>General Bank Charge:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Account</th>
+<th>Project</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BANK-CHARGE-GEN</td>
+<td>5720</td>
+<td>Blank</td>
+<td>Blank</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 45 — Time Loan</h2>
+<p><strong>Title:</strong> Time Loan — Interest সবসময় Untagged <strong>Table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td>TL-MONTHLY-ADJUST</td>
+</tr>
+<tr>
+<td>Account</td>
+<td>5700 Interest on Time Loan</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>Blank</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>Blank</td>
+</tr>
+<tr>
+<td><strong>Reason:</strong> Bank interest সাধারণত lump sum কাটে; টেন্ডার ধরে ভাগ করলে ব্যালেন্স মিলবে না।</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 46 — Month-end controls</h2>
+<p><strong>Title:</strong> মাস শেষের ৫ মিনিট <strong>Checklist:</strong></p>
+<p>Plaintext</p>
+<div class="codehilite"><pre><span></span><code><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nt">P&amp;L Check</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5000–5030 অ্যাকাউন্টে Project খালি আছে কি?</span>
+<span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nt">Time Loan</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5700 Interest-এ ভুল করে Project/Ref. ট্যাগ পড়েছে কি?</span>
+<span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nt">Retention &amp; Advance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">রিকভারি শিডিউলের সাথে 2100 ব্যালেন্স মেলে কি?</span>
+<span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nt">BG Register</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">আগামী 45 দিনের মধ্যে কোনো BG-র মেয়াদ শেষ হচ্ছে কি?</span>
+<span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nt">Master Data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5টি active Project-এর Customer Code = PE CODE চেক করেছি?</span>
+</code></pre></div>
+
+<h2>SLIDE 47 — Stateless procurement print theme</h2>
+<p><strong>Title:</strong> Procurement Print Theme — Safe Rule <strong>Body:</strong></p>
+<ul>
+<li>
+<p>Approved theme direction = stateless</p>
+</li>
+<li>
+<p>One document-view payload only</p>
+</li>
+<li>
+<p>No document UUID decoder</p>
+</li>
+<li>
+<p>No secondary API calls</p>
+</li>
+<li>
+<p>No hard-coded UUIDs <strong>Approved baseline:</strong> PROCUREMENT-LEDGER-V1.8.0-STATELESS.html</p>
+</li>
+</ul>
+<h2>SLIDE 48 — Magic Theme Grouping</h2>
+<p><strong>Title:</strong> Theme কীভাবে কাজ করে? (Magic) <strong>Body:</strong> আমাদের Theme ব্যাকএন্ডে জাভাস্ক্রিপ্ট ব্যবহার করে। যখন আপনি লাইনে <strong>Project</strong> সিলেক্ট করেন, Theme অটোমেটিক ওই প্রজেক্টের নাম থেকে <code>Tender ID</code> বের করে নেয় এবং <code>PE Code</code> মিলিয়ে Customer-এর ফুল নাম প্রিন্ট করে। তাই আপনাকে ম্যানুয়ালি <code>Ref.</code> বক্সে কিছু লিখতে হয় না!</p>
+<h2>SLIDE 49 — Troubleshooting</h2>
+<p><strong>Title:</strong> ভুল পেলে কী করবেন? <strong>Body:</strong></p>
+<table>
+<thead>
+<tr>
+<th>কোথায় ভুল</th>
+<th>প্রথম কাজ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Site cost-এ Project blank</td>
+<td>Payment/Invoice এডিট করে সঠিক Project দিন</td>
+</tr>
+<tr>
+<td>2100 balance অস্বাভাবিক</td>
+<td>advance receipt ও RA recovery schedule মিলান</td>
+</tr>
+<tr>
+<td>Customer/Project code mismatch</td>
+<td>Project save করার আগে approved source দেখে correction করুন</td>
+</tr>
+<tr>
+<td>Item not found</td>
+<td>Administrator-কে জানান; duplicate বানাবেন না</td>
+</tr>
+</tbody>
+</table>
+<h2>SLIDE 50 — Operator Desk Card</h2>
+<p><strong>Title:</strong> Operator Desk Card — Do's &amp; Don'ts <strong>Two columns:</strong> <strong>✓ সঠিক কাজ</strong></p>
+<ul>
+<li>
+<p>Customer check ও Project একই সময়ে তৈরি করুন</p>
+</li>
+<li>
+<p>Customer Code হুবহু Project PE CODE-এ কপি করুন</p>
+</li>
+<li>
+<p>Standard item prefix দিয়ে search করুন</p>
+</li>
+<li>
+<p>Post-NOA সব এন্ট্রিতে Dropdown থেকে Project সিলেক্ট করুন</p>
+</li>
+<li>
+<p>Invoice Settle করার সময় Project/Ref Blank রাখুন</p>
+</li>
+</ul>
+<p><strong>✗ ভুল কাজ</strong></p>
+<ul>
+<li>
+<p>Customer Name-এ Tender ID লিখবেন না</p>
+</li>
+<li>
+<p>NOA-এর আগে Dummy Project খুলবেন না</p>
+</li>
+<li>
+<p>Project সিলেক্ট করার পর Ref. বক্সে কিছু লিখবেন না</p>
+</li>
+<li>
+<p>BG-only হলে fake cash-margin entry করবেন না</p>
+</li>
+<li>
+<p>Time Loan interest-এ Project ট্যাগ করবেন না <strong>Closing line:</strong> Setup থেকে closeout পর্যন্ত — Dropdown is King. Let the system do the math.</p>
+</li>
+</ul>
+<h2>END OF SOURCE FILE</h2>
+<p><strong>Total slides: 50. All slide content is complete. NotebookLM must render one source slide as one output slide.</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="err">***</span>
+
+<span class="c1">### FILE 2: The Rendering Prompt</span>
+<span class="nt">Save this file exactly as</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">PROMPT_50-Slide-Deck-Rendering_v3.1_THEME-MATCH.md`</span>
+
+<span class="err">```</span><span class="l l-Scalar l-Scalar-Plain">markdown</span>
+<span class="c1"># NotebookLM Studio Rendering Prompt — 50 Slides · v3.1 FINAL</span>
+<span class="err">*</span><span class="nv">*Source</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file to upload:** `SOURCE_50-Slide-Deck-Content_v3.1_FINAL.md`</span><span class="w">  </span>
+<span class="err">*</span><span class="nv">*Upload</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rule:** Use that source as the ONLY source for this slide-deck generation.</span>
+
+<span class="nn">---</span>
+
+<span class="c1">## Copy-paste prompt</span>
+
+<span class="err">```</span><span class="l l-Scalar l-Scalar-Plain">text</span>
+<span class="l l-Scalar l-Scalar-Plain">Create a 50-slide 16:9 widescreen training deck using ONLY the uploaded file</span>
+<span class="l l-Scalar l-Scalar-Plain">&quot;SOURCE_50-Slide-Deck-Content_v3.1_FINAL.md&quot;.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">The source contains exactly 50 complete slide sections, numbered SLIDE 01 through SLIDE 50.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">NON-NEGOTIABLE CONTENT RULE</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Render exactly 50 slides.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Render source SLIDE 01 as output Slide 01, source SLIDE 02 as output Slide 02, continuing in</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">exact numeric order through source SLIDE 50 as output Slide 50.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">One source slide = one output slide.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Do NOT merge, summarize, split, omit, reorder, paraphrase, or invent slide content.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keep every title, table, checklist, text code block, warning, item code, account code, and</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">stated policy exactly as written in the source.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">If a source section contains a table, render an actual HTML/Markdown table. If it contains a checklist, render</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">actual checkbox rows. If it contains a triple-backtick block, render it as fixed-width text in a</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">styled code panel.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">TOKEN LIMIT RULE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">If you reach your maximum output token length before completing Slide 50, STOP cleanly at the end of the current slide and wait for me to type &quot;CONTINUE&quot;. Do not truncate the markdown formatting.</span>
+
+<span class="nt">DECK FORMAT &amp; RENDERING INSTRUCTIONS</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16:9 widescreen presentation.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deliver as pure Markdown with inline HTML/CSS for formatting so I can export to PDF.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use `---` as a horizontal rule to cleanly separate each slide page in the markdown output.</span>
+
+<span class="nt">DESIGN DIRECTION — MATCH THE APPROVED PROCUREMENT LEDGER STATELESS THEME</span><span class="p">:</span>
+<span class="nt">Build a visual system inspired by the approved procurement document theme</span><span class="p">:</span>
+<span class="s">&quot;PROCUREMENT-LEDGER-V1.8.0-STATELESS.html&quot;</span><span class="l l-Scalar l-Scalar-Plain">.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">Use this exact visual language inline (via `&lt;span style=&quot;...&quot;&gt;` or `&lt;div&gt;`)</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Corporate-light, print-optimized, restrained government-procurement design</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">White paper-like slide canvas (#FFFFFF)</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Deep navy primary</span><span class="p">:</span><span class="w"> </span><span class="c1">#123D68</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Dark ink</span><span class="p">:</span><span class="w"> </span><span class="c1">#12233D</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Deep ink for headings</span><span class="p">:</span><span class="w"> </span><span class="c1">#091728</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Bronze/gold accent</span><span class="p">:</span><span class="w"> </span><span class="c1">#BD8B32</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Soft navy panel</span><span class="p">:</span><span class="w"> </span><span class="c1">#EAF2FB</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Gold soft panel</span><span class="p">:</span><span class="w"> </span><span class="c1">#FBF3DF</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Very light blue panel</span><span class="p">:</span><span class="w"> </span><span class="c1">#F5F9FD</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Main line/border</span><span class="p">:</span><span class="w"> </span><span class="c1">#DCE3EB</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Muted text</span><span class="p">:</span><span class="w"> </span><span class="c1">#66768A</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Positive/check colour</span><span class="p">:</span><span class="w"> </span><span class="c1">#13724D</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Negative/warning colour</span><span class="p">:</span><span class="w"> </span><span class="c1">#B42318</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never use stock photography, people, decorative AI art, clipart, logos, remote images, or</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">external assets.</span>
+
+<span class="nt">TYPOGRAPHY</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use clean, standard sans-serif fallback fonts (Noto Sans Bengali, Arial, Segoe UI).</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Slide title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">H2 size (`##`), bold, deep navy.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Main body</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Standard text.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Item codes and account codes</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">&lt;code style=&quot;background-color</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="c1">#EAF2FB; color: #123D68; padding: 2px 4px; border-radius: 4px;&quot;&gt;`</span>
+
+<span class="nt">GLOBAL THEME COMPONENTS</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Every normal slide has white canvas, a deep navy title, a thin light-gray divider below title (`&lt;hr style=&quot;border-color</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="c1">#DCE3EB&quot;&gt;`).</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use simple HTML tables, layout divs (Flexbox permitted for 2-column or 3-column layouts), and keep generous white space.</span>
+
+<span class="nt">SLIDE-SPECIFIC DESIGN RULES</span><span class="p">:</span>
+<span class="nt">1. Slide 01 Cover</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Full deep navy background (`&lt;div style=&quot;background-color</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="c1">#123D68; color: white; padding: 40px; text-align: center;&quot;&gt;`)</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Thin gold accent line at top</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">White title, bronze subtitle accent</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No logo, no company name</span>
+
+<span class="nt">2. Slide 03 Tender Life Story</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Four-stage flow using an HTML ordered list or Flex row.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">3. Slides 05, 15, 28, 29, 31, 33, 49 warnings</span><span class="p p-Indicator">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Use warning callout box with pale red background (#FFF0EF), 4px red left border (#B42318).</span>
+
+<span class="nt">4. Slide 14 THE NOA DAY RULE</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Full deep navy background box.</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Highlight &quot;Customer Code = Project PE CODE&quot; in a bronze/gold outlined pill.</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">This is the deck&#39;s visual centerpiece.</span>
+
+<span class="nt">5. Slide 19 and 20 Golden Rule &amp; Entry Rules</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Slide 19</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Display &quot;IF PROJECT CAN BE SELECTED, NO NEED TO TYPE IN REF&quot; in a large, gold-outlined navy badge.</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Slide 20</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Render the 3 columns explicitly side-by-side using an HTML table or flexbox layout. Do not merge the lanes into a paragraph.</span>
+
+<span class="nt">6. Slide 40 Ref. policy</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Display &quot;Sales Invoice Lines — Ref. = NO&quot; in a large red-outlined badge.</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Make Customer + Project context visually clear.</span>
+
+<span class="nt">7. Slides 23–27 Non-inventory Items</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Render tables as real HTML/Markdown grids.</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Make prefixes TND, TS, PS, MOB, RET, TL, BANK visually recognizable as code pills.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">8. Slides 30, 32, 34, 36, 37, 38, 41, 42, 45</span><span class="p p-Indicator">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Render key-value entry instructions as a bordered 2-column grid or table.</span>
+
+<span class="nt">9. Slide 39</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Render the accounting stack diagram clearly inside a light-gray (`#F5F9FD`) `&lt;pre&gt;` or code block to maintain formatting.</span>
+
+<span class="nt">10. Slide 46 Month-End Checklist</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Show literal square brackets `[ ]` for checkboxes.</span>
+
+<span class="nt">11. Slide 47 &amp; 48 Stateless Theme &amp; Magic</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Present the rules in a clean, authoritative list inside a soft navy panel (`#EAF2FB`).</span>
+
+<span class="nt">12. Slide 50 Desk Card</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Literal two-column layout using an HTML table or flex div.</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Left column heading</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">&lt;span style=&quot;color</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="c1">#13724D; font-weight: bold;&quot;&gt;✓ সঠিক কাজ&lt;/span&gt;`</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Right column heading</span><span class="p">:</span><span class="w"> </span><span class="err">`</span><span class="l l-Scalar l-Scalar-Plain">&lt;span style=&quot;color</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="c1">#B42318; font-weight: bold;&quot;&gt;✗ ভুল কাজ&lt;/span&gt;`</span>
+
+<span class="nt">FINAL QA BEFORE YOU OUTPUT</span><span class="p">:</span>
+<span class="nt">1. Count output slides</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">must equal exactly 50.</span>
+<span class="l l-Scalar l-Scalar-Plain">2. Confirm Slide 14 is the NOA centerpiece.</span>
+<span class="l l-Scalar l-Scalar-Plain">3. Confirm Slide 19 explicitly states the Golden Rule (No Ref if Project exists).</span>
+<span class="l l-Scalar l-Scalar-Plain">4. Confirm Slide 40 explicitly displays &quot;Ref. = NO&quot; for Sales Invoices.</span>
+<span class="l l-Scalar l-Scalar-Plain">5. Confirm Slide 50 contains both the Do and Don&#39;t columns side-by-side.</span>
+</code></pre></div>
+</article>
 </main>
 
 <footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#FFFFFF;font-size:12px;color:#64748B;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
@@ -82,10 +1276,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);m
   <small style="color:#64748B">Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-  const md = \$escapedMd\;
-  document.getElementById('content').innerHTML = marked.parse(md);
-</script>
+
 </body>
 </html>

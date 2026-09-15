@@ -63,7 +63,1825 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);m
 </header>
 
 <main class="container">
-  <article class="prose" id="content">Loading document content...</article>
+  <article class="prose" id="content">
+<h1>Accounting SOP &amp; User Manual</h1>
+<h2>Bangladesh e-GP Contractor · 1st Class Government Subcontractor</h2>
+<h3>Manager.io ব্যবহারের সহজ পথ</h3>
+<p><strong>Version:</strong> 2.2 FINAL<br />
+<strong>Date:</strong> 2026-08-14<br />
+<strong>Audience:</strong> e-GP workflow জানেন, software-এ কাজ করতে পারেন; debit/credit জানাটা বাধ্যতামূলক নয়<br />
+<strong>Language:</strong> Natural Bangla + essential English software terms<br />
+<strong>Brand:</strong> নেই<br />
+<strong>Use:</strong> Operator training, NotebookLM source, internal slide-deck source<br />
+<strong>Non-inventory Item Source:</strong> <code>Non-inventory Items_14-AUG-26.md</code>  </p>
+<blockquote>
+<p>[STATED] এই manual হিসাববিজ্ঞানের বই নয়। একটি e-GP tender-এর ঘটনা Manager.io-তে কোথায় বসবে এবং কেন বসবে—সেটা সহজ করে বলাই এর কাজ।</p>
+<p>[VERIFIED] Core architecture: site income/cost-এর জন্য <strong>Project</strong>; tender-specific standalone Balance Sheet movement-এর জন্য <strong>Ref.</strong></p>
+<p>[STATED] Final policy: <strong>Sales Invoice-Line Ref. = NO.</strong> RA Bill-এর tender identity থাকবে Customer + Project-এ; standalone Payment, Receipt, বা Journal Entry-এর Balance Sheet movement-এ Ref. ব্যবহার হবে।</p>
+<p>[VERIFIED] Item names, descriptions, units, and account numbers in the operational item guide below are based on <code>Non-inventory Items_14-AUG-26.md</code>. [IP RISK] This SOP intentionally excludes live UUIDs, API keys, passwords, internal URLs, and bank details.</p>
+</blockquote>
+<hr />
+<h1>PART 1 — শুরুতে গল্পটা বুঝে নিন</h1>
+<p>একটা tender শুরুতে শুধু সম্ভাবনা। তারপর fee হয়, security হয়, NOA আসে, কাজ শুরু হয়, RA Bill হয়, টাকা আসে, কিছু টাকা আটকে থাকে। একদিন সেই আটকে থাকা টাকাও ফেরত আসে।</p>
+<p>[STATED] Manager.io-তে এই গল্পটি পরিষ্কার রাখার জন্য তিনটি জিনিস আগে বুঝতে হবে:</p>
+<ol>
+<li><strong>Customer</strong> — যে সরকারি PE office কাজটি দিয়েছে</li>
+<li><strong>Project</strong> — যে tenderটি awarded হয়েছে</li>
+<li><strong>Ref.</strong> — একটি tender-specific Balance Sheet movement-এর ছোট পরিচয়</li>
+</ol>
+<p>Customer office-কে চেনে। Project tender-কে চেনে। Ref. সেই tender-এর margin, retention, advance বা loan movement-কে চেনে।</p>
+<hr />
+<h2>1. PE কে?</h2>
+<p>[STATED] <strong>PE = Procuring Entity = Procurement Authority।</strong> সহজ কথা: যে সরকারি office tender দেয়, কাজ দেখে, bill certify করে এবং টাকা দেয়।</p>
+<p>LGED, PWD, EED, RHD, BWDB—এগুলো agency-এর নাম। একই agency-এর আবার ভিন্ন city, district বা division office থাকতে পারে। LGED Barishal এবং LGED Patuakhali একই agency, কিন্তু একই office নয়।</p>
+<p>[STATED] Manager.io-তে একটি <strong>PE office/branch = একটি Customer</strong>।</p>
+<table>
+<thead>
+<tr>
+<th>Customer field</th>
+<th>কী লিখবেন</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>PE office-এর পরিষ্কার official name</td>
+<td><code>Local Government Engineering Department</code></td>
+</tr>
+<tr>
+<td><strong>Code</strong></td>
+<td>Agency + office/branch code</td>
+<td><code>LGED-BSL</code>, <code>LGED-PTK</code></td>
+</tr>
+<tr>
+<td><strong>REGION/BRANCH/OFFICE</strong></td>
+<td>Office বা zone</td>
+<td><code>BARISHAL</code>, <code>PATUAKHALI</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>LGED Barishal office    → Customer Code: LGED-BSL
+LGED Patuakhali office  → Customer Code: LGED-PTK
+</code></pre></div>
+
+<p>[INFERRED] একই Customer-এর নিচে দুই office রাখলে ভবিষ্যতে office-wise tender, receivable এবং history মিশে যাবে। তাই branch আলাদা হলে Customer-ও আলাদা।</p>
+<h3>ছোট নিয়ম</h3>
+<ul>
+<li><strong>করবেন:</strong> Customer Name পরিষ্কার রাখবেন</li>
+<li><strong>করবেন:</strong> Customer Code-এ branch/office identity রাখবেন</li>
+<li><strong>করবেন না:</strong> Customer Name-এর মধ্যে Tender ID, Project name বা কাজের পুরো description ঢোকাবেন না</li>
+</ul>
+<blockquote>
+<p>[STATED] Customer হলো <strong>office identity</strong>। Tender হলো <strong>Project identity</strong>।</p>
+</blockquote>
+<hr />
+<h2>2. Tender ID কী?</h2>
+<p>[STATED] Tender ID বা Tender Proposal ID হলো e-GP tender-এর স্থায়ী পরিচয় নম্বর। NOA, security paper, certificate এবং bill-এ এই নম্বরটি সাধারণত পাওয়া যায়।</p>
+<p>Project name-এ Tender ID থাকবে। Tender-specific Balance Sheet movement-এ Ref.-ও সেই ID দিয়ে হবে:</p>
+<div class="codehilite"><pre><span></span><code>Project: JHLKT-RoadRehab-LGED-1142857
+Ref.:    LGED-1142857
+</code></pre></div>
+
+<p>[VERIFIED] Ref. format: <code>PE-TenderID</code>। শুধু <code>1142857</code> লিখবেন না; prefix থাকলে পরে চোখে দেখেই agency বোঝা যায়।</p>
+<h3>কোন number ব্যবহার করবেন?</h3>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>ব্যবহার</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tender Proposal ID</td>
+<td>Project name ও Ref.-এর tender identity</td>
+</tr>
+<tr>
+<td>Package No.</td>
+<td>Source document reference হিসেবে রাখুন; Project name-এ নয়</td>
+</tr>
+<tr>
+<td>Contract No.</td>
+<td>Project name-এ নয়; slash/long legal format থাকলে reference field বা source file-এ রাখুন</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3. NOA কী?</h2>
+<p>[STATED] NOA অর্থ <strong>Notification of Award</strong>। এটি আসার মানে tender আর সম্ভাবনা নয়—কাজটি আপনি পেয়েছেন।</p>
+<p>NOA আসার আগে Project খুলবেন না। কারণ তখন কাজটি awarded হয়নি। NOA আসার পর Project খোলা হবে, এবং এখানেই একটি গুরুত্বপূর্ণ নিয়ম শুরু হয়।</p>
+<hr />
+<h2>4. RA Bill, Retention, Advance—একসঙ্গে বুঝুন</h2>
+<p>[STATED] RA Bill বা Running Account Bill হলো কাজ যতটুকু হয়েছে, তার progress bill। Manager.io-তে এটি <strong>Sales Invoice</strong>।</p>
+<p>একটি RA Bill-এ সাধারণত তিনটি কথা থাকে:</p>
+<ol>
+<li>এই মাসে কত টাকার কাজ certified হলো</li>
+<li>PE কত টাকা Retention হিসেবে আটকে রাখল</li>
+<li>আগে দেওয়া Mobilization Advance থেকে PE কত টাকা recover করল</li>
+</ol>
+<h3>Retention</h3>
+<p>[VERIFIED] Retention হলো PE-এর কাছে থাকা আপনার পাওনা। এটি নতুন income নয়; Revenue RA Bill-এর সময়ই record হয়।</p>
+<ul>
+<li>Account: <strong>1150 Retention Receivable</strong></li>
+<li>DLP শেষে release পেলে: Bank-এ আসে</li>
+</ul>
+<h3>Mobilization Advance</h3>
+<p>[VERIFIED] Mobilization Advance হলো কাজ শুরুর আগে PE-এর দেওয়া টাকা। এটি income নয়; পরে RA Bill থেকে recover হবে।</p>
+<ul>
+<li>Account: <strong>2100 Mobilization Advance Received</strong></li>
+<li>Nature: liability</li>
+</ul>
+<h3>DLP</h3>
+<p>[STATED] DLP = Defect Liability Period। এই সময়ে কাজের defect থাকলে contractor-এর দায় থাকে। DLP এবং release condition সম্পূর্ণভাবে contract document দেখে confirm করবেন।</p>
+<hr />
+<h2>5. Security আর BG</h2>
+<h3>Tender Security</h3>
+<p>[STATED] Bid করার সময় Tender Security লাগতে পারে। এটি cash, Pay Order, BG-only, অথবা BG-এর বিপরীতে cash margin—যে কোনোভাবে হতে পারে।</p>
+<h3>Performance Security</h3>
+<p>[STATED] Award-এর পরে Performance Security লাগতে পারে। এটি কাজের performance নিশ্চিত করার security। এর amount, method, expiry এবং release condition NOA/contract/BG document থেকে নেবেন—অনুমান করবেন না।</p>
+<h3>Bank Guarantee (BG)</h3>
+<p>[VERIFIED] BG face value নিজে income বা expense নয়। Cash margin এবং bank commission ledger-এ record হয়; BG number, issue date, expiry ও status আলাদা BG Register-এ রাখা হয়।</p>
+<table>
+<thead>
+<tr>
+<th>ঘটনা</th>
+<th>Manager.io treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash Tender Security</td>
+<td>1130 Tender Security Margin + Ref.</td>
+</tr>
+<tr>
+<td>Cash Performance Security</td>
+<td>1140 Performance Security Margin + Ref.</td>
+</tr>
+<tr>
+<td>BG-only, cash blocked নয়</td>
+<td>Ledger entry নয়; BG Register update</td>
+</tr>
+<tr>
+<td>BG + cash margin</td>
+<td>Cash margin ledger-এ; BG details register-এ</td>
+</tr>
+<tr>
+<td>BG bank commission</td>
+<td>5710 Expense অথবা approved 1300 prepaid method</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>PART 2 — NOA আসার দিন</h1>
+<h2>6. Award day rule: দুইটি record, একই সময়ে</h2>
+<p>[STATED] NOA পাওয়ার সঙ্গে সঙ্গে দুটি কাজ করবেন:</p>
+<ol>
+<li><strong>Customer create/check</strong> — PE office আগে থেকে না থাকলে তৈরি করুন</li>
+<li><strong>Project create</strong> — awarded tender-এর জন্য একটি নতুন Project</li>
+</ol>
+<p>এটি আলাদা দিনে করার কাজ নয়। একই সময়ে করলে Code দেখে Code বসানো যায়। typo কম হয়। পরে কী লিখেছিলাম তা মনে করতে হয় না।</p>
+<hr />
+<h3>Step A — Customer আছে কি না দেখুন</h3>
+<p>Customers tab-এ search করুন। একই PE office-এর Customer আগে থেকে থাকলে আবার create করবেন না।</p>
+<p>না থাকলে:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>কী লিখবেন</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>PE office-এর নাম</td>
+<td>Local Government Engineering Department</td>
+</tr>
+<tr>
+<td><strong>Code</strong></td>
+<td>PE CODE</td>
+<td><code>LGED-BSL</code></td>
+</tr>
+<tr>
+<td><strong>REGION/BRANCH/OFFICE</strong></td>
+<td>Office/zone</td>
+<td><code>BARISHAL</code></td>
+</tr>
+</tbody>
+</table>
+<p>[STATED] নতুন Customer বানানোর আগে একই Code বা একই office-এর duplicate আছে কি না দেখে নেবেন।</p>
+<hr />
+<h3>Step B — Project create করুন</h3>
+<p>প্রতি awarded tender-এর জন্য একটি Project।</p>
+<table>
+<thead>
+<tr>
+<th>Project field</th>
+<th>কী লিখবেন</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td>Location-ShortName-PE-TenderID</td>
+<td><code>JHLKT-RoadRehab-LGED-1142857</code></td>
+</tr>
+<tr>
+<td><strong>Customer</strong></td>
+<td>সেই PE office Customer</td>
+<td><code>LGED-BSL</code></td>
+</tr>
+<tr>
+<td><strong>PE CODE</strong></td>
+<td>Customer Code-এর exactly same value</td>
+<td><code>LGED-BSL</code></td>
+</tr>
+<tr>
+<td><strong>Contract Value</strong></td>
+<td>NOA/contract-এ থাকা awarded value</td>
+<td>source document থেকে</td>
+</tr>
+<tr>
+<td><strong>Retention Rate</strong></td>
+<td>contract-এ থাকা rate</td>
+<td>source document থেকে</td>
+</tr>
+</tbody>
+</table>
+<h3>The one check that matters</h3>
+<div class="codehilite"><pre><span></span><code>Customer Code:      LGED-BSL
+Project PE CODE:    LGED-BSL
+</code></pre></div>
+
+<p>[STATED] দুইটি value হুবহু এক হতে হবে—capital letter, hyphen, সবকিছু।</p>
+<div class="codehilite"><pre><span></span><code>LGED-BSL   ✅
+LGED BSL   ❌
+lged-bsl   ❌
+LGED       ❌
+</code></pre></div>
+
+<p>[INFERRED] এক PE office-এর বহু Project থাকতে পারে। Customer Code ও Project PE CODE এক রাখলে বহু বছর পরে office, tender এবং Project history filter করা সহজ থাকে।</p>
+<hr />
+<h2>7. Project Name কীভাবে লিখবেন</h2>
+<p>[VERIFIED] Format:</p>
+<div class="codehilite"><pre><span></span><code>[Location]-[ShortName]-[PE]-[TenderProposalID]
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>অংশ</th>
+<th>কাজ</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location</td>
+<td>site/area চেনার অংশ</td>
+<td><code>JHLKT</code>, <code>SADAR</code>, <code>BAKRGNJ</code></td>
+</tr>
+<tr>
+<td>ShortName</td>
+<td>কাজের ছোট নাম</td>
+<td><code>RoadRehab</code>, <code>Building</code>, <code>Supply</code></td>
+</tr>
+<tr>
+<td>PE</td>
+<td>agency code; branch suffix নয়</td>
+<td><code>LGED</code>, <code>PWD</code>, <code>EED</code></td>
+</tr>
+<tr>
+<td>TenderProposalID</td>
+<td>e-GP identity</td>
+<td><code>1142857</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>JHLKT-RoadRehab-LGED-1142857
+</code></pre></div>
+
+<p>[STATED] Project Name-এ Contract No., package description, slash-ওয়ালা legal reference বা অনেক লম্বা বাক্য লিখবেন না। এই field দ্রুত খোঁজার জন্য।</p>
+<h3>Award-day checklist</h3>
+<div class="codehilite"><pre><span></span><code>[ ] NOA/source paper থেকে PE office, Tender ID, Contract Value, Retention Rate দেখেছি
+[ ] Customers-এ same PE office এবং Code খুঁজেছি
+[ ] না থাকলে Customer তৈরি করেছি
+[ ] Project Name format মেনে Project করেছি
+[ ] Customer Code = Project PE CODE, exact match করেছি
+[ ] Ref. helper note লিখেছি: PE-TenderID
+[ ] Source document link/file reference Project record-এ বা approved repository-তে রেখেছি
+</code></pre></div>
+
+<hr />
+<h1>PART 3 — Manager.io-এর ছোট মানচিত্র</h1>
+<h2>8. কোন ঘটনা কোথায় যায়</h2>
+<table>
+<thead>
+<tr>
+<th>বাস্তব ঘটনা</th>
+<th>Manager.io form/object</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PE office</td>
+<td><strong>Customers</strong></td>
+</tr>
+<tr>
+<td>Awarded tender</td>
+<td><strong>Projects</strong></td>
+</tr>
+<tr>
+<td>RA Bill / certificate</td>
+<td><strong>Sales Invoices</strong></td>
+</tr>
+<tr>
+<td>Material/supplier/subcontractor bill</td>
+<td><strong>Purchase Invoices</strong></td>
+</tr>
+<tr>
+<td>টাকা বের হলো</td>
+<td><strong>Payments</strong></td>
+</tr>
+<tr>
+<td>টাকা এলো</td>
+<td><strong>Receipts</strong></td>
+</tr>
+<tr>
+<td>Adjustment</td>
+<td><strong>Journal Entries</strong></td>
+</tr>
+<tr>
+<td>Bank/Cash</td>
+<td><strong>Bank &amp; Cash Accounts</strong></td>
+</tr>
+</tbody>
+</table>
+<p>[STATED] Entry দেওয়ার আগে একবার নিজেকে জিজ্ঞেস করুন: “এটা আসলে কী ঘটনা?” Answer পেলেই form বেছে নেওয়া সহজ হবে।</p>
+<hr />
+<h2>9. Project এবং Ref.—দুজনের কাজ আলাদা</h2>
+<h3>Project</h3>
+<p>[VERIFIED] P&amp;L account-এ Project ব্যবহার হবে। P&amp;L মানে income বা expense—কোন site-এর লাভ/খরচ সেটা বোঝা দরকার।</p>
+<div class="codehilite"><pre><span></span><code>RA Bill revenue         → Project
+Materials               → Project
+Site labor              → Project
+Subcontractor cost      → Project
+Equipment allocation    → Project
+Liquidated damages      → Project, when directly project-related
+</code></pre></div>
+
+<h3>Ref.</h3>
+<p>[VERIFIED] Tender-specific Balance Sheet line-এ Project selector available নাও থাকতে পারে। তখন Ref. দিয়ে tender identity রাখা হয়।</p>
+<div class="codehilite"><pre><span></span><code>Tender Security margin        → Ref.
+Performance Security margin   → Ref.
+Retention release             → Ref.
+Mobilization Advance receipt  → Ref.
+Time Loan principal movement  → Ref., only if clearly tender-specific
+</code></pre></div>
+
+<h3>Time Loan interest</h3>
+<p>[VERIFIED] 5700 Interest on Time Loan: Project blank, Ref. blank। Bank facility interest সাধারণত lump sum হয়; safe tender-wise split না থাকলে tag দেবেন না।</p>
+<h3>Final Sales Invoice policy</h3>
+<p>[STATED] Sales Invoice line-এ <strong>Ref. ব্যবহার করবেন না</strong>।</p>
+<ul>
+<li>Invoice header-এ Customer থাকবে</li>
+<li>Invoice context-এ Project থাকবে</li>
+<li>Revenue, retention এবং advance recovery একই RA Bill-এর অংশ হিসেবে দেখা যাবে</li>
+<li>Standalone Balance Sheet Receipt/Payment/Journal Entry হলে Ref. ব্যবহার হবে</li>
+</ul>
+<hr />
+<h1>PART 4 — Non-inventory Items: ব্যবহার করার নিয়ম</h1>
+<h2>10. Item select করার আগে</h2>
+<p>[VERIFIED] <code>Non-inventory Items_14-AUG-26.md</code>-এ item-এর account number, item name, bilingual description এবং unit name দেওয়া আছে। Manager.io-তে item list থেকে matching item select করলে line description এবং account selection consistent থাকে।</p>
+<h3>Operator rule</h3>
+<ol>
+<li><strong>ঠিক ঘটনার জন্য ঠিক item select করুন</strong> — শুধু account number দেখে কাছাকাছি item নেবেন না।</li>
+<li>Item-এর <strong>Unit</strong> বদলাবেন না, যদি source quantity ওই unit-এ থাকে।</li>
+<li>Tender identity item description-এ লিখবেন না; Balance Sheet movement হলে <strong>Ref.</strong> field ব্যবহার করুন।</li>
+<li>Site cost item হলে <strong>Project select করুন</strong>।</li>
+<li>New item দরকার মনে হলে নিজে create করবেন না; duplicate আছে কি না verify করে authorized setup process অনুসরণ করুন।</li>
+</ol>
+<h3>Item family quick map</h3>
+<table>
+<thead>
+<tr>
+<th>Item family</th>
+<th>কাজ</th>
+<th style="text-align: right;">Main account</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tender Doc - ...</code></td>
+<td>Bid-stage document, submission, preparation expense</td>
+<td style="text-align: right;">5800</td>
+</tr>
+<tr>
+<td><code>TS Margin ...</code></td>
+<td>Tender Security</td>
+<td style="text-align: right;">1130</td>
+</tr>
+<tr>
+<td><code>PS Margin ...</code></td>
+<td>Performance Security</td>
+<td style="text-align: right;">1140</td>
+</tr>
+<tr>
+<td><code>Retention ...</code></td>
+<td>PE / subcontractor retention</td>
+<td style="text-align: right;">1150 / 2050</td>
+</tr>
+<tr>
+<td><code>Mobilization Advance ...</code></td>
+<td>PE advance receipt/recovery</td>
+<td style="text-align: right;">2100</td>
+</tr>
+<tr>
+<td><code>Time Loan ...</code></td>
+<td>Time Loan cash movement / monthly adjustment</td>
+<td style="text-align: right;">2300 / 5700</td>
+</tr>
+<tr>
+<td>Material items</td>
+<td>Construction material</td>
+<td style="text-align: right;">5000</td>
+</tr>
+<tr>
+<td>Labor items</td>
+<td>Site labor</td>
+<td style="text-align: right;">5010</td>
+</tr>
+<tr>
+<td>Equipment items</td>
+<td>Equipment/rental/allocation type cost</td>
+<td style="text-align: right;">5030</td>
+</tr>
+<tr>
+<td><code>Bank Charge ...</code></td>
+<td>General bank fee</td>
+<td style="text-align: right;">5720</td>
+</tr>
+<tr>
+<td><code>Tender Doc - ...</code></td>
+<td>Pre-NOA bid expenditure</td>
+<td style="text-align: right;">5800</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>11. Tender document and bid-stage items</h2>
+<p>Tender জেতার আগে Project নেই। তখন item select করবেন, কিন্তু Project blank রাখবেন।</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e-GP portal document/submission fee</td>
+<td><code>Tender Doc - Submission Fee</code></td>
+<td style="text-align: right;">5800</td>
+<td>Fee</td>
+<td>Blank</td>
+<td>PE code only</td>
+</tr>
+<tr>
+<td>Bid preparation, printing, courier</td>
+<td><code>Tender Doc - Preparation Cost</code></td>
+<td style="text-align: right;">5800</td>
+<td>Cost</td>
+<td>Blank</td>
+<td>PE code only</td>
+</tr>
+<tr>
+<td>Other bid-stage cost</td>
+<td><code>Tender Doc - Misc Bid Expense</code></td>
+<td style="text-align: right;">5800</td>
+<td>Cost</td>
+<td>Blank</td>
+<td>PE code only</td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+<div class="codehilite"><pre><span></span><code>Form:      Payment
+Item:      Tender Doc - Submission Fee
+Unit:      Fee
+Project:   blank
+Ref.:      LGED
+</code></pre></div>
+
+<p>[STATED] Tender জিততে পারেন—এই সম্ভাবনার জন্য dummy Project খুলবেন না। NOA না আসা পর্যন্ত Project নেই।</p>
+<hr />
+<h2>12. Tender Security items</h2>
+<h3>Cash margin block</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash margin blocked for tender security</td>
+<td><code>TS Margin Cash Block</code></td>
+<td style="text-align: right;">1130</td>
+<td>Instrument</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Partial cash margin against BG-backed security</td>
+<td><code>TS Margin BG Partial Block</code></td>
+<td style="text-align: right;">1130</td>
+<td>UnitName*</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Margin funded through a real Time Loan drawdown</td>
+<td><code>TS Margin Loan Block</code></td>
+<td style="text-align: right;">1130</td>
+<td>Instrument</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+</tbody>
+</table>
+<p>after source note: *The source export displays <code>UnitName</code> for <code>TS Margin BG Partial Block</code>. [STATED] Treat this as a catalog-data label to confirm in Manager.io before use; do not change it from the SOP.</p>
+<h3>BG-only tender security</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account shown in item source</th>
+<th>Operator treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BG issued, no cash block</td>
+<td><code>TS Margin BG</code></td>
+<td style="text-align: right;">1130</td>
+<td>Do not create a cash-margin entry merely because a BG exists; record the BG in BG Register. Record only actual commission/cash block when applicable.</td>
+</tr>
+</tbody>
+</table>
+<p>[VERIFIED] The item source includes <code>TS Margin BG</code> under 1130, but BG face value itself is not a ledger asset or expense. Therefore, operator must record only the actual cash movement, not the BG face value.</p>
+<h3>Release and bank fees</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tender Security refunded/released</td>
+<td><code>TS Margin Release</code></td>
+<td style="text-align: right;">1130</td>
+<td>Instrument</td>
+<td>Ref. = same tender</td>
+</tr>
+<tr>
+<td>BG issue commission</td>
+<td><code>TS BG Commission - Direct</code></td>
+<td style="text-align: right;">5710</td>
+<td>Fee</td>
+<td>Pre-NOA: Project blank; apply approved reference convention</td>
+</tr>
+<tr>
+<td>Bank processing charge</td>
+<td><code>TS Margin Bank Charge</code></td>
+<td style="text-align: right;">5720</td>
+<td>Fee</td>
+<td>Project blank; apply approved reference convention</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>13. Performance Security items</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash margin blocked</td>
+<td><code>PS Margin Cash Block</code></td>
+<td style="text-align: right;">1140</td>
+<td>Instrument</td>
+<td>Ref. = <code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Margin released after DLP</td>
+<td><code>PS Margin Release</code></td>
+<td style="text-align: right;">1140</td>
+<td>Instrument</td>
+<td>Ref. = same tender</td>
+</tr>
+<tr>
+<td>Direct BG commission</td>
+<td><code>PS BG Commission - Direct</code></td>
+<td style="text-align: right;">5710</td>
+<td>Fee</td>
+<td>Project if clearly single-tender</td>
+</tr>
+<tr>
+<td>Multi-year commission paid upfront</td>
+<td><code>PS BG Commission - Prepaid Initial</code></td>
+<td style="text-align: right;">1300</td>
+<td>Instrument</td>
+<td>Balance Sheet; follow approved reference method</td>
+</tr>
+<tr>
+<td>Monthly prepaid commission amortization</td>
+<td><code>PS BG Commission - Monthly Amortization</code></td>
+<td style="text-align: right;">5710</td>
+<td>Month</td>
+<td>Project if clearly single-tender</td>
+</tr>
+<tr>
+<td>Bank processing charge</td>
+<td><code>PS Margin Bank Charge</code></td>
+<td style="text-align: right;">5720</td>
+<td>Fee</td>
+<td>Project blank unless approved policy says otherwise</td>
+</tr>
+</tbody>
+</table>
+<p>[STATED] Direct vs prepaid BG commission depends on the approved accounting policy and supporting document. Do not select the prepaid item simply because the amount is large; duration/policy must support it.</p>
+<hr />
+<h2>14. Mobilization, Retention, and Time Loan items</h2>
+<h3>Mobilization Advance</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PE advance received</td>
+<td><code>Mobilization Advance Received</code></td>
+<td style="text-align: right;">2100</td>
+<td>Advance</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Advance recovered on RA Bill</td>
+<td><code>Mobilization Advance Recovery</code></td>
+<td style="text-align: right;">2100</td>
+<td>Recovery</td>
+<td><strong>No Sales Invoice-Line Ref.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>[STATED] RA Bill-এ recovery line-এর context Customer + Project দিয়ে থাকবে; item সঠিক হলেও Sales Invoice-Line Ref. ব্যবহার করবেন না।</p>
+<h3>Retention</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PE retention withheld on certified RA Bill</td>
+<td><code>Retention Withheld</code></td>
+<td style="text-align: right;">1150</td>
+<td>Bill</td>
+<td><strong>No Sales Invoice-Line Ref.</strong></td>
+</tr>
+<tr>
+<td>PE retention released after DLP</td>
+<td><code>Retention Release</code></td>
+<td style="text-align: right;">1150</td>
+<td>Bill</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Retention withheld from subcontractor</td>
+<td><code>Retention Subcontractor Withheld</code></td>
+<td style="text-align: right;">2050</td>
+<td>Bill</td>
+<td>Ref. when standalone Balance Sheet line needs tender identity</td>
+</tr>
+</tbody>
+</table>
+<h3>Time Loan</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real cash drawdown/repayment</td>
+<td><code>Time Loan Cash Movement</code></td>
+<td style="text-align: right;">2300</td>
+<td>Movement</td>
+<td>Ref. only if clearly tender-specific</td>
+</tr>
+<tr>
+<td>Monthly bank statement adjustment</td>
+<td><code>Time Loan Monthly Adjustment</code></td>
+<td style="text-align: right;">5700</td>
+<td>Month</td>
+<td><strong>Project blank, Ref. blank</strong></td>
+</tr>
+</tbody>
+</table>
+<p>[VERIFIED] The 14-AUG item catalog names the 5700 item <code>Time Loan Monthly Adjustment</code>; the item name does not change the locked rule that 5700 Time Loan interest/adjustment remains untagged unless a separate approved policy explicitly changes it.</p>
+<hr />
+<h2>15. Site materials: 5000 Direct Materials</h2>
+<p>[VERIFIED] These items are 5000 material-cost items from the 14-AUG catalog. For real site material/carrying/chipping cost, use <strong>Project = Yes</strong> and <strong>Ref. = No</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Unit</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binding Wire</td>
+<td>Kg</td>
+<td>GI binding wire purchase</td>
+</tr>
+<tr>
+<td>Bitumen</td>
+<td>Barrel</td>
+<td>Bitumen purchase</td>
+</tr>
+<tr>
+<td>Bitumen Carrying Cost</td>
+<td>Barrel</td>
+<td>Bitumen transport cost</td>
+</tr>
+<tr>
+<td>Brick Carrying Cost - ft³</td>
+<td>ft³</td>
+<td>Brick transport cost by cubic foot</td>
+</tr>
+<tr>
+<td>Brick Carrying Cost - হাজার</td>
+<td>হাজার</td>
+<td>Brick transport cost by thousand</td>
+</tr>
+<tr>
+<td>Brick Chipping Cost</td>
+<td>ft3</td>
+<td>Brick breaking/chipping cost</td>
+</tr>
+<tr>
+<td>Bricks_ft3</td>
+<td>ft3</td>
+<td>Brick purchase by cubic foot</td>
+</tr>
+<tr>
+<td>Bricks_হাজার</td>
+<td>হাজার</td>
+<td>Brick purchase by thousand</td>
+</tr>
+<tr>
+<td>Cement</td>
+<td>Bag</td>
+<td>Cement purchase</td>
+</tr>
+<tr>
+<td>Cement Carrying Cost</td>
+<td>Bag</td>
+<td>Cement transport cost</td>
+</tr>
+<tr>
+<td>CI Sheet</td>
+<td>Sheet</td>
+<td>Corrugated iron sheet purchase</td>
+</tr>
+<tr>
+<td>Electrical Item</td>
+<td>Lot</td>
+<td>Electrical materials</td>
+</tr>
+<tr>
+<td>Floor Tiles</td>
+<td>sft</td>
+<td>Floor tile purchase</td>
+</tr>
+<tr>
+<td>Glass - 5mm</td>
+<td>sft</td>
+<td>5 mm glass sheet purchase</td>
+</tr>
+<tr>
+<td>Iron</td>
+<td>Kg</td>
+<td>Iron purchase</td>
+</tr>
+<tr>
+<td>Iron Carrying Cost</td>
+<td>MT</td>
+<td>Iron transport cost</td>
+</tr>
+<tr>
+<td>MS Rod - 500W</td>
+<td>Kg</td>
+<td>MS rod purchase</td>
+</tr>
+<tr>
+<td>MS Rod Carrying Cost</td>
+<td>MT</td>
+<td>MS rod transport cost</td>
+</tr>
+<tr>
+<td>MS Sheet</td>
+<td>Sheet</td>
+<td>Mild steel sheet purchase</td>
+</tr>
+<tr>
+<td>Paint - Enamel</td>
+<td>Gallon</td>
+<td>Enamel paint purchase</td>
+</tr>
+<tr>
+<td>PVC Pipe</td>
+<td>Rft</td>
+<td>PVC pipe purchase</td>
+</tr>
+<tr>
+<td>Sand</td>
+<td>ft3</td>
+<td>Sand purchase</td>
+</tr>
+<tr>
+<td>Sand Carrying Cost</td>
+<td>ft3</td>
+<td>Sand transport cost</td>
+</tr>
+<tr>
+<td>Stone Carrying Cost</td>
+<td>ft3</td>
+<td>Stone transport cost</td>
+</tr>
+<tr>
+<td>Stone Chips Carrying Cost</td>
+<td>ft3</td>
+<td>Stone chips transport cost</td>
+</tr>
+<tr>
+<td>Stone Chips_ft3</td>
+<td>ft3</td>
+<td>Stone chips purchase</td>
+</tr>
+<tr>
+<td>Stone_ft3</td>
+<td>ft3</td>
+<td>Stone purchase</td>
+</tr>
+<tr>
+<td>Timber - Sal Wood</td>
+<td>Cft</td>
+<td>Sal wood timber purchase</td>
+</tr>
+<tr>
+<td>Welding Rod</td>
+<td>Kg</td>
+<td>Welding electrode purchase</td>
+</tr>
+</tbody>
+</table>
+<h3>Material entry example</h3>
+<div class="codehilite"><pre><span></span><code>Form:     Purchase Invoice
+Item:     Cement
+Unit:     Bag
+Account:  5000 Direct Materials (from item)
+Project:  select the actual awarded Project
+Ref.:     blank
+</code></pre></div>
+
+<p>[STATED] If one supplier invoice covers two Projects, use separate invoice lines and select the correct Project line-by-line.</p>
+<hr />
+<h2>16. Site labor: 5010 Direct Labor</h2>
+<p>[VERIFIED] These labor items are 5010 site-labor costs from the 14-AUG catalog. For site labor, use <strong>Project = Yes</strong> and <strong>Ref. = No</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Unit</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Electrician Labor</td>
+<td>Day</td>
+<td>Electrician wage</td>
+</tr>
+<tr>
+<td>Helper Labor</td>
+<td>Day</td>
+<td>Helper wage</td>
+</tr>
+<tr>
+<td>Mason Labor</td>
+<td>Day</td>
+<td>Mason wage</td>
+</tr>
+<tr>
+<td>Overtime Labor</td>
+<td>Hour</td>
+<td>Overtime labor charge</td>
+</tr>
+<tr>
+<td>Regular Labor</td>
+<td>Day</td>
+<td>Regular daily labor</td>
+</tr>
+<tr>
+<td>Skilled Labor</td>
+<td>Day</td>
+<td>Skilled worker wage</td>
+</tr>
+<tr>
+<td>Welder Labor</td>
+<td>Day</td>
+<td>Welder wage</td>
+</tr>
+</tbody>
+</table>
+<h3>Labor entry example</h3>
+<div class="codehilite"><pre><span></span><code>Form:     Payment
+Item:     Mason Labor
+Unit:     Day
+Account:  5010 Direct Labor (from item)
+Project:  select the actual awarded Project
+Ref.:     blank
+</code></pre></div>
+
+<hr />
+<h2>17. Equipment and handling: 5030</h2>
+<p>[VERIFIED] These items are recorded under account 5030 in the 14-AUG item catalog. Use <strong>Project = Yes</strong> when the cost relates to a specific site.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Unit</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Concrete Mixer Rental</td>
+<td>Day</td>
+<td>Concrete mixer rental</td>
+</tr>
+<tr>
+<td>Diesel - Equipment</td>
+<td>Liter</td>
+<td>Fuel for construction equipment</td>
+</tr>
+<tr>
+<td>Equipment Rental</td>
+<td>Day</td>
+<td>Equipment rental charge</td>
+</tr>
+<tr>
+<td>Loading Unloading Charge</td>
+<td>Trip</td>
+<td>Material loading/unloading charge</td>
+</tr>
+<tr>
+<td>Scaffolding Rental</td>
+<td>Set-Day</td>
+<td>Scaffolding rental</td>
+</tr>
+</tbody>
+</table>
+<h3>Equipment entry example</h3>
+<div class="codehilite"><pre><span></span><code>Form:     Payment or Purchase Invoice (depending on source bill)
+Item:     Equipment Rental
+Unit:     Day
+Account:  5030 (from item)
+Project:  select the actual awarded Project
+Ref.:     blank
+</code></pre></div>
+
+<p>[STATED] Equipment allocation or internal cross-project allocation requires approved usage evidence. Do not use rental/fuel item merely to create an internal allocation entry.</p>
+<hr />
+<h2>18. General bank charge item</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General bank fee not related to security</td>
+<td><code>Bank Charge - General</code></td>
+<td style="text-align: right;">5720</td>
+<td>Fee</td>
+<td>Both blank</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Form:     Payment
+Item:     Bank Charge - General
+Project:  blank
+Ref.:     blank
+</code></pre></div>
+
+<hr />
+<h1>PART 5 — Daily Workflows</h1>
+<h2>19. Pre-NOA: e-GP document fee</h2>
+<p>Tender জেতার আগে Project নেই। এই অবস্থাকে ভুল ভাববেন না। তখন শুধু PE এবং bid-stage expense আছে।</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td><code>Tender Doc - Submission Fee</code></td>
+</tr>
+<tr>
+<td>Account</td>
+<td>5800 Bidding &amp; Tender Expenses</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>Fee</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>blank</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>PE code only, e.g. <code>LGED</code>, <code>PWD</code>, <code>EED</code></td>
+</tr>
+</tbody>
+</table>
+<p>এক Payment-এ অনেক PE-এর fee হলে প্রতি PE-এর জন্য আলাদা line দিন।</p>
+<div class="codehilite"><pre><span></span><code>Tender Doc - Submission Fee     Ref: EED
+Tender Doc - Submission Fee     Ref: LGED
+Tender Doc - Submission Fee     Ref: PWD
+</code></pre></div>
+
+<p>[STATED] Bid করেছেন বলে dummy Project খুলবেন না। NOA না আসা পর্যন্ত Project নেই।</p>
+<hr />
+<h2>20. Tender Security: cash, BG, release</h2>
+<h3>A. Cash / Pay Order / cash margin</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td><code>TS Margin Cash Block</code></td>
+</tr>
+<tr>
+<td>Account</td>
+<td>1130 Tender Security Margin</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>Instrument</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td><code>PE-TenderID</code>; ID unavailable হলে approved PE-only convention</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Dr 1130 Tender Security Margin
+Cr 1010 Bank
+</code></pre></div>
+
+<p>[VERIFIED] 1130 asset account কারণ cash margin আপনার টাকা; অন্য পক্ষ বা bank নির্দিষ্ট সময়ের জন্য ধরে রেখেছে।</p>
+<h3>B. BG-only</h3>
+<p>[VERIFIED] যদি BG দেওয়া হয় কিন্তু কোনো cash margin block না হয়, ledger-এ margin entry হবে না। BG Register update করবেন। Bank commission বা actual processing charge থাকলে সঠিক item দিয়ে আলাদা payment record হবে।</p>
+<h3>C. Tender Security release</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td>Item</td>
+<td><code>TS Margin Release</code></td>
+</tr>
+<tr>
+<td>Account</td>
+<td>1130 Tender Security Margin</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>Instrument</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>same <code>PE-TenderID</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Dr 1010 Bank
+Cr 1130 Tender Security Margin
+</code></pre></div>
+
+<hr />
+<h2>21. Performance Security এবং BG Commission</h2>
+<h3>Cash margin block</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>Item</td>
+<td><code>PS Margin Cash Block</code></td>
+</tr>
+<tr>
+<td>Account</td>
+<td>1140 Performance Security Margin</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>Instrument</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+</tbody>
+</table>
+<p>[VERIFIED] 1140 asset account কারণ Performance Security cash margin contractor-এর resource, যদিও সেটি এখন temporarily blocked।</p>
+<h3>BG Commission</h3>
+<p>[STATED] Commission-এর treatment duration এবং approved accounting policy দেখে ঠিক হবে:</p>
+<ul>
+<li>Short-period commission: <code>PS BG Commission - Direct</code> → 5710 BG Commission Expense</li>
+<li>Multi-period commission: <code>PS BG Commission - Prepaid Initial</code> → 1300 Prepaid BG Commission, followed by <code>PS BG Commission - Monthly Amortization</code> → 5710</li>
+</ul>
+<p>[STATED] কোন method ব্যবহার করবেন তা organization-এর approved policy এবং supporting document ছাড়া অনুমান করবেন না।</p>
+<hr />
+<h2>22. Mobilization Advance পেলেন</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td>Item</td>
+<td><code>Mobilization Advance Received</code></td>
+</tr>
+<tr>
+<td>Account</td>
+<td>2100 Mobilization Advance Received</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>Advance</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Dr 1010 Bank
+Cr 2100 Mobilization Advance Received
+</code></pre></div>
+
+<p>[VERIFIED] 2100 liability কারণ টাকা এলেও কাজের revenue তখনো earn হয়নি; RA Bill-এর recovery line দিয়ে advance কমবে।</p>
+<h3>Control</h3>
+<p>[STATED] Final RA Bill-এর পরে ওই tender-এর Mobilization Advance balance শূন্য হওয়া উচিত। অশূন্য থাকলে contract deduction schedule এবং ledger review করুন।</p>
+<hr />
+<h2>23. Site material, labor, subcontractor</h2>
+<table>
+<thead>
+<tr>
+<th>ঘটনা</th>
+<th>Form</th>
+<th>Use item</th>
+<th style="text-align: right;">Account</th>
+<th>Project</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cement/material bill</td>
+<td>Purchase Invoice</td>
+<td>Matching material item, e.g. <code>Cement</code>, <code>MS Rod - 500W</code>, <code>Sand</code></td>
+<td style="text-align: right;">5000</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Site labor cash</td>
+<td>Payment</td>
+<td>Matching labor item, e.g. <code>Mason Labor</code>, <code>Skilled Labor</code></td>
+<td style="text-align: right;">5010</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Equipment rental/fuel</td>
+<td>Payment or Purchase Invoice</td>
+<td>Matching equipment item, e.g. <code>Equipment Rental</code>, <code>Diesel - Equipment</code></td>
+<td style="text-align: right;">5030</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Subcontractor bill</td>
+<td>Purchase Invoice</td>
+<td>Approved subcontractor item/process</td>
+<td style="text-align: right;">5020</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>[VERIFIED] এগুলো site P&amp;L activity। তাই সঠিক Project select করাই মূল কাজ।</p>
+<hr />
+<h2>24. RA Bill: net amount এক line-এ নয়</h2>
+<p>RA Bill-এর net payment দেখলেই সব বোঝা যায় না। Gross work, Retention এবং Mobilization recovery আলাদা না রাখলে report-এ সত্যিটা হারিয়ে যায়।</p>
+<h3>Sales Invoice header</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>কী দেবেন</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer</td>
+<td>PE office Customer</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>Awarded Project</td>
+</tr>
+<tr>
+<td>Cert. No.</td>
+<td>Approved certificate number, if used</td>
+</tr>
+</tbody>
+</table>
+<h3>Example structure</h3>
+<p>ধরা যাক certified work BDT 15,00,000। Retention BDT 1,50,000। Mobilization recovery BDT 3,00,000।</p>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Item</th>
+<th style="text-align: right;">Account</th>
+<th style="text-align: right;">Amount</th>
+<th>Tender identity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Certified work</td>
+<td>Approved revenue item/process</td>
+<td style="text-align: right;">4000 Contract Revenue</td>
+<td style="text-align: right;">+15,00,000</td>
+<td>Project</td>
+</tr>
+<tr>
+<td>Retention withheld</td>
+<td><code>Retention Withheld</code></td>
+<td style="text-align: right;">1150 Retention Receivable</td>
+<td style="text-align: right;">-1,50,000</td>
+<td>Invoice Customer + Project; <strong>no Ref. line</strong></td>
+</tr>
+<tr>
+<td>Mob advance recovery</td>
+<td><code>Mobilization Advance Recovery</code></td>
+<td style="text-align: right;">2100 Mobilization Advance</td>
+<td style="text-align: right;">-3,00,000</td>
+<td>Invoice Customer + Project; <strong>no Ref. line</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Gross work                 15,00,000
+Less: Retention            (1,50,000)
+Less: Advance recovery     (3,00,000)
+------------------------------------
+Net payable by PE          10,50,000
+</code></pre></div>
+
+<p>[STATED] Sales Invoice-Line Ref. = NO. এই policy বদলাতে হলে SOP update ও local UI validation লাগবে।</p>
+<h3>PE টাকা পাঠালে</h3>
+<p>Receipt খুলুন এবং invoice select করে settle করুন।</p>
+<p>[VERIFIED] Invoice settlement Receipt-এ Project বা Ref. দ্বিতীয়বার দেবেন না; original invoice context বজায় থাকে।</p>
+<hr />
+<h2>25. Retention release</h2>
+<p>DLP/release condition পূরণ হলে PE retention দেয়।</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Receipt</td>
+</tr>
+<tr>
+<td>Item</td>
+<td><code>Retention Release</code></td>
+</tr>
+<tr>
+<td>Account</td>
+<td>1150 Retention Receivable</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>Bill</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Dr 1010 Bank
+Cr 1150 Retention Receivable
+</code></pre></div>
+
+<p>[VERIFIED] এটি নতুন Revenue না। পুরনো receivable cash-এ বদলে গেল।</p>
+<hr />
+<h2>26. Time Loan</h2>
+<h3>Monthly interest / bank statement adjustment</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form</td>
+<td>Payment or approved adjustment method</td>
+</tr>
+<tr>
+<td>Item</td>
+<td><code>Time Loan Monthly Adjustment</code></td>
+</tr>
+<tr>
+<td>Account</td>
+<td>5700 Interest on Time Loan</td>
+</tr>
+<tr>
+<td>Unit</td>
+<td>Month</td>
+</tr>
+<tr>
+<td>Project</td>
+<td>blank</td>
+</tr>
+<tr>
+<td>Ref.</td>
+<td>blank</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Dr 5700 Interest on Time Loan
+Cr 1010 Bank
+</code></pre></div>
+
+<p>[VERIFIED] Time Loan interest সবসময় untagged।</p>
+<h3>Principal drawdown / repayment</h3>
+<p>[STATED] Bank statement-এ principal movement পরিষ্কার দেখা গেলে <code>Time Loan Cash Movement</code> item এবং approved method দিয়ে 2300 Time Loan record করা যায়। একটি নির্দিষ্ট tender-এর সঙ্গে সম্পর্ক documented হলে Ref. ব্যবহার করুন; না হলে unsupported split করবেন না।</p>
+<h3>Reconciliation</h3>
+<p>[STATED] Management বা audit request এলে bank statement-এর closing loan balance এবং Manager.io 2300 balance compare করুন। Difference থাকলে approved two-sided adjustment দিন এবং bank statement reference রাখুন।</p>
+<hr />
+<h2>27. Bank transfer, bank charge, office overhead</h2>
+<h3>Bank-to-bank transfer</h3>
+<p>[VERIFIED] Native <strong>Inter Account Transfer</strong> form ব্যবহার করুন। Journal Entry বা separate Payment/Receipt দিয়ে bank transfer বানাবেন না।</p>
+<h3>General bank charge</h3>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payment</td>
+<td><code>Bank Charge - General</code></td>
+<td style="text-align: right;">5720</td>
+<td>Fee</td>
+<td>both blank</td>
+</tr>
+</tbody>
+</table>
+<h3>Office-wide expense</h3>
+<p>[STATED] Office rent, admin salary, trade licence, utility বা company-wide overhead tender-specific না হলে Project/Ref. দেবেন না।</p>
+<hr />
+<h1>PART 6 — মাস শেষের 20 মিনিট</h1>
+<h2>28. Month-end checklist</h2>
+<div class="codehilite"><pre><span></span><code>[ ] 1. 5000–5030: কোনো site P&amp;L line-এ Project blank আছে?
+[ ] 2. 1130/1140/1150/2050/2100/2300: tender-specific standalone line-এ Ref. blank আছে?
+[ ] 3. 1150 Retention: পুরনো balance-এর follow-up list আছে?
+[ ] 4. 2100 Advance: deduction schedule-এর সাথে balance মেলে?
+[ ] 5. 5700 Time Loan Monthly Adjustment: bank statement অনুযায়ী post হয়েছে?
+[ ] 6. BG Register: expiry/release date review হয়েছে?
+[ ] 7. Project completed + retention settled? Project Inactive হয়েছে?
+[ ] 8. 5টি active Project sample check: Customer Code = Project PE CODE?
+[ ] 9. New material/labor/equipment item দরকার হয়েছিল? Duplicate check ছাড়া কোনো item create হয়েছে কি?
+</code></pre></div>
+
+<h3>ভুল পেলে কী করবেন</h3>
+<table>
+<thead>
+<tr>
+<th>কোথায় ভুল</th>
+<th>প্রথম কাজ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Site cost-এ Project blank</td>
+<td>source invoice/payment দেখে correct Project নির্ধারণ করুন</td>
+</tr>
+<tr>
+<td>Tender-specific BS line-এ Ref. blank</td>
+<td>source tender/PE দেখে correct Ref. দিন</td>
+</tr>
+<tr>
+<td>Old Retention balance</td>
+<td>DLP, certificate, PE follow-up status দেখুন</td>
+</tr>
+<tr>
+<td>2100 balance অস্বাভাবিক</td>
+<td>advance receipt ও RA recovery schedule মিলান</td>
+</tr>
+<tr>
+<td>Customer/Project code mismatch</td>
+<td>Project save করার আগে approved source দেখে correction করুন</td>
+</tr>
+<tr>
+<td>Item not found / wrong item suspected</td>
+<td><code>Non-inventory Items_14-AUG-26.md</code> দেখে item name/unit/account মিলান; duplicate create করবেন না</td>
+</tr>
+</tbody>
+</table>
+<p>[STATED] Source document ছাড়া guess করে Project, Ref., Contract Value, Retention Rate বা item/account mapping edit করবেন না।</p>
+<hr />
+<h1>PART 7 — BG Register</h1>
+<h2>29. BG Register কেন আলাদা?</h2>
+<p>[VERIFIED] BG face value ledger-এ ওঠে না, কিন্তু expiry মিস হলে operational risk তৈরি হয়। তাই BG Register আলাদা রাখুন।</p>
+<h3>Redacted BG Register template</h3>
+<table>
+<thead>
+<tr>
+<th>BG Number</th>
+<th>Type</th>
+<th>Issuing Bank</th>
+<th style="text-align: right;">Face Value</th>
+<th>Issue Date</th>
+<th>Expiry Date</th>
+<th>PE Code</th>
+<th>Tender ID</th>
+<th>Status</th>
+<th>File Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BG-XXXX</td>
+<td>Tender / Performance</td>
+<td>Bank name</td>
+<td style="text-align: right;">[amount]</td>
+<td>YYYY-MM-DD</td>
+<td>YYYY-MM-DD</td>
+<td>LGED-BSL</td>
+<td>1142857</td>
+<td>Active / Released</td>
+<td>document path</td>
+</tr>
+</tbody>
+</table>
+<h3>Review rule</h3>
+<p>[STATED] Month-end-এ register খুলুন। Expiry, extension, release এবং original BG document location confirm করুন। Contract-required renewal timing source document দেখে follow করবেন।</p>
+<hr />
+<h1>PART 8 — Advanced cases</h1>
+<p>এই অংশ প্রতিদিনের entry-এর জন্য নয়। যখন ঘটনাটি সত্যি ঘটে, তখন source paper নিয়ে supervisor/authorized accountant-এর সঙ্গে entry দিন।</p>
+<h2>30. Disputed claim</h2>
+<p>[STATED] PE যদি submitted amount-এর চেয়ে কম certify করে এবং আপনি difference formally contest করেন, disputed part আলাদা tracking দরকার হতে পারে।</p>
+<ul>
+<li>Account concept: 1160 Disputed Claims Receivable</li>
+<li>Tender identity: Ref.</li>
+<li>Supporting evidence: certified bill, claim letter, PE correspondence</li>
+</ul>
+<p>[STATED] Claim approved, partly approved, বা rejected হওয়ার আগে amount বা treatment অনুমান করবেন না।</p>
+<hr />
+<h2>31. BG forfeiture</h2>
+<p>[STATED] PE BG/cash margin encash করলে entry দেওয়ার আগে encashment notice, bank debit advice এবং contract basis দেখুন।</p>
+<ul>
+<li>Margin release নয়—margin loss/settlement হতে পারে</li>
+<li>Project-related loss account প্রযোজ্য হতে পারে</li>
+<li>Margin account clear করার সময় Ref. লাগবে</li>
+<li>Bank যদি liability তৈরি করে, approved liability account ব্যবহার হবে</li>
+</ul>
+<p>[STATED] এটি exceptional entry; operator নিজে policy choose করবেন না।</p>
+<hr />
+<h2>32. Equipment allocation</h2>
+<p>[STATED] একই equipment অনেক Project-এ ব্যবহার হলে approved usage log/rate অনুযায়ী month-end allocation করা যায়।</p>
+<ul>
+<li>Debit: 5030 Equipment Allocation with Project</li>
+<li>Credit/offset: approved internal allocation method</li>
+</ul>
+<p>[STATED] Usage log, rate approval, এবং period ছাড়া allocation দেবেন না। <code>Equipment Rental</code> বা <code>Diesel - Equipment</code> item only real rental/fuel cost-এর জন্য; internal allocation-এর substitute নয়।</p>
+<hr />
+<h2>33. Subcontractor advance and retention</h2>
+<table>
+<thead>
+<tr>
+<th>ঘটনা</th>
+<th>Basic treatment</th>
+<th>Tender identity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subcontractor advance</td>
+<td>1200 Subcontractor Advances</td>
+<td>Ref. when standalone Balance Sheet movement</td>
+</tr>
+<tr>
+<td>Subcontractor bill</td>
+<td>5020 Subcontractor Cost</td>
+<td>Project</td>
+</tr>
+<tr>
+<td>Subcontractor retention withheld</td>
+<td>2050 Subcontractor Retention Payable; item <code>Retention Subcontractor Withheld</code></td>
+<td>Ref. when Balance Sheet line needs tender identity</td>
+</tr>
+</tbody>
+</table>
+<p>[VERIFIED] Supplier/subcontractor cost কোন Project-এর, তা P&amp;L line-এর Project দিয়ে বোঝা যাবে।</p>
+<hr />
+<h1>PART 9 — 15-second desk card</h1>
+<div class="codehilite"><pre><span></span><code>NOA এসেছে?
+→ Customer আছে কি দেখুন
+→ না থাকলে Customer create করুন
+→ Project create করুন
+→ Customer Code = Project PE CODE, exact match
+
+Site material / labor / equipment / subcontractor cost?
+→ Correct non-inventory item select করুন
+→ Project দিন
+→ Ref. দেবেন না
+
+Tender-specific standalone margin / retention / advance / loan movement?
+→ Correct security/retention/advance item select করুন
+→ Ref. = PE-TenderID
+
+Sales Invoice?
+→ Correct RA Bill item select করুন
+→ Project yes; Ref. line no
+
+Time Loan Monthly Adjustment?
+→ Correct item select করুন
+→ no Project, no Ref.
+
+Tender এখনো awarded হয়নি?
+→ no Project; Tender Doc item + Ref. = PE code only
+</code></pre></div>
+
+<hr />
+<h1>Common mistakes</h1>
+<table>
+<thead>
+<tr>
+<th>ভুল</th>
+<th>সঠিক কাজ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Award-এর পরে Customer না দেখে Project খোলা</td>
+<td>Customer check/create + Project একই সময়ে করুন</td>
+</tr>
+<tr>
+<td><code>LGED-BSL</code> এবং <code>LGED-PTK</code>-কে এক Customer ধরা</td>
+<td>আলাদা office হলে আলাদা Customer</td>
+</tr>
+<tr>
+<td>Customer Code ও Project PE CODE আলাদা লেখা</td>
+<td>হুবহু same value copy করুন</td>
+</tr>
+<tr>
+<td>Customer Name-এ Tender ID লেখা</td>
+<td>Tender ID Project Name এবং Ref.-এ রাখুন</td>
+</tr>
+<tr>
+<td>Pre-NOA-তে dummy Project খোলা</td>
+<td>NOA পর্যন্ত Project blank</td>
+</tr>
+<tr>
+<td>Sales Invoice line-এ Ref. লেখা</td>
+<td>Final policy: Ref. line = NO</td>
+</tr>
+<tr>
+<td>BG-only face value-কে 1130 cash margin হিসেবে entry দেওয়া</td>
+<td>BG Register update করুন; only actual cash margin/commission entry দিন</td>
+</tr>
+<tr>
+<td>ভুল unit/item বেছে নেওয়া</td>
+<td>14-AUG item catalog থেকে item name, account, unit মিলান</td>
+</tr>
+<tr>
+<td>Duplicate item নিজে create করা</td>
+<td>আগে item list/search দিয়ে duplicate check করুন</td>
+</tr>
+<tr>
+<td>Retention release-কে Revenue বলা</td>
+<td>1150 receivable থেকে Bank-এ receipt</td>
+</tr>
+<tr>
+<td>Mobilization Advance-কে income বলা</td>
+<td>2100 liability ব্যবহার করুন</td>
+</tr>
+<tr>
+<td>Time Loan interest/adjustment tag করা</td>
+<td>Project এবং Ref. দুটোই blank</td>
+</tr>
+<tr>
+<td>Bank transfer JE দিয়ে করা</td>
+<td>Inter Account Transfer ব্যবহার করুন</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>NotebookLM / Slidedeck instruction</h1>
+<p>এই file NotebookLM-এ upload করার পরে prompt দিন:</p>
+<blockquote>
+<p>Create a brand-neutral training slide deck for Bangladesh e-GP contractors using Manager.io. Write in natural conversational Bangla with only essential English software labels. Do not translate every English word. Begin with PE office, Tender ID, NOA, RA Bill, Retention, Mobilization Advance and BG. Make the central slide: “NOA day = Customer (if missing) + Project at the same time; Customer Code must exactly match Project PE CODE.” Explain Project vs Ref. only after the e-GP story. Keep Sales Invoice-Line Ref. as NO. Include a practical non-inventory item section: Tender Doc - Submission Fee, TS Margin Cash Block, PS Margin Cash Block, Mobilization Advance Received, Retention Withheld, Retention Release, Time Loan Monthly Adjustment, Cement, Mason Labor, Equipment Rental, and Bank Charge - General. Show the correct account, unit, Project/Ref rule for each example. Use fictional examples only. Never include API keys, passwords, internal URLs, actual account numbers, live project values, UUIDs, or confidential data.</p>
+</blockquote>
+<hr />
+<h1>FINAL DECISIONS LOG</h1>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brand-neutral cover</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>Audience: e-GP fluent, software-ready, debit/credit optional</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>Natural Bangla + essential English terms; not translation</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>e-GP glossary before Manager architecture</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>On award: Customer if missing + Project at same time</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>Customer.Code must equal Project.PE CODE</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>One PE office Code can hold many Projects</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>Sales Invoice-Line Ref. = NO</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>Pre-NOA bid fee: no Project; PE-only Ref. allowed</td>
+<td>[STATED] Locked</td>
+</tr>
+<tr>
+<td>5700 Time Loan Monthly Adjustment untagged</td>
+<td>[VERIFIED] Locked</td>
+</tr>
+<tr>
+<td>Non-inventory item names/units follow 14-AUG-26 catalog</td>
+<td>[VERIFIED] Locked for this SOP version</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1>GAPS</h1>
+<ul>
+<li>[VERIFIED] AIT/VDS tax workflow is excluded until related accounts and approved tax engine are provisioned.</li>
+<li>[STATED] The source item export contains a repeated <code>Brick Chipping Cost</code> row and a repeated <code>Sand Carrying Cost</code> row; this SOP lists each operational item once and does not decide whether the live duplicates need deactivation.</li>
+<li>[STATED] The item export labels <code>TS Margin BG Partial Block</code> unit as <code>UnitName</code>; confirm this exact unit in live Manager.io before operator use. Do not silently change the catalog field.</li>
+<li>[STATED] Verify any material/labor/equipment item is not a duplicate before creating or modifying it in the live item list.</li>
+<li>[STATED] Add redacted local UI screenshots only after the text workflow is accepted; screenshots must not expose internal URLs, credentials, bank details, tender values or API data. [IP RISK]</li>
+<li>[STATED] Before wide rollout, run one operator acceptance test: NOA → Customer + Project → material purchase → RA Bill → Mobilization Advance → Retention Release.</li>
+</ul>
+<h1>NEXT MOVE</h1>
+<ol>
+<li>Treat this <strong>v2.2 FINAL — 14-AUG-26 Item-Aware</strong> file as the updated operator SOP source.</li>
+<li>Keep <code>Non-inventory Items_14-AUG-26.md</code> beside it as the item catalog reference; do not replace it with a theme file.</li>
+<li>Run the operator acceptance test using the listed item names and units.</li>
+<li>Before any live item creation/update, verify duplicates in Manager.io and obtain explicit confirmation for the write action.</li>
+</ol>
+</article>
 </main>
 
 <footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#FFFFFF;font-size:12px;color:#64748B;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
@@ -82,10 +1900,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);m
   <small style="color:#64748B">Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-  const md = \$escapedMd\;
-  document.getElementById('content').innerHTML = marked.parse(md);
-</script>
+
 </body>
 </html>

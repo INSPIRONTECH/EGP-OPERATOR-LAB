@@ -63,7 +63,687 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);m
 </header>
 
 <main class="container">
-  <article class="prose" id="content">Loading document content...</article>
+  <article class="prose" id="content">
+<h1>PART 4 — Non-inventory Items: ব্যবহার করার নিয়ম</h1>
+<h2>10. Item select করার আগে</h2>
+<p>[VERIFIED] <code>Non-inventory Items_14-AUG-26.md</code>-এ item-এর account number, item name, bilingual description এবং unit name দেওয়া আছে। Manager.io-তে item list থেকে matching item select করলে line description এবং account selection consistent থাকে।</p>
+<h3>Operator rule</h3>
+<ol>
+<li><strong>ঠিক ঘটনার জন্য ঠিক item select করুন</strong> — শুধু account number দেখে কাছাকাছি item নেবেন না।</li>
+<li>Item-এর <strong>Unit</strong> বদলাবেন না, যদি source quantity ওই unit-এ থাকে।</li>
+<li>Tender identity item description-এ লিখবেন না; Balance Sheet movement হলে <strong>Ref.</strong> field ব্যবহার করুন।</li>
+<li>Site cost item হলে <strong>Project select করুন</strong>।</li>
+<li>New item দরকার মনে হলে নিজে create করবেন না; duplicate আছে কি না verify করে authorized setup process অনুসরণ করুন।</li>
+</ol>
+<h3>Item family quick map</h3>
+<table>
+<thead>
+<tr>
+<th>Item family</th>
+<th>কাজ</th>
+<th style="text-align: right;">Main account</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Tender Doc - ...</code></td>
+<td>Bid-stage document, submission, preparation expense</td>
+<td style="text-align: right;">5800</td>
+</tr>
+<tr>
+<td><code>TS Margin ...</code></td>
+<td>Tender Security</td>
+<td style="text-align: right;">1130</td>
+</tr>
+<tr>
+<td><code>PS Margin ...</code></td>
+<td>Performance Security</td>
+<td style="text-align: right;">1140</td>
+</tr>
+<tr>
+<td><code>Retention ...</code></td>
+<td>PE / subcontractor retention</td>
+<td style="text-align: right;">1150 / 2050</td>
+</tr>
+<tr>
+<td><code>Mobilization Advance ...</code></td>
+<td>PE advance receipt/recovery</td>
+<td style="text-align: right;">2100</td>
+</tr>
+<tr>
+<td><code>Time Loan ...</code></td>
+<td>Time Loan cash movement / monthly adjustment</td>
+<td style="text-align: right;">2300 / 5700</td>
+</tr>
+<tr>
+<td>Material items</td>
+<td>Construction material</td>
+<td style="text-align: right;">5000</td>
+</tr>
+<tr>
+<td>Labor items</td>
+<td>Site labor</td>
+<td style="text-align: right;">5010</td>
+</tr>
+<tr>
+<td>Equipment items</td>
+<td>Equipment/rental/allocation type cost</td>
+<td style="text-align: right;">5030</td>
+</tr>
+<tr>
+<td><code>Bank Charge ...</code></td>
+<td>General bank fee</td>
+<td style="text-align: right;">5720</td>
+</tr>
+<tr>
+<td><code>Tender Doc - ...</code></td>
+<td>Pre-NOA bid expenditure</td>
+<td style="text-align: right;">5800</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>11. Tender document and bid-stage items</h2>
+<p>Tender জেতার আগে Project নেই। তখন item select করবেন, কিন্তু Project blank রাখবেন।</p>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>e-GP portal document/submission fee</td>
+<td><code>Tender Doc - Submission Fee</code></td>
+<td style="text-align: right;">5800</td>
+<td>Fee</td>
+<td>Blank</td>
+<td>PE code only</td>
+</tr>
+<tr>
+<td>Bid preparation, printing, courier</td>
+<td><code>Tender Doc - Preparation Cost</code></td>
+<td style="text-align: right;">5800</td>
+<td>Cost</td>
+<td>Blank</td>
+<td>PE code only</td>
+</tr>
+<tr>
+<td>Other bid-stage cost</td>
+<td><code>Tender Doc - Misc Bid Expense</code></td>
+<td style="text-align: right;">5800</td>
+<td>Cost</td>
+<td>Blank</td>
+<td>PE code only</td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+<div class="codehilite"><pre><span></span><code>Form:      Payment
+Item:      Tender Doc - Submission Fee
+Unit:      Fee
+Project:   blank
+Ref.:      LGED
+</code></pre></div>
+
+<p>[STATED] Tender জিততে পারেন—এই সম্ভাবনার জন্য dummy Project খুলবেন না। NOA না আসা পর্যন্ত Project নেই।</p>
+<hr />
+<h2>12. Tender Security items</h2>
+<h3>Cash margin block</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash margin blocked for tender security</td>
+<td><code>TS Margin Cash Block</code></td>
+<td style="text-align: right;">1130</td>
+<td>Instrument</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Partial cash margin against BG-backed security</td>
+<td><code>TS Margin BG Partial Block</code></td>
+<td style="text-align: right;">1130</td>
+<td>UnitName*</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Margin funded through a real Time Loan drawdown</td>
+<td><code>TS Margin Loan Block</code></td>
+<td style="text-align: right;">1130</td>
+<td>Instrument</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+</tbody>
+</table>
+<p>after source note: *The source export displays <code>UnitName</code> for <code>TS Margin BG Partial Block</code>. [STATED] Treat this as a catalog-data label to confirm in Manager.io before use; do not change it from the SOP.</p>
+<h3>BG-only tender security</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account shown in item source</th>
+<th>Operator treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BG issued, no cash block</td>
+<td><code>TS Margin BG</code></td>
+<td style="text-align: right;">1130</td>
+<td>Do not create a cash-margin entry merely because a BG exists; record the BG in BG Register. Record only actual commission/cash block when applicable.</td>
+</tr>
+</tbody>
+</table>
+<p>[VERIFIED] The item source includes <code>TS Margin BG</code> under 1130, but BG face value itself is not a ledger asset or expense. Therefore, operator must record only the actual cash movement, not the BG face value.</p>
+<h3>Release and bank fees</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tender Security refunded/released</td>
+<td><code>TS Margin Release</code></td>
+<td style="text-align: right;">1130</td>
+<td>Instrument</td>
+<td>Ref. = same tender</td>
+</tr>
+<tr>
+<td>BG issue commission</td>
+<td><code>TS BG Commission - Direct</code></td>
+<td style="text-align: right;">5710</td>
+<td>Fee</td>
+<td>Pre-NOA: Project blank; apply approved reference convention</td>
+</tr>
+<tr>
+<td>Bank processing charge</td>
+<td><code>TS Margin Bank Charge</code></td>
+<td style="text-align: right;">5720</td>
+<td>Fee</td>
+<td>Project blank; apply approved reference convention</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>13. Performance Security items</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash margin blocked</td>
+<td><code>PS Margin Cash Block</code></td>
+<td style="text-align: right;">1140</td>
+<td>Instrument</td>
+<td>Ref. = <code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Margin released after DLP</td>
+<td><code>PS Margin Release</code></td>
+<td style="text-align: right;">1140</td>
+<td>Instrument</td>
+<td>Ref. = same tender</td>
+</tr>
+<tr>
+<td>Direct BG commission</td>
+<td><code>PS BG Commission - Direct</code></td>
+<td style="text-align: right;">5710</td>
+<td>Fee</td>
+<td>Project if clearly single-tender</td>
+</tr>
+<tr>
+<td>Multi-year commission paid upfront</td>
+<td><code>PS BG Commission - Prepaid Initial</code></td>
+<td style="text-align: right;">1300</td>
+<td>Instrument</td>
+<td>Balance Sheet; follow approved reference method</td>
+</tr>
+<tr>
+<td>Monthly prepaid commission amortization</td>
+<td><code>PS BG Commission - Monthly Amortization</code></td>
+<td style="text-align: right;">5710</td>
+<td>Month</td>
+<td>Project if clearly single-tender</td>
+</tr>
+<tr>
+<td>Bank processing charge</td>
+<td><code>PS Margin Bank Charge</code></td>
+<td style="text-align: right;">5720</td>
+<td>Fee</td>
+<td>Project blank unless approved policy says otherwise</td>
+</tr>
+</tbody>
+</table>
+<p>[STATED] Direct vs prepaid BG commission depends on the approved accounting policy and supporting document. Do not select the prepaid item simply because the amount is large; duration/policy must support it.</p>
+<hr />
+<h2>14. Mobilization, Retention, and Time Loan items</h2>
+<h3>Mobilization Advance</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PE advance received</td>
+<td><code>Mobilization Advance Received</code></td>
+<td style="text-align: right;">2100</td>
+<td>Advance</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Advance recovered on RA Bill</td>
+<td><code>Mobilization Advance Recovery</code></td>
+<td style="text-align: right;">2100</td>
+<td>Recovery</td>
+<td><strong>No Sales Invoice-Line Ref.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>[STATED] RA Bill-এ recovery line-এর context Customer + Project দিয়ে থাকবে; item সঠিক হলেও Sales Invoice-Line Ref. ব্যবহার করবেন না।</p>
+<h3>Retention</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PE retention withheld on certified RA Bill</td>
+<td><code>Retention Withheld</code></td>
+<td style="text-align: right;">1150</td>
+<td>Bill</td>
+<td><strong>No Sales Invoice-Line Ref.</strong></td>
+</tr>
+<tr>
+<td>PE retention released after DLP</td>
+<td><code>Retention Release</code></td>
+<td style="text-align: right;">1150</td>
+<td>Bill</td>
+<td><code>PE-TenderID</code></td>
+</tr>
+<tr>
+<td>Retention withheld from subcontractor</td>
+<td><code>Retention Subcontractor Withheld</code></td>
+<td style="text-align: right;">2050</td>
+<td>Bill</td>
+<td>Ref. when standalone Balance Sheet line needs tender identity</td>
+</tr>
+</tbody>
+</table>
+<h3>Time Loan</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real cash drawdown/repayment</td>
+<td><code>Time Loan Cash Movement</code></td>
+<td style="text-align: right;">2300</td>
+<td>Movement</td>
+<td>Ref. only if clearly tender-specific</td>
+</tr>
+<tr>
+<td>Monthly bank statement adjustment</td>
+<td><code>Time Loan Monthly Adjustment</code></td>
+<td style="text-align: right;">5700</td>
+<td>Month</td>
+<td><strong>Project blank, Ref. blank</strong></td>
+</tr>
+</tbody>
+</table>
+<p>[VERIFIED] The 14-AUG item catalog names the 5700 item <code>Time Loan Monthly Adjustment</code>; the item name does not change the locked rule that 5700 Time Loan interest/adjustment remains untagged unless a separate approved policy explicitly changes it.</p>
+<hr />
+<h2>15. Site materials: 5000 Direct Materials</h2>
+<p>[VERIFIED] These items are 5000 material-cost items from the 14-AUG catalog. For real site material/carrying/chipping cost, use <strong>Project = Yes</strong> and <strong>Ref. = No</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Unit</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binding Wire</td>
+<td>Kg</td>
+<td>GI binding wire purchase</td>
+</tr>
+<tr>
+<td>Bitumen</td>
+<td>Barrel</td>
+<td>Bitumen purchase</td>
+</tr>
+<tr>
+<td>Bitumen Carrying Cost</td>
+<td>Barrel</td>
+<td>Bitumen transport cost</td>
+</tr>
+<tr>
+<td>Brick Carrying Cost - ft³</td>
+<td>ft³</td>
+<td>Brick transport cost by cubic foot</td>
+</tr>
+<tr>
+<td>Brick Carrying Cost - হাজার</td>
+<td>হাজার</td>
+<td>Brick transport cost by thousand</td>
+</tr>
+<tr>
+<td>Brick Chipping Cost</td>
+<td>ft3</td>
+<td>Brick breaking/chipping cost</td>
+</tr>
+<tr>
+<td>Bricks_ft3</td>
+<td>ft3</td>
+<td>Brick purchase by cubic foot</td>
+</tr>
+<tr>
+<td>Bricks_হাজার</td>
+<td>হাজার</td>
+<td>Brick purchase by thousand</td>
+</tr>
+<tr>
+<td>Cement</td>
+<td>Bag</td>
+<td>Cement purchase</td>
+</tr>
+<tr>
+<td>Cement Carrying Cost</td>
+<td>Bag</td>
+<td>Cement transport cost</td>
+</tr>
+<tr>
+<td>CI Sheet</td>
+<td>Sheet</td>
+<td>Corrugated iron sheet purchase</td>
+</tr>
+<tr>
+<td>Electrical Item</td>
+<td>Lot</td>
+<td>Electrical materials</td>
+</tr>
+<tr>
+<td>Floor Tiles</td>
+<td>sft</td>
+<td>Floor tile purchase</td>
+</tr>
+<tr>
+<td>Glass - 5mm</td>
+<td>sft</td>
+<td>5 mm glass sheet purchase</td>
+</tr>
+<tr>
+<td>Iron</td>
+<td>Kg</td>
+<td>Iron purchase</td>
+</tr>
+<tr>
+<td>Iron Carrying Cost</td>
+<td>MT</td>
+<td>Iron transport cost</td>
+</tr>
+<tr>
+<td>MS Rod - 500W</td>
+<td>Kg</td>
+<td>MS rod purchase</td>
+</tr>
+<tr>
+<td>MS Rod Carrying Cost</td>
+<td>MT</td>
+<td>MS rod transport cost</td>
+</tr>
+<tr>
+<td>MS Sheet</td>
+<td>Sheet</td>
+<td>Mild steel sheet purchase</td>
+</tr>
+<tr>
+<td>Paint - Enamel</td>
+<td>Gallon</td>
+<td>Enamel paint purchase</td>
+</tr>
+<tr>
+<td>PVC Pipe</td>
+<td>Rft</td>
+<td>PVC pipe purchase</td>
+</tr>
+<tr>
+<td>Sand</td>
+<td>ft3</td>
+<td>Sand purchase</td>
+</tr>
+<tr>
+<td>Sand Carrying Cost</td>
+<td>ft3</td>
+<td>Sand transport cost</td>
+</tr>
+<tr>
+<td>Stone Carrying Cost</td>
+<td>ft3</td>
+<td>Stone transport cost</td>
+</tr>
+<tr>
+<td>Stone Chips Carrying Cost</td>
+<td>ft3</td>
+<td>Stone chips transport cost</td>
+</tr>
+<tr>
+<td>Stone Chips_ft3</td>
+<td>ft3</td>
+<td>Stone chips purchase</td>
+</tr>
+<tr>
+<td>Stone_ft3</td>
+<td>ft3</td>
+<td>Stone purchase</td>
+</tr>
+<tr>
+<td>Timber - Sal Wood</td>
+<td>Cft</td>
+<td>Sal wood timber purchase</td>
+</tr>
+<tr>
+<td>Welding Rod</td>
+<td>Kg</td>
+<td>Welding electrode purchase</td>
+</tr>
+</tbody>
+</table>
+<h3>Material entry example</h3>
+<div class="codehilite"><pre><span></span><code>Form:     Purchase Invoice
+Item:     Cement
+Unit:     Bag
+Account:  5000 Direct Materials (from item)
+Project:  select the actual awarded Project
+Ref.:     blank
+</code></pre></div>
+
+<p>[STATED] If one supplier invoice covers two Projects, use separate invoice lines and select the correct Project line-by-line.</p>
+<hr />
+<h2>16. Site labor: 5010 Direct Labor</h2>
+<p>[VERIFIED] These labor items are 5010 site-labor costs from the 14-AUG catalog. For site labor, use <strong>Project = Yes</strong> and <strong>Ref. = No</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Unit</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Electrician Labor</td>
+<td>Day</td>
+<td>Electrician wage</td>
+</tr>
+<tr>
+<td>Helper Labor</td>
+<td>Day</td>
+<td>Helper wage</td>
+</tr>
+<tr>
+<td>Mason Labor</td>
+<td>Day</td>
+<td>Mason wage</td>
+</tr>
+<tr>
+<td>Overtime Labor</td>
+<td>Hour</td>
+<td>Overtime labor charge</td>
+</tr>
+<tr>
+<td>Regular Labor</td>
+<td>Day</td>
+<td>Regular daily labor</td>
+</tr>
+<tr>
+<td>Skilled Labor</td>
+<td>Day</td>
+<td>Skilled worker wage</td>
+</tr>
+<tr>
+<td>Welder Labor</td>
+<td>Day</td>
+<td>Welder wage</td>
+</tr>
+</tbody>
+</table>
+<h3>Labor entry example</h3>
+<div class="codehilite"><pre><span></span><code>Form:     Payment
+Item:     Mason Labor
+Unit:     Day
+Account:  5010 Direct Labor (from item)
+Project:  select the actual awarded Project
+Ref.:     blank
+</code></pre></div>
+
+<hr />
+<h2>17. Equipment and handling: 5030</h2>
+<p>[VERIFIED] These items are recorded under account 5030 in the 14-AUG item catalog. Use <strong>Project = Yes</strong> when the cost relates to a specific site.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Unit</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Concrete Mixer Rental</td>
+<td>Day</td>
+<td>Concrete mixer rental</td>
+</tr>
+<tr>
+<td>Diesel - Equipment</td>
+<td>Liter</td>
+<td>Fuel for construction equipment</td>
+</tr>
+<tr>
+<td>Equipment Rental</td>
+<td>Day</td>
+<td>Equipment rental charge</td>
+</tr>
+<tr>
+<td>Loading Unloading Charge</td>
+<td>Trip</td>
+<td>Material loading/unloading charge</td>
+</tr>
+<tr>
+<td>Scaffolding Rental</td>
+<td>Set-Day</td>
+<td>Scaffolding rental</td>
+</tr>
+</tbody>
+</table>
+<h3>Equipment entry example</h3>
+<div class="codehilite"><pre><span></span><code>Form:     Payment or Purchase Invoice (depending on source bill)
+Item:     Equipment Rental
+Unit:     Day
+Account:  5030 (from item)
+Project:  select the actual awarded Project
+Ref.:     blank
+</code></pre></div>
+
+<p>[STATED] Equipment allocation or internal cross-project allocation requires approved usage evidence. Do not use rental/fuel item merely to create an internal allocation entry.</p>
+<hr />
+<h2>18. General bank charge item</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Use this item</th>
+<th style="text-align: right;">Account</th>
+<th>Unit</th>
+<th>Project / Ref.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General bank fee not related to security</td>
+<td><code>Bank Charge - General</code></td>
+<td style="text-align: right;">5720</td>
+<td>Fee</td>
+<td>Both blank</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>Form:     Payment
+Item:     Bank Charge - General
+Project:  blank
+Ref.:     blank
+</code></pre></div>
+
+<hr />
+</article>
 </main>
 
 <footer style="text-align:center;padding:36px 20px;border-top:3px solid transparent;border-image:linear-gradient(90deg,#FFD700 0 16%,#00D2FF 16% 100%) 1;background:#FFFFFF;font-size:12px;color:#64748B;line-height:1.9;font-family:'Neo Sans Pro',sans-serif">
@@ -82,10 +762,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-en);m
   <small style="color:#64748B">Educational demonstration only. Static, client-side tools &mdash; no live Manager.io data connection.</small>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-  const md = \$escapedMd\;
-  document.getElementById('content').innerHTML = marked.parse(md);
-</script>
+
 </body>
 </html>
